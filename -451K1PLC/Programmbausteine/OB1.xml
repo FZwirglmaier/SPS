@@ -109,6 +109,22 @@
     <StlToken Text="EMPTY_LINE" />
   </StlStatement>
   <StlStatement UId="26">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="IBS1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Tag_1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="31">
     <StlToken Text="EMPTY_LINE" />
   </StlStatement>
   <StlStatement UId="32">
