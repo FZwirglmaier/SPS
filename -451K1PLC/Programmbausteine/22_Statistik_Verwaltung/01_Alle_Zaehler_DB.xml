@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AssignedProDiagFB>Pos12_ProDiag</AssignedProDiagFB>
+      <InstanceOfName>01_Alle_Zaehler</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Zaehlsignal_Gesamt" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_LabView" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_1 Palette 1" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_2 Palette 2" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_3 Palette 3" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_4 Palette 4" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_5 Palette 5" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_1_Palette NIO" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_2" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_3" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_4" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_5" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_6" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>01_Alle_Zaehler_DB</Name>
+      <Namespace />
+      <Number>162</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

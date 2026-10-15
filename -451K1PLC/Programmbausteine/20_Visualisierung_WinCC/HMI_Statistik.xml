@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Auftragsmenge" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Verpackungsmenge" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Verpackungszähler" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Beutelmenge" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Letzte Zykluszeit" Datatype="Time" Remanence="Retain">
+      <StartValue>T#0MS</StartValue>
+    </Member>
+    <Member Name="NIO_Behälter1" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="NIO_Behälter2" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="NIO_Behälter3" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="NIO_Behälter4" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="NIO_Behälter5" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="NIO_Behälter6" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="NIO_Behälter7" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="NIO_Behälter8" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="IO_Behälter1" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="IO_Behälter2" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="IO_Behälter3" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="IO_Behälter4" Datatype="DInt" Remanence="Retain">
+      <StartValue>1000</StartValue>
+    </Member>
+    <Member Name="IO_Behälter5" Datatype="DInt" Remanence="Retain">
+      <StartValue>1000</StartValue>
+    </Member>
+    <Member Name="NIO_BehälterMAX" Datatype="DInt" Remanence="Retain">
+      <StartValue>100</StartValue>
+    </Member>
+    <Member Name="IO_BehälterMAX" Datatype="DInt" Remanence="Retain">
+      <StartValue>1000</StartValue>
+    </Member>
+    <Member Name="Verpackungszähler_1" Datatype="DInt" Remanence="Retain">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="Letzte Zykluszeit_POS_3_0" Datatype="Time" Remanence="Retain">
+      <StartValue>T#15S_228MS</StartValue>
+    </Member>
+    <Member Name="Letzte Zykluszeit_POS_3_0_in_s" Datatype="Real" Remanence="Retain" />
+    <Member Name="Durchschnitt Zykluszeit_POS_3_0" Datatype="Real" Remanence="Retain" />
+    <Member Name="Restlaufzeit_POS_3_0" Datatype="Real" Remanence="Retain" />
+    <Member Name="Zykluszeit_POS_3_0_in_s" Datatype="Array[0..10] of Real" Remanence="Retain" />
+    <Member Name="Zaehler Alle Teile" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Schichtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Auftragszaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Gesamtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Zaehler IO Teile" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Schichtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Auftragszaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Gesamtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Zaehler NIO Teile" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Schichtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Auftragszaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Gesamtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO 1" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Schichtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Auftragszaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Gesamtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO 2" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Schichtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Auftragszaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Gesamtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO 3" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Schichtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Auftragszaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Gesamtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO 4" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Schichtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Auftragszaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Gesamtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="IO 5" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Schichtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Auftragszaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="Gesamtzaehler" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="NIO 1" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="NIO 2" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="NIO 3" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="NIO 4" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="NIO 5" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="NIO 6" Datatype="&quot;HMI_Zaehler&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>HMI_Statistik</Name>
+      <Namespace />
+      <Number>2002</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

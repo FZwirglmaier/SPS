@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <HeaderName>FUSI</HeaderName>
+      <InstanceOfName>Main_Safety_RTG1</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="ESTOP1_NOT-HALT Taster1" Datatype="ESTOP1" Version="1.6" />
+    <Member Name="stat_Q_NOT-HALT Taster1" Datatype="Bool" />
+    <Member Name="stat_AckReq_NOT-HALT Taster1" Datatype="Bool" />
+    <Member Name="ESTOP1_NOT-HALT Extern 1" Datatype="ESTOP1" Version="1.6" />
+    <Member Name="stat_Q_NOT-HALT Extern 1" Datatype="Bool" />
+    <Member Name="stat_AckReq_NOT-HALT Extern1" Datatype="Bool" />
+    <Member Name="ESTOP1_NOT-HALT Extern 2" Datatype="ESTOP1" Version="1.6" />
+    <Member Name="stat_Q_NOT-HALT Extern 2" Datatype="Bool" />
+    <Member Name="stat_AckReq_NOT-HALT Extern 2" Datatype="Bool" />
+    <Member Name="ESTOP1_Tür 1" Datatype="ESTOP1" Version="1.6" />
+    <Member Name="stat_Q_Tür 1" Datatype="Bool" />
+    <Member Name="stat_AckReq_Tür 1" Datatype="Bool" />
+    <Member Name="ESTOP1_Tür 2" Datatype="ESTOP1" Version="1.6" />
+    <Member Name="stat_Q_Tür 2" Datatype="Bool" />
+    <Member Name="stat_AckReq_Tür 2" Datatype="Bool" />
+    <Member Name="ESTOP1_Systemdruck" Datatype="ESTOP1" Version="1.6" />
+    <Member Name="stat_AckReq_Systemdruck" Datatype="Bool" />
+    <Member Name="FDBACK_1_NOT-HALT Schütz mit DE_NOT-HALT_Schuetz_Rueckf" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_Q_FDBK_1_NOT-HALT Schütz mit DE_NOT-HALT_Schuetz_Rueckf" Datatype="Bool" />
+    <Member Name="stat_ERROR_FDBK_1_NOT-HALT Schütz mit DE_NOT-HALT_Schuetz_Rueckf" Datatype="Bool" />
+    <Member Name="FDBACK_2_NOT-HALT Schütz mit IS_Rueck_Entlueftung" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_Q_FDBK_2_NOT-HALT Schütz mit IS_Rueck_Entlueftung" Datatype="Bool" />
+    <Member Name="stat_ERROR_FDBK_2_NOT-HALT Schütz mit IS_Rueck_Entlueftung" Datatype="Bool" />
+    <Member Name="FDBACK_3_NOT-HALT Schütz mit IS_Druckbereich_entlueftet" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_Q_FDBK_3_NOT-HALT Schütz mit IS_Druckbereich_entlueftet" Datatype="Bool" />
+    <Member Name="stat_ERROR_FDBK_3_NOT-HALT Schütz mit IS_Druckbereich_entlueftet" Datatype="Bool" />
+    <Member Name="FDBACK_4_NOT-HALT Türe 1 RST mit DE_NOT-HALT_Tuere_1_Rueck_RST" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_Q_FDBK_4_NOT-HALT Türe 1 RST mit DE_NOT-HALT_Tuere_1_Rueck_RST" Datatype="Bool" />
+    <Member Name="stat_ERROR_FDBK_4_NOT-HALT Türe 1 RST mit DE_NOT-HALT_Tuere_1_Rueck_RST" Datatype="Bool" />
+    <Member Name="FDBACK_5_NOT-HALT Türe 1 mit DE_NOT-HALT_Tuere_1_Rueckf" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_Q_FDBK_5_NOT-HALT Türe 1 mit DE_NOT-HALT_Tuere_1_Rueckf" Datatype="Bool" />
+    <Member Name="stat_ERROR_FDBK_5_NOT-HALT Türe 1 mit DE_NOT-HALT_Tuere_1_Rueckf" Datatype="Bool" />
+    <Member Name="FDBACK_6_NOT-HALT Türe 1 mit DE_Antriebe_Rueckf" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_Q_FDBK_6_NOT-HALT Türe 1 mit DE_Antriebe_Rueckf" Datatype="Bool" />
+    <Member Name="stat_ERROR_FDBK_6_NOT-HALT Türe 1 mit DE_Antriebe_Rueckf" Datatype="Bool" />
+    <Member Name="FDBACK_7_NOT-HALT Türe 2 RST mit DE_NOT-HALT_Tuere_2_Rueck_RST" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_Q_FDBK_7_NOT-HALT Türe 2 RST mit DE_NOT-HALT_Tuere_2_Rueck_RST" Datatype="Bool" />
+    <Member Name="stat_ERROR_FDBK_7_NOT-HALT Türe 2 RST mit DE_NOT-HALT_Tuere_2_Rueck_RST" Datatype="Bool" />
+    <Member Name="FDBACK_8_NOT-HALT Türe 2 mit DE_NOT-HALT_Tuere_2_Rueckf" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_Q_FDBK_8_NOT-HALT Türe 2 mit DE_NOT-HALT_Tuere_2_Rueckf" Datatype="Bool" />
+    <Member Name="stat_ERROR_FDBK_8_NOT-HALT Türe 2 mit DE_NOT-HALT_Tuere_2_Rueckf" Datatype="Bool" />
+    <Member Name="FDBACK_10_Sicherere Bewegung" Datatype="FDBACK" Version="1.5" />
+    <Member Name="stat_AckReq_10_Sicherere Bewegung" Datatype="Bool" />
+    <Member Name="ACK_GL_Instance" Datatype="ACK_GL" Version="1.3" />
+    <Member Name="Systemdruck_OK" Datatype="Bool" />
+    <Member Name="Antriebe_sicher" Datatype="Bool" />
+    <Member Name="TON_Zuhaltung_Freigben_mit_NOT-HALT" Datatype="TON" Version="1.4" />
+    <Member Name="BA_0_groesser_1_5" Datatype="Bool" />
+    <Member Name="TON_BA_0_groesser_1_5" Datatype="TON" Version="1.4" />
+    <Member Name="TON_Türen_setzen_zum_öffnen" Datatype="TON" Version="1.4" />
+    <Member Name="BA_0" Datatype="Bool" />
+    <Member Name="Zuhaltung_freigegeben" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>Main_Safety_RTG1_DB</Name>
+      <Namespace />
+      <Number>15</Number>
+      <ProgrammingLanguage>F_DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

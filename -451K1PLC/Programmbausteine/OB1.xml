@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.OB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Temp">
+    <Member Name="OB1_EV_CLASS" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bits 0-3 = 1 (Coming event), Bits 4-7 = 1 (Event class 1)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_SCAN_1" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">1 (Cold restart scan 1 of OB 1), 3 (Scan 2-n of OB 1)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_PRIORITY" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Priority of OB Execution</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_OB_NUMBR" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">1 (Organization block 1, OB1)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_RESERVED_1" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Reserved for system</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_RESERVED_2" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Reserved for system</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_PREV_CYCLE" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Cycle time of previous OB1 scan (milliseconds)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_MIN_CYCLE" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Minimum cycle time of OB1 (milliseconds)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_MAX_CYCLE" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Maximum cycle time of OB1 (milliseconds)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="OB1_DATE_TIME" Datatype="Date_And_Time">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Date and time OB1 started</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>OB1</Name>
+      <Namespace />
+      <Number>1</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+      <SecondaryType>ProgramCycle</SecondaryType>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <StlToken Text="SET" />
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="IBS1" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="CLR" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="IBS0" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>IBS1 und IBS0 für Inbetriebnahmezwecke</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="47">
+    <LineComment>
+      <Text>  CALL  "01_FB_ Simulation", "01_FB_ Simulation_DB"// Simulation muss vor und nach der Sicherheitstechnik aufgerufen werden</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="DataFromSafey" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="DataFromSafey_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="DataToSafety" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="DataToSafety_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="31">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Sicherheitstechnik</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="26">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="02_Wartungsfreigaben" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="02_Wartungsfreigaben_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="03_Betriebsart" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="03_Betriebsart_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="31">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="54">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="05_Not-Aus" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="05_Not-Aus_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="58">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="06_Grundstellungen" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="06_Grundstellungen_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <LineComment>
+      <Text>     CALL  "01_FB_ Simulation", "01_FB_ Simulation_DB"// Simulation muss vor und nach der Sicherheitstechnik aufgerufen werden</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="29">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Allgemein</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Zyklisch wechselnder Merker" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="JC" />
+    <Access Scope="Label">
+      <Label Name="M015" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Zyklisch wechselnder Merker" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="S" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Zyklisch wechselnder Merker" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="JU" />
+    <Access Scope="Label">
+      <Label Name="M016" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <LabelDeclaration>
+      <Label Name="M015" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="R" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="Zyklisch wechselnder Merker" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="38">
+    <LabelDeclaration>
+      <Label Name="M016" />
+    </LabelDeclaration>
+    <StlToken Text="NOP_0" />
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Zyklisch wechselnder Merker</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="71">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Melden_VisuAllgemein" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="Melden_VisuAllgemein_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="45">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Schnittstelle SPS/HMI" BlockType="FC" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="61">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Störmeldungen" BlockType="FC" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="77">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Leuchtmelder Ampel" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="Leuchtmelder Ampel_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="FB002_LabView" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="DB002_LabView_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="156">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Verwaltung_Teiledaten_FB" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="Verwaltung_Teiledaten_FB_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="57">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="186">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="01_Alle_Zaehler" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="01_Alle_Zaehler_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="184">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="36">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="02_Wartungszaehler" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="02_Wartungszaehler_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="188">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="99">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="POS3_0_Bausteinaufrufe" BlockType="FC" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="153">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="106">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zaehler_Sicherheit" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="Zaehler_Sicherheit_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="104">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="25">
+    <LineComment>
+      <Text>    CALL  MOVE</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="21">
+    <LineComment>
+      <Text>         value_type:=Variant</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <LineComment>
+      <Text>         IN  :="Simulation_DE200_bis_DE2199"</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <LineComment>
+      <Text>         OUT :="01_FB_ Simulation_DB".DE200_bis_DE2199</Text>
+    </LineComment>
+    <StlToken Text="COMMENT" />
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Simulation Eingänge in Zwischenspeicher sichern  --> Muss im letzten Netzwerks stehen</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="21" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="22" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text> "Main Program Sweep (Cycle)"</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.OB>
+</Document>

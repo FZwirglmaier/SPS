@@ -1,0 +1,557 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Anlagenbeleuchtung_EIN" Datatype="Bool" Remanence="Retain">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="NOT-HALT_OK" Datatype="Bool" Remanence="Retain">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="TUERE_OK" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="LICHTVORHANG_OK" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Grundstellung_Gesamt" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Dauer_Einzel_Betrieb" Datatype="Bool" Remanence="Retain">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="Antriebe_EIN" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Antriebe_sind_EIN" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Stop_nach_Zyklus" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Stop_nach_Störung" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Freigabe_Zyklus" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Ablauf_Aktiv" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Leerfahren_angewaehlt" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Leerfahren_laeuft" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Leerfahren_ende" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Reset_Schichtzaehler" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Reset_Auftragszaehler" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Speichern_Register" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Richten_Gesamtanlage" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="BM_Anzeige_Nr" Datatype="Word" Remanence="Retain">
+      <StartValue>16#0000</StartValue>
+    </Member>
+    <Member Name="AmpelStatus" Datatype="Word" Remanence="Retain">
+      <StartValue>16#0000</StartValue>
+    </Member>
+    <Member Name="BA_Status" Datatype="Word" Remanence="Retain">
+      <StartValue>16#0000</StartValue>
+    </Member>
+    <Member Name="Einzelschritt" Datatype="&quot;Stationsvariablen&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="Anwahl_Tipp" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Status_Anw" Datatype="Bool">
+            <StartValue>TRUE</StartValue>
+          </Member>
+          <Member Name="Anwahl_GS" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Status_GS" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Status_Sicher" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Tipp_Plus" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="LEER" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Vorhanden" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="IO" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="NIO" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Reset_Teilestatus" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Manu_Freigabe_SK" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Richten_lauft" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SNr" Datatype="Int">
+            <StartValue>0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Manuell_Zylinder1" Datatype="&quot;Manuell_Zylinder&quot;" Remanence="Retain" />
+    <Member Name="Manuell_Zylinder2" Datatype="&quot;Manuell_Zylinder&quot;" Remanence="Retain" />
+    <Member Name="Manuell_Zylinder3" Datatype="&quot;Manuell_Zylinder&quot;" Remanence="Retain" />
+    <Member Name="Manuell_Zylinder4" Datatype="&quot;Manuell_Zylinder&quot;" Remanence="Retain" />
+    <Member Name="HMI_Achse_Position" Datatype="&quot;HMI_Achse_Positionen&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HMI_Achse_Steuerung" Datatype="&quot;Datentyp_HMI_Achse_Steuerung&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HMI_Achse_POS_Überschreiben" Datatype="&quot;HMI_Achse_Positionen_überschreiben&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Artikelnummer" Datatype="Array[0..80] of Char" Remanence="Retain">
+      <Subelement Path="0">
+        <StartValue>'5'</StartValue>
+      </Subelement>
+      <Subelement Path="1">
+        <StartValue>'0'</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>'2'</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>'8'</StartValue>
+      </Subelement>
+      <Subelement Path="4">
+        <StartValue>'4'</StartValue>
+      </Subelement>
+      <Subelement Path="5">
+        <StartValue>'5'</StartValue>
+      </Subelement>
+      <Subelement Path="6">
+        <StartValue>'7'</StartValue>
+      </Subelement>
+      <Subelement Path="7">
+        <StartValue>'1'</StartValue>
+      </Subelement>
+      <Subelement Path="8">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="9">
+        <StartValue>'B'</StartValue>
+      </Subelement>
+      <Subelement Path="10">
+        <StartValue>'u'</StartValue>
+      </Subelement>
+      <Subelement Path="11">
+        <StartValue>'c'</StartValue>
+      </Subelement>
+      <Subelement Path="12">
+        <StartValue>'h'</StartValue>
+      </Subelement>
+      <Subelement Path="13">
+        <StartValue>'s'</StartValue>
+      </Subelement>
+      <Subelement Path="14">
+        <StartValue>'e'</StartValue>
+      </Subelement>
+      <Subelement Path="15">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="16">
+        <StartValue>'K'</StartValue>
+      </Subelement>
+      <Subelement Path="17">
+        <StartValue>'9'</StartValue>
+      </Subelement>
+      <Subelement Path="18">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="19">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="20">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="21">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="22">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="23">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="24">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="25">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="26">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="27">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="28">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="29">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="30">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="31">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="32">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="33">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="34">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="35">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="36">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="37">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="38">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="39">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="40">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="41">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="42">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="43">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="44">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="45">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="46">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="47">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="48">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="49">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="50">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="51">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="52">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="53">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="54">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="55">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="56">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="57">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="58">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="59">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="60">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="61">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="62">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="63">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="64">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="65">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="66">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="67">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="68">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="69">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="70">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="71">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+      <Subelement Path="72">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="73">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="74">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="75">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="76">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="77">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="78">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="79">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="80">
+        <StartValue>' '</StartValue>
+      </Subelement>
+    </Member>
+    <Member Name="Fertigungsauftragsnummer" Datatype="Array[0..25] of Char" Remanence="Retain">
+      <Subelement Path="0">
+        <StartValue>'1'</StartValue>
+      </Subelement>
+      <Subelement Path="1">
+        <StartValue>'0'</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>'3'</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>'5'</StartValue>
+      </Subelement>
+      <Subelement Path="4">
+        <StartValue>'5'</StartValue>
+      </Subelement>
+      <Subelement Path="5">
+        <StartValue>'9'</StartValue>
+      </Subelement>
+      <Subelement Path="6">
+        <StartValue>'0'</StartValue>
+      </Subelement>
+      <Subelement Path="7">
+        <StartValue>'4'</StartValue>
+      </Subelement>
+      <Subelement Path="8">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="9">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="10">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="11">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="12">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="13">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="14">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="15">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="16">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="17">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="18">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="19">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="20">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="21">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="22">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="23">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="24">
+        <StartValue>' '</StartValue>
+      </Subelement>
+      <Subelement Path="25">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+    </Member>
+    <Member Name="Tür_offen" Datatype="Array[0..15] of Bool" Remanence="Retain">
+      <Subelement Path="1">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="4">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="5">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="6">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="7">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="8">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+    </Member>
+    <Member Name="Einrichtbetrieb_aktiv" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Hauptventil_aus_steuern" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Taktzeit" Datatype="Array[0..25] of Time" Remanence="Retain" />
+    <Member Name="Fehlertext_LinMot" Datatype="String" Remanence="Retain" />
+    <Member Name="Artikelnummer_String" Datatype="String" Remanence="Retain" />
+    <Member Name="Fertigungsauftragsnummer_String" Datatype="String" Remanence="Retain" />
+    <Member Name="Reset_Behaelter" Datatype="UInt" Remanence="Retain" />
+    <Member Name="Status Automatik" Datatype="Int" Remanence="Retain" />
+    <Member Name="Artikel_gewechselt" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Status_24V_Sicherung" Datatype="Int" Remanence="Retain" />
+    <Member Name="24V_Sicherung_Reset" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Messwert 1" Datatype="Real" Remanence="Retain" />
+    <Member Name="Messwert 2" Datatype="Real" Remanence="Retain" />
+    <Member Name="Messwert 3" Datatype="Real" Remanence="Retain" />
+    <Member Name="Pos4_Trg_Zuführung" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Pos4_Zuführung" Datatype="Int" Remanence="Retain" />
+    <Member Name="Pos5_Trg_Zuführung" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Pos5_Zuführung" Datatype="Int" Remanence="Retain" />
+    <Member Name="Pos71_Trg_Zuführung" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Pos71_Zuführung" Datatype="Int" Remanence="Retain" />
+    <Member Name="Messmittel_ein" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Abläufe_Messmittel" Datatype="Int" Remanence="Retain" />
+    <Member Name="Messmittel_Rundlauf_ein" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Abläufe_Messmittel_Rundlauf" Datatype="Int" Remanence="Retain" />
+    <Member Name="R&amp;R_ein" Datatype="Bool" Remanence="Retain" />
+    <Member Name="DT_takten" Datatype="Bool" Remanence="Retain" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>HMI_COM</Name>
+      <Namespace />
+      <Number>2000</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

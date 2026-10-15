@@ -1,0 +1,1617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Schrittkette" Datatype="&quot;Schrittkettenaufruf&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="OFF_SQ" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="INIT_SQ" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="ACK_EF" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="HALT_SQ" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="HALT_TM" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="ZERO_OP" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="EN_IL" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="EN_SV" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="S_PREV" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="S_NEXT" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SW_AUTO" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SW_TAP" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SW_MAN" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="S_SEL" Datatype="Int">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="S_ON" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="S_OFF" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="T_PUSH" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="S_NO" Datatype="Int">
+            <StartValue>1</StartValue>
+          </Member>
+          <Member Name="S_MORE" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="S_ACTIVE" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="ERR_FLT" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SQ_HALTED" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="TM_HALTED" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="OP_ZEROED" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="IL_ENABELD" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SV_ENABELD" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="AUTO_ON" Datatype="Bool">
+            <StartValue>TRUE</StartValue>
+          </Member>
+          <Member Name="TAP_ON" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="MAN_ON" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Station" Datatype="&quot;Schrittkettensteuerung&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="SK_Freigabe_Richten" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SK_Richten_gestartet" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SK_Richten_fertig" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SK_Freigabe_Auto" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SK_Aktiv" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SK_Fertig" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SK_Freigabe_Manuell_Auto" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SK_Freigabe_Manuell_Richten" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Reset_Freigaben" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="Station_1Ein_0Aus" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="SK_Richten_erforderlich" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Richten nach Not Aus" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Erster_Durchlauf" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="Taktzeit" Datatype="Array[0..10] of Time" Remanence="Retain">
+      <Subelement Path="0">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="1">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="4">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="5">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="6">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="7">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="8">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="9">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+      <Subelement Path="10">
+        <StartValue>T#0MS</StartValue>
+      </Subelement>
+    </Member>
+    <Member Name="M_Zyklus_start" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="M_Zyklus_ende" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="Sollzyklen" Datatype="Int" Remanence="Retain" />
+    <Member Name="Istzyklen" Datatype="Int" Remanence="Retain" />
+    <Member Name="Restzyklen" Datatype="Int" Remanence="Retain" />
+    <Member Name="-1001T1 Oriental_Positionen" Datatype="&quot;Oriental_Variablen_Positionen&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="Start_POS_Position" Datatype="Array[0..15] of Bool">
+            <Subelement Path="0">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="POS_OK_Position" Datatype="Array[0..15] of Bool">
+            <Subelement Path="0">
+              <StartValue>TRUE</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Operation_type" Datatype="Array[0..15] of Word">
+            <Subelement Path="0">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Soll_Position" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Geschwindigkeit" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>10.0</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Start_Rampe" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Stopp_Rampe" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Arbeitsstrom" Datatype="Array[0..15] of UInt">
+            <Subelement Path="0">
+              <StartValue>10</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>50</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>50</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>50</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>50</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>1000</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Positioniertoleranz" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="A_Softw_ES_min_mm" Datatype="Real">
+            <StartValue>-0.5</StartValue>
+          </Member>
+          <Member Name="A_Softw_ES_max_mm" Datatype="Real">
+            <StartValue>10000.5</StartValue>
+          </Member>
+          <Member Name="A_Max_Speed_mm_s" Datatype="Int">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="A_Max_Beschleunigung_mm_s" Datatype="Int">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="A_Softw_ES_min_steps" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+          <Member Name="A_Softw_ES_max_steps" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="-1001T1 Oriental_Steuerung" Datatype="&quot;Oriental_Variablen_Steuerung&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="E_TRIG" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_TRIG-MODE" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_ETO-CLR" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_FW-JOG" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_RV-JOG" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_START" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_ZHOME" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_STOP" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_FREE" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_ALM-RST" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_DDO_Type" Datatype="Word">
+            <StartValue>16#0000</StartValue>
+          </Member>
+          <Member Name="E_DDO_Pos" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+          <Member Name="E_DDO_Vel" Datatype="Real">
+            <StartValue>2.0</StartValue>
+          </Member>
+          <Member Name="E_DDO_Acc" Datatype="Real">
+            <StartValue>100.0</StartValue>
+          </Member>
+          <Member Name="E_DDO_Dec" Datatype="Real">
+            <StartValue>100.0</StartValue>
+          </Member>
+          <Member Name="E_DDO_Crnt" Datatype="Word">
+            <StartValue>16#0064</StartValue>
+          </Member>
+          <Member Name="E_DDO_Trans" Datatype="Word">
+            <StartValue>16#0000</StartValue>
+          </Member>
+          <Member Name="A_TRIG_R" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_TRIG-MODE_R" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_SET-ERR" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_EXE-ERR" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_DCMD-FULL" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_STOP_R" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_ETO-MON" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_TLC" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_SEQ-BSY" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_MOVE" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_IN-POS" Datatype="Bool">
+            <StartValue>TRUE</StartValue>
+          </Member>
+          <Member Name="A_START_R" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_HOME-END" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_READY" Datatype="Bool">
+            <StartValue>TRUE</StartValue>
+          </Member>
+          <Member Name="A_DCMD-RDY" Datatype="Bool">
+            <StartValue>TRUE</StartValue>
+          </Member>
+          <Member Name="A_ALM-A" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_PresentAlarm" Datatype="Word">
+            <StartValue>16#0000</StartValue>
+          </Member>
+          <Member Name="A_FBposition" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+          <Member Name="A_FBspeed" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+          <Member Name="A_CmdPosition" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="A_TorqueMonitor" Datatype="Int">
+            <StartValue>-17</StartValue>
+          </Member>
+          <Member Name="A_CST_OpeCurrent" Datatype="Word">
+            <StartValue>16#01F4</StartValue>
+          </Member>
+          <Member Name="A_Information" Datatype="DWord">
+            <StartValue>16#0000_0000</StartValue>
+          </Member>
+          <Member Name="A_StatusWord" Datatype="DWord">
+            <StartValue>16#0000_0004</StartValue>
+          </Member>
+          <Member Name="E_Trig_Manuell" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_Schrittweite_pos" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_Schrittweite_neg" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_Schrittweite" Datatype="Real">
+            <StartValue>90.0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="-1001T1 Oriental_Beschleunigung" Datatype="Real" Remanence="Retain">
+      <StartValue>2.0</StartValue>
+    </Member>
+    <Member Name="-1001T1 Oriental_Speed" Datatype="Real" Remanence="Retain">
+      <StartValue>2.0</StartValue>
+    </Member>
+    <Member Name="-1001T1 Oriental_E_P-Preset" Datatype="Bool" />
+    <Member Name="-1002T1 Oriental_Positionen" Datatype="&quot;Oriental_Variablen_Positionen&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="Start_POS_Position" Datatype="Array[0..15] of Bool">
+            <Subelement Path="0">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="POS_OK_Position" Datatype="Array[0..15] of Bool">
+            <Subelement Path="0">
+              <StartValue>TRUE</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Operation_type" Datatype="Array[0..15] of Word">
+            <Subelement Path="0">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>16#0001</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Soll_Position" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>0.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Geschwindigkeit" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>10.0</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>20.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Start_Rampe" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Stopp_Rampe" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>2.0</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>100.0</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Arbeitsstrom" Datatype="Array[0..15] of UInt">
+            <Subelement Path="0">
+              <StartValue>10</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>50</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>50</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>50</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>50</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>1000</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>1000</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="Positioniertoleranz" Datatype="Array[0..15] of Real">
+            <Subelement Path="0">
+              <StartValue>0.001</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <StartValue>0.001</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <StartValue>0.001</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <StartValue>0.001</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <StartValue>0.01</StartValue>
+            </Subelement>
+          </Member>
+          <Member Name="A_Softw_ES_min_mm" Datatype="Real">
+            <StartValue>-0.5</StartValue>
+          </Member>
+          <Member Name="A_Softw_ES_max_mm" Datatype="Real">
+            <StartValue>10000.5</StartValue>
+          </Member>
+          <Member Name="A_Max_Speed_mm_s" Datatype="Int">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="A_Max_Beschleunigung_mm_s" Datatype="Int">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="A_Softw_ES_min_steps" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+          <Member Name="A_Softw_ES_max_steps" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="-1002T1 Oriental_Steuerung" Datatype="&quot;Oriental_Variablen_Steuerung&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="E_TRIG" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_TRIG-MODE" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_ETO-CLR" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_FW-JOG" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_RV-JOG" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_START" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_ZHOME" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_STOP" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_FREE" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_ALM-RST" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_DDO_Type" Datatype="Word">
+            <StartValue>16#0000</StartValue>
+          </Member>
+          <Member Name="E_DDO_Pos" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+          <Member Name="E_DDO_Vel" Datatype="Real">
+            <StartValue>2.0</StartValue>
+          </Member>
+          <Member Name="E_DDO_Acc" Datatype="Real">
+            <StartValue>100.0</StartValue>
+          </Member>
+          <Member Name="E_DDO_Dec" Datatype="Real">
+            <StartValue>100.0</StartValue>
+          </Member>
+          <Member Name="E_DDO_Crnt" Datatype="Word">
+            <StartValue>16#0064</StartValue>
+          </Member>
+          <Member Name="E_DDO_Trans" Datatype="Word">
+            <StartValue>16#0000</StartValue>
+          </Member>
+          <Member Name="A_TRIG_R" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_TRIG-MODE_R" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_SET-ERR" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_EXE-ERR" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_DCMD-FULL" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_STOP_R" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_ETO-MON" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_TLC" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_SEQ-BSY" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_MOVE" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_IN-POS" Datatype="Bool">
+            <StartValue>TRUE</StartValue>
+          </Member>
+          <Member Name="A_START_R" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_HOME-END" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_READY" Datatype="Bool">
+            <StartValue>TRUE</StartValue>
+          </Member>
+          <Member Name="A_DCMD-RDY" Datatype="Bool">
+            <StartValue>TRUE</StartValue>
+          </Member>
+          <Member Name="A_ALM-A" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="A_PresentAlarm" Datatype="Word">
+            <StartValue>16#0000</StartValue>
+          </Member>
+          <Member Name="A_FBposition" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+          <Member Name="A_FBspeed" Datatype="Real">
+            <StartValue>0.0</StartValue>
+          </Member>
+          <Member Name="A_CmdPosition" Datatype="DInt">
+            <StartValue>0</StartValue>
+          </Member>
+          <Member Name="A_TorqueMonitor" Datatype="Int">
+            <StartValue>-17</StartValue>
+          </Member>
+          <Member Name="A_CST_OpeCurrent" Datatype="Word">
+            <StartValue>16#01F4</StartValue>
+          </Member>
+          <Member Name="A_Information" Datatype="DWord">
+            <StartValue>16#0000_0000</StartValue>
+          </Member>
+          <Member Name="A_StatusWord" Datatype="DWord">
+            <StartValue>16#0000_0004</StartValue>
+          </Member>
+          <Member Name="E_Trig_Manuell" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_Schrittweite_pos" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_Schrittweite_neg" Datatype="Bool">
+            <StartValue>FALSE</StartValue>
+          </Member>
+          <Member Name="E_Schrittweite" Datatype="Real">
+            <StartValue>90.0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="-1002T1_Oriental_Beschleunigung" Datatype="Real" Remanence="Retain">
+      <StartValue>2.0</StartValue>
+    </Member>
+    <Member Name="-1002T1_Oriental_Speed" Datatype="Real" Remanence="Retain">
+      <StartValue>2.0</StartValue>
+    </Member>
+    <Member Name="-1002T1 Oriental_E_P-Preset" Datatype="Bool" />
+    <Member Name="-1002T1 Oriental_Umdrehungszähler" Datatype="Real" Remanence="Retain" />
+    <Member Name="-1002T1 Oriental_Absolute_Position" Datatype="Real" Remanence="Retain" />
+    <Member Name="-1012B1 Kraftsensor" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">-1012B1 Kraftsensor</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3_0_Regelventil_Ausgleichszylinder_Sollwert" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+Feld-940RN1 Regelventil Ausgleichszylinder Sollwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3_0_Regelventil_Ausgleichszylinder_Istwert" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+Feld-940RN1 Regelventil Ausgleichszylinder Istwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3_0_Regelventil_Ausgleichszylinder_Maximale_Abweichung" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+Feld-940RN1 Regelventil Ausgleichszylinder Istwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3_0_Regelventil_Ausgleichszylinder_Abweichung_OK" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+Feld-940RN1 Regelventil Ausgleichszylinder Istwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3_0_Regelventil_Überlastzylinder_Sollwert" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+Feld-940RN2 Regelventil Überlastzylinder Sollwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3_0_Regelventil_Überlastzylinder_Istwert" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+Feld-940RN2 Regelventil Überlastzylinder Istwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3_0_Regelventil_Überlastzylinder_Maximale_Abweichung" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+Feld-940RN2 Regelventil Überlastzylinder Istwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3_0_Regelventil_Überlastzylinder_Abweichung_OK" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+Feld-940RN2 Regelventil Überlastzylinder Istwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_Rohwert" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Istwert Rohwert</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Maximale_Abweichung" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wegmessung Ausgleichszylinder Toleranz in mm</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Position_GS_Abweichung_OK" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Position GS Abweichung OK</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Position_AS1_Abweichung_OK" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Position AS1 Abweichung OK</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Kommunikation_Weiterschaltbedingungen_AUS" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Kommunikation_Weiterschaltbedingungen_AUS</MultiLanguageText>
+      </Comment>
+      <StartValue>1</StartValue>
+    </Member>
+    <Member Name="Kommunikation_Weiterschaltbedingungen_DIGITAL" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Kommunikation_Weiterschaltbedingungen_DIGITAL</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Kommunikation_Weiterschaltbedingungen_SP7" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Kommunikation_Weiterschaltbedingungen_SP7</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Sollwert_in_mm" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Sollwert in mm</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_in_mm" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Istwert in mm</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Nullpunkt_Rohwert" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Nullpunkt Rohwert</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Taster_Nullen" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Taster Nullen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Position_GS_aktiv" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Position GS aktiv</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="-POS3.0_Wegmessung_Ausgleichszylinder_Position_AS1_aktiv" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">+POS=3.0-1011B1 Wegmessung Ausgleichszylinder Position AS1 aktiv</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Wartezeit Soll gesteckt" Datatype="Time" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wartezeit Soll gesteckt aus Verwaltung [s]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Wartezeit Ist gesteckt" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wartezeit Ist gesteckt für Anzeige [s]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Status_gesteckt" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Status Stecker ist gesteckt</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Drehachse_Kraft_überschritten" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Drehachse Kraft überschritten</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>POS3_0_Signal</Name>
+      <Namespace />
+      <Number>34</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

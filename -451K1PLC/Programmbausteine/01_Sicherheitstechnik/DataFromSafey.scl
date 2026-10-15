@@ -1,0 +1,22 @@
+﻿FUNCTION_BLOCK "DataFromSafey"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      "Q_NOT-HALT Taster1" : Bool;   // +Feld=EAS-131S1 NOT-HALT Taster 1
+      "Q_NOT-HALT Extern 1" : Bool;   // +HS1=ÜSPS-125K1/K2 NOT-HALT HMI Mobile
+      "Q_NOT-HALT Extern 2" : Bool;   // +HS1=ÜSPS-191K1 NOT-HALT Kopfsteuerung
+      "FDBACK_NOT-HALT Schütz mit DE_NOT-HALT_Schuetz_Rueckf" : Bool;   // FDBACK_NOT-HALT Schütz mit DE_NOT-HALT_Schuetz_Rueckf
+      "FDBACK_NOT-HALT Schütz mit IS_Rueck_Entlueftung" : Bool;   // FDBACK_NOT-HALT Schütz mit IS_Rueck_Entlueftung
+      "FDBACK_NOT-HALT Schütz mit IS_Druckbereich_entlueftet" : Bool;   // FDBACK_NOT-HALT Schütz mit IS_Druckbereich_entlueftet
+      "FDBACK_NOT-HALT Türe 1 RST mit DE_NOT-HALT_Tuere_1_Rueck_RST" : Bool;   // FDBACK_NOT-HALT Türe 1 RST mit DE_NOT-HALT_Tuere_1_Rueck_RST
+      "FDBACK_NOT-HALT Türe 1 mit DE_NOT-HALT_Tuere_1_Rueckf" : Bool;   // FDBACK_NOT-HALT Türe 1 mit DE_NOT-HALT_Tuere_1_Rueckf
+      "FDBACK_NOT-HALT Türe 1 mit DE_Antriebe_Rueckf" : Bool;   // FDBACK_NOT-HALT Türe 1 mit DE_Antriebe_Rueckf
+      "FDBACK_NOT-HALT Türe 2 RST mit DE_NOT-HALT_Tuere_2_Rueck_RST" : Bool;   // FDBACK_NOT-HALT Türe 2 RST mit DE_NOT-HALT_Tuere_2_Rueck_RST
+      "FDBACK_NOT-HALT Türe 2 mit DE_NOT-HALT_Tuere_2_Rueckf" : Bool;   // FDBACK_NOT-HALT Türe 2 mit DE_NOT-HALT_Tuere_2_Rueckf
+      "FDBACK_NOT-HALT Schalter OK mit DE_NOT-HALT_Schalter_OK_Rueckf" : Bool;   // FDBACK_NOT-HALT Schalter OK mit DE_NOT-HALT_Schalter_OK_Rueckf
+   END_VAR
+
+
+BEGIN
+END_FUNCTION_BLOCK
+

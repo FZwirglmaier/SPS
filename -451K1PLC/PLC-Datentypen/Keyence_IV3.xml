@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Status" Datatype="Struct">
+      <Member Name="Warning_clear_request" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Fordert das Löschen der Warnungen an</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Results_available" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ergebnisdaten sind verfügbar</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Result_update_complete" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Durch einen Statuswechsel (0-1 oder 1-0) wird angegeben ob die Ergebnisdaten aktualisiert</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Busy" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Während dieses Bit auf 1 ist, kann kein Trigger verarbeitet werden</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Imaging" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Bildaufnahme wird ausgeführt</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="RUN" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Der Vision-Sensor ist im Run-Modus und es ist kein Systemfehler aufgetreten.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Ready" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Der Vision-Sensor ist komplett gestartet und betriebsbereit.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Trigger_Ready" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Dieses Bit wird ausgegeben, wenn der Trigger empfangen werden kann</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SD_card_Status" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE"> Dieses Bit wird ausgegeben, wenn die SD-Karte korrekt identifiziert wurde.</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="SD_card_full" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Dieses Bit wird ausgegeben, wenn der freie Speicherplatz auf der SD-Karte 100 MB oder weniger beträgt</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Warning" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Warnung vorhanden</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Error_status" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Fehler vorhanden</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Trigger" Datatype="Struct">
+      <Member Name="Trigger_request" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Fordert einen Trigger an</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Trigger_response" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE"> Speichert die Antwort des externen Triggers</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Overall_judgment_OK" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zeigt das Gesamtstatusergebnis an (OK)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Busy" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Während dieses Bit auf 1 ist, kann kein Trigger verarbeitet werden.</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Device_Result" Datatype="Struct">
+      <Member Name="OveralljudgmentOK" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zeigt das Gesamtstatusergebnis an (OK)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="OveralljudgmentNG" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zeigt das Gesamtstatusergebnis an (NG)</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Positionscorrection" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Ergebnis der Positionskorrektur</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tool" Datatype="Array[1..16] of Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Zeigt das Ergebnis von Werkzeug X an</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="ToolX_Result" Datatype="Struct">
+      <Member Name="Tool_Number" Datatype="Int">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Nummer des Werkzeugs, welches abgefragt werden soll</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Error" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Gibt an, ob die Werkzeugnummer gültig ist</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tool_matchingrate_max" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Maximaler Übereinstimmungsgrad für Werkzeug</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tool_matchingrate_min" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE"> Minimaler Übereinstimmungsgrad für Werkzeug</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tool_lower_threshold" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Unterer Grenzwert des Übereinstimmungsgrads für Werkzeug</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Tool_upper_threshold" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Oberer Grenzwert des Übereinstimmungsgrads für Werkzeug</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+    <Member Name="Programm_Change" Datatype="Struct">
+      <Member Name="SwitchProgram" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Fordert einen Programmwechsel an</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="ProgramNumber" Datatype="UInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Angabe der Programmnummer für einen Programmwechsel</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="CurrentProgram" Datatype="UInt">
+        <Comment>
+          <MultiLanguageText Lang="de-DE"> Aktuelle Programmnummer</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Programswitchresponse" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Speichert die Programmwechselantwort</MultiLanguageText>
+        </Comment>
+      </Member>
+      <Member Name="Programswitchingfailed" Datatype="Bool">
+        <Comment>
+          <MultiLanguageText Lang="de-DE">Dieses Bit wird aktiviert, wenn der Trigger fehlgeschlagen ist</MultiLanguageText>
+        </Comment>
+      </Member>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Keyence_IV3</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

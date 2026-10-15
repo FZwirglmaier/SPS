@@ -1,0 +1,96 @@
+﻿FUNCTION_BLOCK "Messtechnik Arbeitsstellungserkennung"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Messwert : Real;
+      Start : Bool;
+      Startverzögerung_Time : Time;
+      Auswerteintervalle : Int;
+      Auswertetoleranz : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      AS_Erreicht : Bool;
+   END_VAR
+
+   VAR 
+      TON_1 {InstructionName := 'TON_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TON_TIME;
+      TON_2 {InstructionName := 'TON_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TON_TIME;
+      R_TRIG {InstructionName := 'R_TRIG'; LibVersion := '1.0'; S7_SetPoint := 'False'} : R_TRIG;
+      Startverzögerung {InstructionName := 'TON_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TON_TIME;
+      x_Wert : Array[0..200] of Real;
+      i : Int;
+      Static_Auswerteintervalle : Int;
+   END_VAR
+
+
+BEGIN
+	(/*
+	    Messtechnik Arbeitsstellungserkennung
+	    =========================================
+	    created: 27.05.2022 Franz Zwirglmaier 
+	
+	
+	 Beschreibung:
+	 Mit dem Start-Eingang wird Messwert in einer Abtastfrequenz von 100Hz aufgezeichnet.
+	 Nach der in der "Startverzögerung_Time" eingestellten Zeit werden die Anzahl der Aufgezeichneten Werte,
+	 die im Parameter "Auswerteintervalle" eingestellt sind, ausgewertet.
+	 Liegen die ausgewerteten Werte innerhalb der vorgegebenen Auswertetoleranz, wird der Ausgang "AS_Erreicht" gesetzt.  
+	
+	
+	*/)
+	
+	
+	
+	// Abtastfrequenz 100Hz = 10ms 
+	#TON_1(IN := NOT #TON_2.Q,
+	           PT := T#5ms);
+	    #TON_2(IN := #TON_1.Q,
+	           PT := T#5ms);
+	#R_TRIG(CLK := #TON_1.Q);
+	    
+	    
+	// Startverzögerung 
+	#Startverzögerung(IN := #Start, PT := #Startverzögerung_Time);
+	
+	IF #Start THEN
+	// Messwert aufzeichnen    
+	    #x_Wert[0] := #Messwert;
+	    
+	    IF #R_TRIG.Q THEN
+	        FOR #i := 0 TO 99 DO
+	            #x_Wert[100-#i] := #x_Wert[99-#i];
+	        END_FOR;
+	    END_IF;
+	    
+	    
+	// Auswerteintervalle Begrenzen
+	    IF #Auswerteintervalle > 100 THEN
+	        #Static_Auswerteintervalle := 100;
+	    ELSE
+	        #Static_Auswerteintervalle := #Auswerteintervalle;
+	    END_IF;
+	    
+	// Auswertung   
+	    FOR #i := 1 TO #Static_Auswerteintervalle DO
+	        IF #Startverzögerung.Q AND (ABS_REAL(#x_Wert[0] - #x_Wert[#i]) < #Auswertetoleranz) THEN
+	            #AS_Erreicht := true;
+	        ELSE
+	            #AS_Erreicht := false;
+	            EXIT;
+	        END_IF;
+	    END_FOR;
+	ELSE
+	    FOR #i := 0 TO 100 DO
+	        #x_Wert[#i] := 0.0;
+	    END_FOR;
+	    #AS_Erreicht := false;
+	    #TON_1.IN := false;
+	    #TON_2.IN := false;
+	END_IF;
+	
+	
+	        
+	            
+END_FUNCTION_BLOCK
+

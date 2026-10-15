@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>POS3_0_Bausteinaufrufe</Name>
+      <Namespace />
+      <Number>27</Number>
+      <ProgrammingLanguage>STL</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="22">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="126">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="POS3_0_Betriebsart" BlockType="FC" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="33">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="POS3_0_Antriebe" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="POS3_0_Antriebe_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="POS3_0_Melden_Visu" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="POS3_0_Melden_Visu_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="POS3_0_Teileauswertung" BlockType="FC" />
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="POS3_0_Messtechnik" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="POS3_0_Messtechnik_DB" />
+        </Instance>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="94">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="22">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="03_Betriebsart_DB" />
+        <Component Name="ACK_Taste" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="27">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="POS3_0_Signal" />
+        <Component Name="Schrittkette" />
+        <Component Name="ACK_EF" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="21">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="POS3_0_SK_Ablauf" BlockType="FB">
+        <Instance Scope="GlobalVariable">
+          <Component Name="POS3_0_SK_Ablauf_DB" />
+        </Instance>
+        <Parameter Name="OFF_SQ" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="OFF_SQ" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="INIT_SQ" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="INIT_SQ" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ACK_EF" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="ACK_EF" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="REG_EF" Section="Input" Type="Bool" />
+        <Parameter Name="ACK_S" Section="Input" Type="Bool" />
+        <Parameter Name="REG_S" Section="Input" Type="Bool" />
+        <Parameter Name="HALT_SQ" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="HALT_SQ" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="HALT_TM" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="HALT_TM" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ZERO_OP" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="ZERO_OP" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="EN_IL" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="EN_IL" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="EN_SV" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="EN_SV" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="EN_ACKREQ" Section="Input" Type="Bool" />
+        <Parameter Name="EN_SSKIP" Section="Input" Type="Bool" />
+        <Parameter Name="DISP_SACT" Section="Input" Type="Bool" />
+        <Parameter Name="DISP_SEF" Section="Input" Type="Bool" />
+        <Parameter Name="DISP_SALL" Section="Input" Type="Bool" />
+        <Parameter Name="S_PREV" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="S_PREV" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="S_NEXT" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="S_NEXT" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="SW_AUTO" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="SW_AUTO" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="SW_TAP" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="SW_TAP" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="SW_TOP" Section="Input" Type="Bool">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Bool</ConstantType>
+              <ConstantValue>0</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="SW_MAN" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="SW_MAN" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="S_SEL" Section="Input" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="S_SEL" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="S_SELOK" Section="Input" Type="Bool" />
+        <Parameter Name="S_ON" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="S_ON" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="S_OFF" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="S_OFF" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="T_PREV" Section="Input" Type="Bool" />
+        <Parameter Name="T_NEXT" Section="Input" Type="Bool" />
+        <Parameter Name="T_PUSH" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="T_PUSH" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="EN_LMODE" Section="Input" Type="Bool" />
+        <Parameter Name="S_NO" Section="Output" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="S_NO" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="S_MORE" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="S_MORE" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="S_ACTIVE" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="S_ACTIVE" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="S_TIME" Section="Output" Type="Time" />
+        <Parameter Name="S_TIMEOK" Section="Output" Type="Time" />
+        <Parameter Name="S_CRITLOC" Section="Output" Type="DWord" />
+        <Parameter Name="S_CRITLOCERR" Section="Output" Type="DWord" />
+        <Parameter Name="S_STATE" Section="Output" Type="Word" />
+        <Parameter Name="T_NO" Section="Output" Type="Int" />
+        <Parameter Name="T_MORE" Section="Output" Type="Bool" />
+        <Parameter Name="T_CRIT" Section="Output" Type="DWord" />
+        <Parameter Name="T_CRITOLD" Section="Output" Type="DWord" />
+        <Parameter Name="T_CRITFLT" Section="Output" Type="DWord" />
+        <Parameter Name="ERROR" Section="Output" Type="Bool" />
+        <Parameter Name="FAULT" Section="Output" Type="Bool" />
+        <Parameter Name="ERR_FLT" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="ERR_FLT" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="SQ_ISOFF" Section="Output" Type="Bool" />
+        <Parameter Name="SQ_HALTED" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="SQ_HALTED" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="TM_HALTED" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="TM_HALTED" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="OP_ZEROED" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="OP_ZEROED" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="IL_ENABLED" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="IL_ENABELD" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="SV_ENABLED" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="SV_ENABELD" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ACKREQ_ENABLED" Section="Output" Type="Bool" />
+        <Parameter Name="SSKIP_ENABLED" Section="Output" Type="Bool" />
+        <Parameter Name="SACT_DISP" Section="Output" Type="Bool" />
+        <Parameter Name="SEF_DISP" Section="Output" Type="Bool" />
+        <Parameter Name="SALL_DISP" Section="Output" Type="Bool" />
+        <Parameter Name="AUTO_ON" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="AUTO_ON" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="TAP_ON" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="TAP_ON" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="TOP_ON" Section="Output" Type="Bool" />
+        <Parameter Name="MAN_ON" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="Schrittkette" />
+              <Component Name="MAN_ON" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="LMODE_ENABLED" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="23">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="127">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="D" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="E" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

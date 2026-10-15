@@ -1,0 +1,76 @@
+﻿FUNCTION_BLOCK "02_Wartungsfreigaben"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      Tag_Result : Word;
+      Status_F_PWD : Bool;
+      Status_FULL_PWD : Bool;
+      Status_R_PWD : Bool;
+      Status_HMI_PWD : Bool;
+      REQ : Bool;
+      F_PWD : Bool;
+      FULL_PWD : Bool;
+      R_PWD : Bool;
+      HMI_PWD : Bool;
+      TP_REQ {InstructionName := 'TP_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TP_TIME;
+      "F-Wartungsfreigabe_freigeben" : Bool;
+      "F-Wartungsfreigabe_sperren" : Bool;
+      "FULL-Wartungsfreigabe_freigeben" : Bool;
+      "FULL-Wartungsfreigabe_sperren" : Bool;
+   END_VAR
+
+
+BEGIN
+	// ENDIS_Passwörter der CPU-Zugriffsstufen sperren und freigeben
+	
+	#R_PWD := True;
+	#HMI_PWD := True;
+	
+	// #REQ=0: Aktuellen Passwort-Status für die einzelnen Zugriffsstufen Ihrer CPU ermitteln
+	// #REQ=1: Passwörter für die einzelnen Zugriffsstufen Ihrer CPU sperren bzw. freigeben
+	#TP_REQ(IN := #"F-Wartungsfreigabe_freigeben" OR #"F-Wartungsfreigabe_sperren" OR
+	        #"FULL-Wartungsfreigabe_freigeben" OR #"FULL-Wartungsfreigabe_sperren" ,
+	        PT := t#2000ms);
+	#REQ := #TP_REQ.Q;
+	
+	// #F_PWD = 0: Passwort der Zugriffsstufe "Vollzugriff inkl. fehlersicher (kein Schutz)" sperren
+	// #F_PWD = 1: Passwort der Zugriffsstufe "Vollzugriff inkl. fehlersicher (kein Schutz)" freigeben
+	
+	IF #"F-Wartungsfreigabe_freigeben" THEN
+	    #F_PWD := True;
+	    #"F-Wartungsfreigabe_freigeben" := false;
+	END_IF;
+	IF #"F-Wartungsfreigabe_sperren" THEN
+	    #F_PWD := False;
+	    #"F-Wartungsfreigabe_sperren" := false;
+	END_IF;
+	
+	
+	
+	// FULL_PWD = 0: Passwort der Zugriffsstufe "Vollzugriff (kein Schutz)" sperren
+	// FULL_PWD = 1: Passwort der Zugriffsstufe "Vollzugriff (kein Schutz)" freigeben
+	
+	IF #"FULL-Wartungsfreigabe_freigeben" THEN
+	    #FULL_PWD := True;
+	    #"FULL-Wartungsfreigabe_freigeben" := false;
+	END_IF;
+	IF #"FULL-Wartungsfreigabe_sperren" THEN
+	    #FULL_PWD := False;
+	    #"FULL-Wartungsfreigabe_sperren" := false;
+	END_IF;
+	
+	
+	
+	#Tag_Result := ENDIS_PW(REQ := #REQ,
+	                        F_PWD := #F_PWD,
+	                        FULL_PWD := #FULL_PWD,
+	                        R_PWD := #R_PWD,
+	                        HMI_PWD := #HMI_PWD,
+	                         F_PWD_ON => #Status_F_PWD,
+	                         FULL_PWD_ON => #Status_FULL_PWD,
+	                         R_PWD_ON => #Status_R_PWD,
+	                         HMI_PWD_ON => #Status_HMI_PWD);
+	 
+	 
+END_FUNCTION_BLOCK
+

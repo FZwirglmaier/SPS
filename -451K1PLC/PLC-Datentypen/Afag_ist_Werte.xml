@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Telegram_identifier" Datatype="Byte" />
+    <Member Name="operating_mode" Datatype="Byte">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">manufacturer-specific</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="PROFIDRIVE_Statusword" Datatype="Word" />
+    <Member Name="actual_position" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">transmitted parameters in default-parameterization</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="actual_speed" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">transmitted parameters in default-parameterization</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="active_current_actual_value" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">transmitted parameters in default-parameterization</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="digital_Inputs" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">transmitted parameters in default-parameterization</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Afag_ist_Werte</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

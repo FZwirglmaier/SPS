@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Anwahl_Tipp" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Status_Anw" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Anwahl_GS" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Status_GS" Datatype="Bool" />
+    <Member Name="Status_Sicher" Datatype="Bool" />
+    <Member Name="Tipp_Plus" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="LEER" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Vorhanden" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="IO" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="NIO" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Reset_Teilestatus" Datatype="Bool" />
+    <Member Name="Manu_Freigabe_SK" Datatype="Bool" />
+    <Member Name="Richten_lauft" Datatype="Bool" />
+    <Member Name="SNr" Datatype="Int">
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="SK_Fertig" Datatype="Bool" />
+    <Member Name="Taktzeit_max_Störung" Datatype="Bool" />
+    <Member Name="Reserve_Einzelschritt" Datatype="Array[0..31] of Bool">
+      <Subelement Path="0">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="1">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="4">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="5">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="6">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="7">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="8">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="9">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="10">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="11">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="12">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="13">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="14">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="15">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="16">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="17">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="18">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="19">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="20">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="21">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="22">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="23">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="24">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="25">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="26">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="27">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="28">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="29">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="30">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+      <Subelement Path="31">
+        <StartValue>FALSE</StartValue>
+      </Subelement>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Stationsvariablen</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

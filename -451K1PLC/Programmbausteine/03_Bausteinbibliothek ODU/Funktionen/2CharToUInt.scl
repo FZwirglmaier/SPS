@@ -1,0 +1,35 @@
+﻿FUNCTION "2CharToUInt" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Zehner : Char;
+      Einer : Char;
+   END_VAR
+
+   VAR_OUTPUT 
+      OUT_Int : Int;
+   END_VAR
+
+   VAR_TEMP 
+      tempZ : Char;
+      Result : UInt;
+   END_VAR
+
+
+BEGIN
+	IF #Zehner = ' ' OR #Zehner = Char#0 THEN
+	    #tempZ := '0';
+	ELSE
+	    #tempZ := #Zehner;
+	END_IF;
+	
+	IF #tempZ < '0' OR #tempZ > '9' OR #Einer < '0' OR #Einer > '9' THEN
+	    #Result := 0;
+	ELSE
+	    #Result := (CHAR_TO_UINT(#tempZ) - CHAR_TO_UINT('0')) * 10 + CHAR_TO_UINT(#Einer) - CHAR_TO_UINT('0');
+	END_IF;
+	#OUT_Int := UINT_TO_INT( #Result);
+	
+	
+END_FUNCTION
+

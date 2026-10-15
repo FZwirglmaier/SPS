@@ -1,0 +1,48 @@
+﻿FUNCTION_BLOCK "Verwaltung_Teiledaten_FB"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	IF "Verwaltung_Teiledaten"."Taster Achse Position GS übernehmen" THEN
+	    "Verwaltung_Teiledaten"."Achse Position GS" := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_FBposition;
+	    "Verwaltung_Teiledaten"."Taster Achse Position GS übernehmen" := false;
+	END_IF;
+	
+	
+	IF "Verwaltung_Teiledaten"."Taster Achse Position AS übernehmen" THEN
+	    "Verwaltung_Teiledaten"."Achse Position AS" := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_FBposition;
+	    "Verwaltung_Teiledaten"."Taster Achse Position AS übernehmen" := false;
+	END_IF;
+	
+	
+	IF "Verwaltung_Teiledaten"."Taster Drehantrieb Position GS übernehmen" THEN
+	    "Verwaltung_Teiledaten"."Drehantrieb Position GS" := 0.0;
+	    "POS3_0_Signal"."-1002T1 Oriental_E_P-Preset" := true;
+	    "Verwaltung_Teiledaten"."Taster Drehantrieb Position GS übernehmen" := false;
+	END_IF;
+	
+	
+	
+	IF "Verwaltung_Teiledaten"."Taster Drehantrieb Position AS1 übernehmen" THEN
+	    "Verwaltung_Teiledaten"."Drehantrieb Position AS1" := "POS3_0_Signal"."-1002T1 Oriental_Absolute_Position";
+	    "Verwaltung_Teiledaten"."Taster Drehantrieb Position AS1 übernehmen" := false;
+	END_IF;
+	
+	
+	IF "Verwaltung_Teiledaten"."Taster Drehantrieb Position AS2 übernehmen" THEN
+	    "Verwaltung_Teiledaten"."Drehantrieb Position AS2" := "POS3_0_Signal"."-1002T1 Oriental_Absolute_Position";
+	    "Verwaltung_Teiledaten"."Taster Drehantrieb Position AS2 übernehmen" := false;
+	END_IF;
+	
+	
+	IF "Verwaltung_Teiledaten"."Taster Wegmessung Ausgleichszylinder Position AS1 übernehmen" THEN
+	    "Verwaltung_Teiledaten"."Wegmessung_Ausgleichszylinder maximale Abweichung GS" := "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_Rohwert";
+	    "Verwaltung_Teiledaten"."Taster Wegmessung Ausgleichszylinder Position AS1 übernehmen" := false;
+	END_IF;
+	
+	
+	"POS3_0_Signal"."Wartezeit Soll gesteckt" := DINT_TO_TIME(REAL_TO_DINT("Verwaltung_Teiledaten"."Wartezeit gesteckt" * 1000.0));
+	
+	
+END_FUNCTION_BLOCK
+

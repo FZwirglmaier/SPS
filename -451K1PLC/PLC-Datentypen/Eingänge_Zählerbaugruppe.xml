@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="COUNT VALUE" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Aktueller Zählwert</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="CAPTURED VALUE" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Letzter erfasster Capture-Wert</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="MEASURED VALUE" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Aktueller Messwert</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="POWER_ERROR" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 0: Fehlerhafte Versorgungsspannung L+</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ENC_ERROR" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 1: Fehlerhaftes Gebersignal</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="LD_ERROR" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 2: Fehler beim Laden über Steuerschnittstelle</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Reserve" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 3 bis 7: Reserve; auf 0 gesetzt</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Reserve_1" Datatype="Bool" />
+    <Member Name="Reserve_2" Datatype="Bool" />
+    <Member Name="Reserve_3" Datatype="Bool" />
+    <Member Name="Reserve_4" Datatype="Bool" />
+    <Member Name="Reserve_t" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 0: Reserve; auf 0 gesetzt</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="RES_EVENT_ACK" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 1: Rücksetzen der Statusbits aktiv</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="LD_STS_SLOT_0" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 2: Ladeaufforderung für Slot 0 erkannt und durchgeführt (toggelnd)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="LD_STS_SLOT_1" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 3: Ladeaufforderung für Slot 1 erkannt und durchgeführt (toggelnd)</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_READY" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 4: Technologiemodul angelaufen und parametriert</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_SW_GATE" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 5: Zustand SW-Tor</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Reserve_z" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 6 bis 7: Reserve; auf 0 gesetzt</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Reserve_z_1" Datatype="Bool" />
+    <Member Name="STS_DIR" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 0: Richtung der letzten Zählwertänderung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_CNT" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 1: Zählimpuls innerhalb der letzten 0,5 s erfasst</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_GATE" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 2: Zustand internes Tor</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_DQ0" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 3: Zustand DQ0</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_DQ1" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 4: Zustand DQ1</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_DI0" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 5: Zustand DI0</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_DI1" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 6: Zustand DI1</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_DI2" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 7: Zustand DI2</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EVENT_ZERO" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 0: Nulldurchgang aufgetreten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EVENT_UFLW" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 1: Unterlauf aufgetreten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EVENT_OFLW" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 2: Überlauf aufgetreten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EVENT_CMP0" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 3: Vergleichsereignis für DQ0 aufgetreten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EVENT_CMP1" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 4: Vergleichsereignis für DQ1 aufgetreten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EVENT_SYNC" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 5: Synchronisation aufgetreten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="EVENT_CAP" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 6: Capture-Ereignis aufgetreten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="STS_M_INTERVAL" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit 7: Zählimpuls im vorangegangenen Messintervall erfasst</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Eingänge_Zählerbaugruppe</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

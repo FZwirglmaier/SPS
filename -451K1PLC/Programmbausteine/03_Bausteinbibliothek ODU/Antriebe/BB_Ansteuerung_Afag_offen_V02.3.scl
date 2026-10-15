@@ -1,0 +1,229 @@
+﻿FUNCTION_BLOCK "BB_Ansteuerung_Afag_offen_V02.3"
+TITLE = 'FB Positionierbetrieb'
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : Essmann
+FAMILY : metronix
+NAME : position
+VERSION : 1.1
+//Der Baustein kann nicht rückübersetzt und unter STEP7 bearbeitet werden.  Der Baustein kann nur als Quelle im Ordner "Quellen" bearbeitet werden.    IO-Variablen  
+   VAR_INPUT 
+      drive_enable : Bool := FALSE;
+      start_homing : Bool := FALSE;
+      start_pos : Bool := FALSE;
+      abs_rel : Bool := FALSE;
+      change_immediatly : Bool := FALSE;
+      intermediate_stop : Bool := FALSE;
+      hold : Bool := FALSE;
+      jog_pos : Bool := FALSE;
+      jog_neg : Bool := FALSE;
+      fault_reset : Bool := FALSE;
+      E_Afag_ist_Werte : "Afag_ist_Werte";
+   END_VAR
+
+   VAR_OUTPUT 
+      drive_enable_ok : Bool := FALSE;
+      home_valid : Bool := FALSE;
+      pos_ok : Bool := FALSE;
+      velo_zero : Bool := FALSE;
+      fault : Bool := FALSE;   // statische Variablen
+   END_VAR
+
+   VAR_IN_OUT 
+      A_Afag_soll_Werte : "Afag_soll_Werte";
+   END_VAR
+
+   VAR 
+      DB_nr_position_word : Word;
+      DB_nr_actual_value_word : Word;
+      switching_on_inhibited : Bool := FALSE;
+      ready_for_switching_on : Bool := FALSE;
+      switched_on : Bool := FALSE;
+      operation : Bool := FALSE;
+      ars_statusword : Word;
+      ars_controlword : Word;
+      start_pos_old : Bool := FALSE;   // ***********************************************************************************************************************Anweisungsteil
+   END_VAR
+
+
+BEGIN
+	
+	
+	//Lesen Statusword
+	//Einlesen des Istzustands der Statemachine
+	    
+	 //    #DB_nr_actual_value_word:= INT_TO_WORD(#DB_nr_actual_value);
+	 //    #ars_statusword := PEEK_WORD (area := 16#84,
+	 //                                  dbNumber :=#DB_nr_actual_value_word,
+	 //                                  byteOffset := 2);
+	 
+	 #A_Afag_soll_Werte.Telegrammkennung:= 16#e0;
+	 
+	 
+	 #ars_statusword := #E_Afag_ist_Werte.PROFIDRIVE_Statusword;
+	
+	   IF ((#ars_statusword & 16#0047) = 16#0040)
+	        THEN #switching_on_inhibited := TRUE;
+	        ELSE #switching_on_inhibited := FALSE;
+	    END_IF;
+	
+	    IF ((#ars_statusword & 16#0047) = 16#0001)
+	        THEN #ready_for_switching_on:= TRUE;
+	        ELSE #ready_for_switching_on:= FALSE;
+	    END_IF;
+	     
+	    IF ((#ars_statusword & 16#0047) = 16#0003)
+	        THEN #switched_on:= TRUE;
+	        ELSE #switched_on:= FALSE;
+	    END_IF;
+	
+	    IF ((#ars_statusword & 16#0047) = 16#0007)
+	        THEN #operation:= TRUE;
+	        ELSE #operation:= FALSE;
+	    END_IF;    
+	
+	
+	//************************************************************************************************
+	
+	//Lesen Controlword
+	//
+	 //  #DB_nr_position_word:=  INT_TO_WORD(#DB_nr_position);
+	 //  #ars_controlword := PEEK_WORD (area := 16#84,
+	 //                                  dbNumber :=#DB_nr_position_word,
+	 //                                  byteOffset := 2);
+	    
+	    #ars_controlword := #A_Afag_soll_Werte.PROFIDRIVE_Controlword;
+	    
+	//Steuern der Statemachine, S1 -> S2 -> S3 -> S4
+	
+	  IF (#switching_on_inhibited                          //wenn state "switching_on_inhibited"
+	        AND #drive_enable)                             //und  Reglerfreigabe
+	        THEN #ars_controlword := 16#0406;              //dann state "ready_for_switching_on" anfordern,
+	    ELSIF (#switching_on_inhibited                     //
+	        AND (NOT(#drive_enable)))                      //wenn Reglerfreigabe aus,
+	        THEN #ars_controlword := 16#0400;              //dann state "switching_on_inhibited" anfordern.
+	  END_IF;                                             
+	
+	  IF (#ready_for_switching_on                          //wenn state "ready_for_switching_on"
+	        AND #drive_enable)                             //und Reglerfeigabe
+	        THEN #ars_controlword := 16#0407;              //dann state "switched_on" anfordern,
+	    ELSIF (#ready_for_switching_on                     //
+	        AND (NOT(#drive_enable)))                      //wenn Reglerfeigabe aus,
+	        THEN #ars_controlword := 16#0400;              //dann state "switching_on_inhibited" anfordern.
+	  END_IF;
+	
+	  IF (#switched_on                                     //wenn state "switched_on"
+	        AND #drive_enable)                             //und Reglerfeigabe
+	        THEN #ars_controlword := 16#040f;              //dann state "operation" anfordern,
+	    ELSIF (#switched_on                                //
+	        AND (NOT(#drive_enable)))                      //wenn Reglerfeigabe aus,
+	        THEN #ars_controlword := 16#0400;              //dann state "switching_on_inhibited" anfordern.
+	  END_IF;
+	
+	  IF (#operation                                       //wenn state "operation"
+	        AND (NOT(#drive_enable)))                      //und keine Reglerfeigabe
+	        THEN #ars_controlword := 16#040e;              //dann state "switching_on_inhibited" anfordern.
+	  END_IF;
+	
+	//************************************************************************************************
+	
+	//Kommandos über digitale Eingänge
+	// Bit 10 (control by plc) im Controlword muss immer gesetzt sein
+	
+	    IF #start_homing
+	        THEN #ars_controlword := (#ars_controlword OR 16#0C00);    //Setzen Bit 11 im STW1
+	        ELSE #ars_controlword := (#ars_controlword  & 16#f7ff);
+	    END_IF;
+	
+	    IF #start_pos_old <> #start_pos
+	        THEN IF #start_pos 
+	                 THEN #ars_controlword := (#ars_controlword OR 16#0440);    //Setzen Bit 6 im STW1
+	                 ELSE #ars_controlword := (#ars_controlword  & 16#ffbf);
+	             END_IF;
+	    END_IF;
+	
+	    #start_pos_old := #start_pos;
+	
+	    IF #abs_rel
+	        THEN #ars_controlword := (#ars_controlword OR 16#1400);   //Setzen Bit 12 im STW1
+	        ELSE #ars_controlword := (#ars_controlword  & 16#efff);
+	    END_IF;
+	    
+	    IF #change_immediatly
+	        THEN #ars_controlword := (#ars_controlword OR 16#2400);   //Setzen Bit 13 im STW1
+	        ELSE #ars_controlword := (#ars_controlword  & 16#dfff);
+	    END_IF;
+	   
+	    IF #intermediate_stop
+	        THEN #ars_controlword := (#ars_controlword  & 16#ffdf);   //Rücksetzen Bit 5 im STW1
+	        ELSE #ars_controlword := (#ars_controlword OR 16#0420);
+	    END_IF;
+	
+	    IF #hold
+	        THEN #ars_controlword := (#ars_controlword  & 16#ffef);    //Rücksetzen Bit 4 im STW1
+	             #ars_controlword := (#ars_controlword  & 16#feff);    //Rücksetzen jog_pos
+	             #ars_controlword := (#ars_controlword  & 16#fdff);    //Rücksetzen jog_neg
+	        ELSE #ars_controlword := (#ars_controlword OR 16#0410);
+	    END_IF;
+	
+	    IF (#jog_pos AND NOT #hold)
+	        THEN #ars_controlword := (#ars_controlword OR 16#0500);    //Setzen Bit 8 im STW1
+	        ELSE #ars_controlword := (#ars_controlword  & 16#feff);
+	    END_IF;
+	
+	    IF (#jog_neg AND NOT #hold)
+	        THEN #ars_controlword := (#ars_controlword OR 16#0600);    //Setzen Bit 9 im STW1
+	        ELSE #ars_controlword := (#ars_controlword  & 16#fdff);
+	    END_IF;
+	
+	    IF #fault_reset
+	        THEN #ars_controlword := (#ars_controlword OR 16#0480);    //Setzen Bit 7 im STW1
+	        ELSE #ars_controlword := (#ars_controlword  & 16#ff7f);
+	    END_IF;
+	
+	
+	//************************************************************************************************
+	
+	//Setzen digitaler Ausgänge
+	
+	    IF #operation
+	        THEN #drive_enable_ok := TRUE;
+	        ELSE #drive_enable_ok := FALSE;
+	    END_IF;
+	
+	    IF ((#ars_statusword & 16#0800) = 16#0800)    //Bit 11 vom ZSW1
+	        THEN #home_valid:= TRUE;
+	        ELSE #home_valid:= FALSE;
+	    END_IF;    
+	
+	    IF ((#ars_statusword & 16#0400) = 16#0400)    //Bit 10 vom ZSW1
+	        THEN #pos_ok:= TRUE;
+	        ELSE #pos_ok:= FALSE;
+	    END_IF;    
+	
+	    IF ((#ars_statusword & 16#2000) = 16#2000)    //Bit 13 vom ZSW1
+	        THEN #velo_zero:= TRUE;
+	        ELSE #velo_zero:= FALSE;
+	    END_IF;    
+	
+	    IF ((#ars_statusword & 16#0008) = 16#0008)    //Bit 3 vom ZSW1
+	        THEN #fault:= TRUE;
+	        ELSE #fault:= FALSE;
+	    END_IF;    
+	
+	//************************************************************************************************
+	
+	//Schreiben Controlword
+	
+	 //  POKE (area := 16#84,
+	 //        dbNumber := #DB_nr_position_word,
+	 //        byteOffset := 2,
+	 //        value := #ars_controlword );
+	   
+	    #A_Afag_soll_Werte.PROFIDRIVE_Controlword := #ars_controlword;
+	    
+	    
+	    
+	    
+	    
+END_FUNCTION_BLOCK
+

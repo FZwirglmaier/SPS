@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="E_Lebenszeichen" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">E_Lebenszeichen</MultiLanguageText>
+      </Comment>
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="E_Rückmeldung_Startfreigabe_Zwischenbefundung_erhalten" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">E_Rückmeldung_Startfreigabe_Zwischenbefundung_erhalten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_Rückmeldung_Zwischenbefundung_fertig" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">E_Rückmeldung_Zwischenbefundung_fertig</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_Messgerät ist bereit und verbunden" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">E_Messgeräte_bereit</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_Messgerät ist Störungsfrei" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">E_Messgerät ist Störungsfrei</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="E_4_4" Datatype="Bool" />
+    <Member Name="E_4_5" Datatype="Bool" />
+    <Member Name="E_4_6" Datatype="Bool" />
+    <Member Name="E_4_7" Datatype="Bool" />
+    <Member Name="A_Lebenszeichen" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A_Lebenszeichen</MultiLanguageText>
+      </Comment>
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="A_Startfreigabe_Zwischenbefundung" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A_Startfreigabe_Zwischenbefundung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="A_Rückmeldung_Signal_Zwischenbfundung_erhalten" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A_Rückmeldung_Signal_Zwischenbfundung_erhalten</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="A_10_2" Datatype="Bool" />
+    <Member Name="A_10_3" Datatype="Bool" />
+    <Member Name="A_10_4" Datatype="Bool" />
+    <Member Name="A_10_5" Datatype="Bool" />
+    <Member Name="A_10_6" Datatype="Bool" />
+    <Member Name="A_10_7" Datatype="Bool" />
+    <Member Name="A_Betriebsart" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Betriebsart Anlage 0=Aus , 1=Manuell, 2=Automatik, 3=Verwaltung, 4=Richten</MultiLanguageText>
+      </Comment>
+      <StartValue>0</StartValue>
+    </Member>
+    <Member Name="A_Steckzyklen_Soll" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A_Steckzyklen_Soll</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="A_Steckzyklen_Ist" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A_Steckzyklen_Ist</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="A_Achse_Istposition" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A Achse Istposition in mm </MultiLanguageText>
+      </Comment>
+      <StartValue>-0.96</StartValue>
+    </Member>
+    <Member Name="A_Achse_Drehmoment" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A Achse Drehmoment in % </MultiLanguageText>
+      </Comment>
+      <StartValue>-0.96</StartValue>
+    </Member>
+    <Member Name="A_Drehachse_Istposition" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A Drehachse Istposition in ° </MultiLanguageText>
+      </Comment>
+      <StartValue>-2.31</StartValue>
+    </Member>
+    <Member Name="A_Drehachse_Drehmoment" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A Drehachse Drehmoment in ° </MultiLanguageText>
+      </Comment>
+      <StartValue>-2.31</StartValue>
+    </Member>
+    <Member Name="A_Wegmessung_Ausgleichszylinder_Istwert" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A Wegmessung Ausgleichszylinder Istwert in mm</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="A_Kraftsensor_Istwert" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A Kraftsensor Istwert in N</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="A_Regelventil_Ausgleichszylinder_Istwert" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A Regelventil Ausgleichszylinder Istwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="A_Regelventil_Überlastzylinder_Istwert" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">A Regelventil Überlastzylinder Istwert in mbar</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB020_Com LabView</Name>
+      <Namespace />
+      <Number>20</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

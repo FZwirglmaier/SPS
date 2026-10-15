@@ -1,0 +1,88 @@
+﻿FUNCTION_BLOCK "POS3_0_Messtechnik"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	
+	
+	 
+	REGION -1012B1 Kraftsensor
+	    
+	    "POS3_0_Signal"."-1012B1 Kraftsensor" := DWORD_TO_REAL("IN-POS3_0-1012B1 Kraftsensor");
+	END_REGION
+	
+	
+	REGION -940RN1 Regelventil Ausgleichszylinder
+	    // Vorgabe der maximalen Abweichung; evtl. aus Programmvorgabe !!!
+	    "POS3_0_Signal"."-POS3_0_Regelventil_Ausgleichszylinder_Maximale_Abweichung" := 100;
+	    
+	    "IO-OUT-POS3_0_Regelventil_Ausgleichszylinder_Sollwert"   := "POS3_0_Signal"."-POS3_0_Regelventil_Ausgleichszylinder_Sollwert";
+	    "POS3_0_Signal"."-POS3_0_Regelventil_Ausgleichszylinder_Istwert" := "IO-IN-POS3_0_Regelventil_Ausgleichszylinder_Istwert";
+	    
+	    REGION Maximale Regelabweichung       
+	        "POS3_0_Signal"."-POS3_0_Regelventil_Ausgleichszylinder_Abweichung_OK" :=
+	        ABS(
+	            "POS3_0_Signal"."-POS3_0_Regelventil_Ausgleichszylinder_Istwert" - "POS3_0_Signal"."-POS3_0_Regelventil_Ausgleichszylinder_Sollwert")
+	        <= "POS3_0_Signal"."-POS3_0_Regelventil_Ausgleichszylinder_Maximale_Abweichung";
+	    END_REGION
+	    
+	END_REGION
+	
+	
+	
+	REGION -940RN2 Regelventil Überlastzylinder
+	    // Vorgabe der maximalen Abweichung; evtl. aus Programmvorgabe !!!
+	    "POS3_0_Signal"."-POS3_0_Regelventil_Überlastzylinder_Maximale_Abweichung" := 100;
+	    
+	    "IO-OUT-POS3_0_Regelventil_Überlastzylinder_Sollwert" := "POS3_0_Signal"."-POS3_0_Regelventil_Überlastzylinder_Sollwert";
+	    "POS3_0_Signal"."-POS3_0_Regelventil_Überlastzylinder_Istwert" := "IO-IN-POS3_0_Regelventil_Überlastzylinder_Istwert";
+	    
+	    REGION Maximale Regelabweichung
+	        "POS3_0_Signal"."-POS3_0_Regelventil_Überlastzylinder_Abweichung_OK" :=
+	        ABS(
+	            "POS3_0_Signal"."-POS3_0_Regelventil_Überlastzylinder_Istwert" - "POS3_0_Signal"."-POS3_0_Regelventil_Überlastzylinder_Sollwert")
+	        <= "POS3_0_Signal"."-POS3_0_Regelventil_Überlastzylinder_Maximale_Abweichung";
+	    END_REGION
+	    
+	END_REGION
+	
+	
+	REGION Wegmessung Ausgleichszylinder
+	    // Rohwert 
+	    "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_Rohwert" := "IO-IN-POS3_0_Wegmessung_Ausgleichszylinder_Istwert";
+	    
+	    // Taster Nullen
+	    IF "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Taster_Nullen" THEN
+	        "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Nullpunkt_Rohwert" := "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_Rohwert";
+	        "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Taster_Nullen" := false;
+	    END_IF;
+	    
+	    // Normierung
+	    "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_in_mm" :=
+	    (INT_TO_REAL("POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_Rohwert" - "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Nullpunkt_Rohwert"))
+	    * 38.5 / 12624.0;
+	    
+	    
+	    
+	    REGION Maximale Abweichung GS
+	        "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Position_GS_Abweichung_OK" :=
+	        ABS(
+	            "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_in_mm" - "Verwaltung_Teiledaten"."Wegmessung_Ausgleichszylinder Position GS")
+	        <= "Verwaltung_Teiledaten"."Wegmessung_Ausgleichszylinder maximale Abweichung GS";
+	    END_REGION
+	    
+	    
+	    
+	    REGION Maximale Abweichung AS1
+	        "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Position_AS1_Abweichung_OK" :=
+	        ABS(
+	            "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_in_mm" - "Verwaltung_Teiledaten"."Wegmessung_Ausgleichszylinder Position AS1")
+	        <= "Verwaltung_Teiledaten"."Wegmessung_Ausgleichszylinder maximale Abweichung AS1";
+	    END_REGION
+	    
+	    
+	END_REGION
+	
+	
+END_FUNCTION_BLOCK
+

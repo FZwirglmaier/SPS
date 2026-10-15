@@ -1,0 +1,5205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="-1001T1_OM_PRM_Access_Instance" Datatype="&quot;OM_PRM_Access&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="-1001T1_Oriental" Datatype="&quot;Oriental_AZD-KPN_Profinet&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="-1002T2_OM_PRM_Access_Instance" Datatype="&quot;OM_PRM_Access&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="-1002T2_Oriental_Drehachse" Datatype="&quot;Oriental_AZD-KPN_Profinet&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Pos_Alt" Datatype="Real">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Delta" Datatype="Real" />
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>POS3_0_Antriebe</Name>
+      <Namespace />
+      <Number>34</Number>
+      <ProgrammingLanguage>FBD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank UId="27" />
+  <Token Text=":=" UId="28" />
+  <Blank UId="29" />
+  <Access Scope="LiteralConstant" UId="30">
+    <Constant UId="31">
+      <ConstantValue UId="33">50.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="34" />
+  <NewLine UId="35" />
+  <Access Scope="GlobalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="POS3_0_Signal" UId="38">
+        <BooleanAttribute Name="HasQuotes" UId="39">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="40" />
+      <Component Name="-1001T1 Oriental_Speed" UId="41" />
+    </Symbol>
+  </Access>
+  <Blank UId="42" />
+  <Token Text=":=" UId="43" />
+  <Blank UId="44" />
+  <Access Scope="LiteralConstant" UId="45">
+    <Constant UId="46">
+      <ConstantValue UId="48">100.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="49" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Vorgaben Geschwindigkeit und Beschleunigung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Achse stopp</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Token Text="IF" UId="24" />
+  <Blank UId="25" />
+  <Access Scope="GlobalVariable" UId="26">
+    <Symbol UId="27">
+      <Component Name="03_Betriebsart_DB" UId="28" />
+      <Token Text="." UId="29" />
+      <Component Name="Schutztüren OK" UId="30" />
+    </Symbol>
+  </Access>
+  <Blank UId="31" />
+  <Token Text="AND" UId="32" />
+  <NewLine UId="33" />
+  <Blank Num="4" UId="34" />
+  <Access Scope="GlobalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="DE_POS3_0_Endlage_Überlastzylinder" UId="37">
+        <BooleanAttribute Name="HasQuotes" UId="38">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="39" />
+  <Token Text="THEN" UId="40" />
+  <NewLine UId="41" />
+  <Blank Num="4" UId="42" />
+  <Access Scope="GlobalVariable" UId="43">
+    <Symbol UId="44">
+      <Component Name="POS3_0_Signal" UId="45">
+        <BooleanAttribute Name="HasQuotes" UId="46">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="47" />
+      <Component Name="-1001T1 Oriental_Steuerung" UId="48" />
+      <Token Text="." UId="49" />
+      <Component Name="E_STOP" UId="50" />
+    </Symbol>
+  </Access>
+  <Blank UId="51" />
+  <Token Text=":=" UId="52" />
+  <Blank UId="53" />
+  <Access Scope="LiteralConstant" UId="54">
+    <Constant UId="55">
+      <ConstantValue UId="57">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="58" />
+  <NewLine UId="59" />
+  <Token Text="ELSE" UId="60" />
+  <NewLine UId="61" />
+  <Blank Num="4" UId="62" />
+  <Access Scope="GlobalVariable" UId="63">
+    <Symbol UId="64">
+      <Component Name="POS3_0_Signal" UId="65">
+        <BooleanAttribute Name="HasQuotes" UId="66">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="67" />
+      <Component Name="-1001T1 Oriental_Steuerung" UId="68" />
+      <Token Text="." UId="69" />
+      <Component Name="E_STOP" UId="70" />
+    </Symbol>
+  </Access>
+  <Blank UId="71" />
+  <Token Text=":=" UId="72" />
+  <Blank UId="73" />
+  <Access Scope="LiteralConstant" UId="74">
+    <Constant UId="75">
+      <ConstantValue UId="77">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="78" />
+  <NewLine UId="79" />
+  <Token Text="END_IF" UId="80" />
+  <Token Text=";" UId="81" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Achse stopp </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Soll_Position" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="LiteralConstant" UId="61">
+    <Constant UId="62">
+      <ConstantValue UId="64">0.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="65" />
+  <NewLine UId="66" />
+  <Access Scope="GlobalVariable" UId="67">
+    <Symbol UId="68">
+      <Component Name="POS3_0_Signal" UId="69">
+        <BooleanAttribute Name="HasQuotes" UId="70">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="71" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="72" />
+      <Token Text="." UId="73" />
+      <Component Name="Geschwindigkeit" UId="74">
+        <Token Text="[" UId="75" />
+        <Access Scope="LiteralConstant" UId="76">
+          <Constant UId="77">
+            <ConstantValue UId="79">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="80" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="81" />
+  <Token Text=":=" UId="82" />
+  <Blank UId="83" />
+  <Access Scope="LiteralConstant" UId="84">
+    <Constant UId="85">
+      <ConstantValue UId="87">10.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="88" />
+  <NewLine UId="89" />
+  <Access Scope="GlobalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="POS3_0_Signal" UId="92">
+        <BooleanAttribute Name="HasQuotes" UId="93">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="94" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="95" />
+      <Token Text="." UId="96" />
+      <Component Name="Start_Rampe" UId="97">
+        <Token Text="[" UId="98" />
+        <Access Scope="LiteralConstant" UId="99">
+          <Constant UId="100">
+            <ConstantValue UId="102">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="103" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="104" />
+  <Token Text=":=" UId="105" />
+  <Blank UId="106" />
+  <Access Scope="GlobalVariable" UId="107">
+    <Symbol UId="108">
+      <Component Name="POS3_0_Signal" UId="109">
+        <BooleanAttribute Name="HasQuotes" UId="110">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="111" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="112" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="113" />
+  <Blank UId="114" />
+  <LineComment UId="115">
+    <Text UId="116"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="117" />
+  <Access Scope="GlobalVariable" UId="118">
+    <Symbol UId="119">
+      <Component Name="POS3_0_Signal" UId="120">
+        <BooleanAttribute Name="HasQuotes" UId="121">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="122" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="123" />
+      <Token Text="." UId="124" />
+      <Component Name="Stopp_Rampe" UId="125">
+        <Token Text="[" UId="126" />
+        <Access Scope="LiteralConstant" UId="127">
+          <Constant UId="128">
+            <ConstantValue UId="130">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="131" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="132" />
+  <Token Text=":=" UId="133" />
+  <Blank UId="134" />
+  <Access Scope="GlobalVariable" UId="135">
+    <Symbol UId="136">
+      <Component Name="POS3_0_Signal" UId="137">
+        <BooleanAttribute Name="HasQuotes" UId="138">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="139" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="140" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="141" />
+  <Blank UId="142" />
+  <LineComment UId="143">
+    <Text UId="144"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="145" />
+  <Access Scope="GlobalVariable" UId="146">
+    <Symbol UId="147">
+      <Component Name="POS3_0_Signal" UId="148">
+        <BooleanAttribute Name="HasQuotes" UId="149">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="150" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="151" />
+      <Token Text="." UId="152" />
+      <Component Name="Arbeitsstrom" UId="153">
+        <Token Text="[" UId="154" />
+        <Access Scope="LiteralConstant" UId="155">
+          <Constant UId="156">
+            <ConstantValue UId="158">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="159" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="160" />
+  <Token Text=":=" UId="161" />
+  <Blank UId="162" />
+  <Access Scope="LiteralConstant" UId="163">
+    <Constant UId="164">
+      <ConstantValue UId="166">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="167" />
+  <Blank Num="2" UId="168" />
+  <LineComment UId="169">
+    <Text UId="170"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="171" />
+  <Access Scope="GlobalVariable" UId="172">
+    <Symbol UId="173">
+      <Component Name="POS3_0_Signal" UId="174">
+        <BooleanAttribute Name="HasQuotes" UId="175">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="176" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="177" />
+      <Token Text="." UId="178" />
+      <Component Name="Positioniertoleranz" UId="179">
+        <Token Text="[" UId="180" />
+        <Access Scope="LiteralConstant" UId="181">
+          <Constant UId="182">
+            <ConstantValue UId="184">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="185" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="186" />
+  <Token Text=":=" UId="187" />
+  <Blank UId="188" />
+  <Access Scope="LiteralConstant" UId="189">
+    <Constant UId="190">
+      <ConstantValue UId="192">0.02</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="193" />
+  <NewLine UId="194" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Position 0 Achse  [Grundstellung]</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Start_Rampe" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="GlobalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="POS3_0_Signal" UId="63">
+        <BooleanAttribute Name="HasQuotes" UId="64">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="66" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="67" />
+  <Blank UId="68" />
+  <LineComment UId="69">
+    <Text UId="70"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="71" />
+  <Access Scope="GlobalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="POS3_0_Signal" UId="74">
+        <BooleanAttribute Name="HasQuotes" UId="75">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="76" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="77" />
+      <Token Text="." UId="78" />
+      <Component Name="Stopp_Rampe" UId="79">
+        <Token Text="[" UId="80" />
+        <Access Scope="LiteralConstant" UId="81">
+          <Constant UId="82">
+            <ConstantValue UId="84">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="85" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="86" />
+  <Token Text=":=" UId="87" />
+  <Blank UId="88" />
+  <Access Scope="GlobalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="POS3_0_Signal" UId="91">
+        <BooleanAttribute Name="HasQuotes" UId="92">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="93" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="94" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="95" />
+  <Blank UId="96" />
+  <LineComment UId="97">
+    <Text UId="98"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="99" />
+  <Access Scope="GlobalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="POS3_0_Signal" UId="102">
+        <BooleanAttribute Name="HasQuotes" UId="103">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="104" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="105" />
+      <Token Text="." UId="106" />
+      <Component Name="Arbeitsstrom" UId="107">
+        <Token Text="[" UId="108" />
+        <Access Scope="LiteralConstant" UId="109">
+          <Constant UId="110">
+            <ConstantValue UId="112">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="113" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="114" />
+  <Token Text=":=" UId="115" />
+  <Blank UId="116" />
+  <Access Scope="LiteralConstant" UId="117">
+    <Constant UId="118">
+      <ConstantValue UId="120">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="121" />
+  <Blank Num="3" UId="122" />
+  <LineComment UId="123">
+    <Text UId="124"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="125" />
+  <Access Scope="GlobalVariable" UId="126">
+    <Symbol UId="127">
+      <Component Name="POS3_0_Signal" UId="128">
+        <BooleanAttribute Name="HasQuotes" UId="129">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="130" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="131" />
+      <Token Text="." UId="132" />
+      <Component Name="Positioniertoleranz" UId="133">
+        <Token Text="[" UId="134" />
+        <Access Scope="LiteralConstant" UId="135">
+          <Constant UId="136">
+            <ConstantValue UId="138">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="139" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="140" />
+  <Token Text=":=" UId="141" />
+  <Blank UId="142" />
+  <Access Scope="LiteralConstant" UId="143">
+    <Constant UId="144">
+      <ConstantValue UId="146">0.02</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="147" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Position 1 Achse [GS aus Verwaltung]</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Start_Rampe" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="GlobalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="POS3_0_Signal" UId="63">
+        <BooleanAttribute Name="HasQuotes" UId="64">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="66" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="67" />
+  <Blank UId="68" />
+  <LineComment UId="69">
+    <Text UId="70"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="71" />
+  <Access Scope="GlobalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="POS3_0_Signal" UId="74">
+        <BooleanAttribute Name="HasQuotes" UId="75">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="76" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="77" />
+      <Token Text="." UId="78" />
+      <Component Name="Stopp_Rampe" UId="79">
+        <Token Text="[" UId="80" />
+        <Access Scope="LiteralConstant" UId="81">
+          <Constant UId="82">
+            <ConstantValue UId="84">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="85" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="86" />
+  <Token Text=":=" UId="87" />
+  <Blank UId="88" />
+  <Access Scope="GlobalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="POS3_0_Signal" UId="91">
+        <BooleanAttribute Name="HasQuotes" UId="92">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="93" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="94" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="95" />
+  <Blank UId="96" />
+  <LineComment UId="97">
+    <Text UId="98"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="99" />
+  <Access Scope="GlobalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="POS3_0_Signal" UId="102">
+        <BooleanAttribute Name="HasQuotes" UId="103">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="104" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="105" />
+      <Token Text="." UId="106" />
+      <Component Name="Arbeitsstrom" UId="107">
+        <Token Text="[" UId="108" />
+        <Access Scope="LiteralConstant" UId="109">
+          <Constant UId="110">
+            <ConstantValue UId="112">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="113" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="114" />
+  <Token Text=":=" UId="115" />
+  <Blank UId="116" />
+  <Access Scope="LiteralConstant" UId="117">
+    <Constant UId="118">
+      <ConstantValue UId="120">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="121" />
+  <Blank Num="2" UId="122" />
+  <LineComment UId="123">
+    <Text UId="124"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="125" />
+  <Access Scope="GlobalVariable" UId="126">
+    <Symbol UId="127">
+      <Component Name="POS3_0_Signal" UId="128">
+        <BooleanAttribute Name="HasQuotes" UId="129">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="130" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="131" />
+      <Token Text="." UId="132" />
+      <Component Name="Positioniertoleranz" UId="133">
+        <Token Text="[" UId="134" />
+        <Access Scope="LiteralConstant" UId="135">
+          <Constant UId="136">
+            <ConstantValue UId="138">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="139" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="140" />
+  <Token Text=":=" UId="141" />
+  <Blank UId="142" />
+  <Access Scope="LiteralConstant" UId="143">
+    <Constant UId="144">
+      <ConstantValue UId="146">0.02</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="147" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Position 2 Achse [AS aus Verwaltung]</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Start_Rampe" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="GlobalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="POS3_0_Signal" UId="63">
+        <BooleanAttribute Name="HasQuotes" UId="64">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="66" />
+    </Symbol>
+  </Access>
+  <Blank UId="67" />
+  <Token Text=";" UId="68" />
+  <Blank UId="69" />
+  <LineComment UId="70">
+    <Text UId="71"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="72" />
+  <Access Scope="GlobalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="POS3_0_Signal" UId="75">
+        <BooleanAttribute Name="HasQuotes" UId="76">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="77" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="78" />
+      <Token Text="." UId="79" />
+      <Component Name="Stopp_Rampe" UId="80">
+        <Token Text="[" UId="81" />
+        <Access Scope="LiteralConstant" UId="82">
+          <Constant UId="83">
+            <ConstantValue UId="85">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="86" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="87" />
+  <Token Text=":=" UId="88" />
+  <Blank UId="89" />
+  <Access Scope="GlobalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="POS3_0_Signal" UId="92">
+        <BooleanAttribute Name="HasQuotes" UId="93">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="94" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="95" />
+    </Symbol>
+  </Access>
+  <Blank UId="96" />
+  <Token Text=";" UId="97" />
+  <Blank UId="98" />
+  <LineComment UId="99">
+    <Text UId="100"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="101" />
+  <Access Scope="GlobalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="POS3_0_Signal" UId="104">
+        <BooleanAttribute Name="HasQuotes" UId="105">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="106" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="107" />
+      <Token Text="." UId="108" />
+      <Component Name="Arbeitsstrom" UId="109">
+        <Token Text="[" UId="110" />
+        <Access Scope="LiteralConstant" UId="111">
+          <Constant UId="112">
+            <ConstantValue UId="114">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="115" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="116" />
+  <Token Text=":=" UId="117" />
+  <Blank UId="118" />
+  <Access Scope="LiteralConstant" UId="119">
+    <Constant UId="120">
+      <ConstantValue UId="122">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="123" />
+  <Blank UId="124" />
+  <LineComment UId="125">
+    <Text UId="126"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="127" />
+  <Access Scope="GlobalVariable" UId="128">
+    <Symbol UId="129">
+      <Component Name="POS3_0_Signal" UId="130">
+        <BooleanAttribute Name="HasQuotes" UId="131">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="132" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="133" />
+      <Token Text="." UId="134" />
+      <Component Name="Positioniertoleranz" UId="135">
+        <Token Text="[" UId="136" />
+        <Access Scope="LiteralConstant" UId="137">
+          <Constant UId="138">
+            <ConstantValue UId="140">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="141" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="142" />
+  <Token Text=":=" UId="143" />
+  <Blank UId="144" />
+  <Access Scope="LiteralConstant" UId="145">
+    <Constant UId="146">
+      <ConstantValue UId="148">0.02</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="149" />
+  <NewLine UId="150" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Position 3 Achse </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="21" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Start_Rampe" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="GlobalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="POS3_0_Signal" UId="63">
+        <BooleanAttribute Name="HasQuotes" UId="64">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="66" />
+    </Symbol>
+  </Access>
+  <Blank UId="67" />
+  <Token Text=";" UId="68" />
+  <Blank UId="69" />
+  <LineComment UId="70">
+    <Text UId="71"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="72" />
+  <Access Scope="GlobalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="POS3_0_Signal" UId="75">
+        <BooleanAttribute Name="HasQuotes" UId="76">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="77" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="78" />
+      <Token Text="." UId="79" />
+      <Component Name="Stopp_Rampe" UId="80">
+        <Token Text="[" UId="81" />
+        <Access Scope="LiteralConstant" UId="82">
+          <Constant UId="83">
+            <ConstantValue UId="85">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="86" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="87" />
+  <Token Text=":=" UId="88" />
+  <Blank UId="89" />
+  <Access Scope="GlobalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="POS3_0_Signal" UId="92">
+        <BooleanAttribute Name="HasQuotes" UId="93">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="94" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="95" />
+    </Symbol>
+  </Access>
+  <Blank UId="96" />
+  <Token Text=";" UId="97" />
+  <Blank UId="98" />
+  <LineComment UId="99">
+    <Text UId="100"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="101" />
+  <Access Scope="GlobalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="POS3_0_Signal" UId="104">
+        <BooleanAttribute Name="HasQuotes" UId="105">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="106" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="107" />
+      <Token Text="." UId="108" />
+      <Component Name="Arbeitsstrom" UId="109">
+        <Token Text="[" UId="110" />
+        <Access Scope="LiteralConstant" UId="111">
+          <Constant UId="112">
+            <ConstantValue UId="114">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="115" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="116" />
+  <Token Text=":=" UId="117" />
+  <Blank UId="118" />
+  <Access Scope="LiteralConstant" UId="119">
+    <Constant UId="120">
+      <ConstantValue UId="122">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="123" />
+  <Blank Num="2" UId="124" />
+  <LineComment UId="125">
+    <Text UId="126"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="127" />
+  <Access Scope="GlobalVariable" UId="128">
+    <Symbol UId="129">
+      <Component Name="POS3_0_Signal" UId="130">
+        <BooleanAttribute Name="HasQuotes" UId="131">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="132" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="133" />
+      <Token Text="." UId="134" />
+      <Component Name="Positioniertoleranz" UId="135">
+        <Token Text="[" UId="136" />
+        <Access Scope="LiteralConstant" UId="137">
+          <Constant UId="138">
+            <ConstantValue UId="140">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="141" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="142" />
+  <Token Text=":=" UId="143" />
+  <Blank UId="144" />
+  <Access Scope="LiteralConstant" UId="145">
+    <Constant UId="146">
+      <ConstantValue UId="148">0.03</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="149" />
+  <NewLine Num="2" UId="150" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="22" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Position 4 Achse</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="26" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <NewLine UId="21" />
+  <Access Scope="GlobalVariable" UId="22">
+    <Symbol UId="23">
+      <Component Name="POS3_0_Signal" UId="24">
+        <BooleanAttribute Name="HasQuotes" UId="25">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="26" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="27" />
+      <Token Text="." UId="28" />
+      <Component Name="Operation_type" UId="29">
+        <Token Text="[" UId="30" />
+        <Access Scope="LiteralConstant" UId="31">
+          <Constant UId="32">
+            <ConstantValue UId="34">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="35" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="36" />
+  <Token Text=":=" UId="37" />
+  <Blank UId="38" />
+  <Access Scope="LiteralConstant" UId="39">
+    <Constant UId="40">
+      <ConstantValue UId="42">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="43" />
+  <NewLine Num="2" UId="44" />
+  <Access Scope="GlobalVariable" UId="45">
+    <Symbol UId="46">
+      <Component Name="POS3_0_Signal" UId="47">
+        <BooleanAttribute Name="HasQuotes" UId="48">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="49" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="50" />
+      <Token Text="." UId="51" />
+      <Component Name="Start_Rampe" UId="52">
+        <Token Text="[" UId="53" />
+        <Access Scope="LiteralConstant" UId="54">
+          <Constant UId="55">
+            <ConstantValue UId="57">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="58" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="59" />
+  <Token Text=":=" UId="60" />
+  <Blank UId="61" />
+  <Access Scope="GlobalVariable" UId="62">
+    <Symbol UId="63">
+      <Component Name="POS3_0_Signal" UId="64">
+        <BooleanAttribute Name="HasQuotes" UId="65">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="66" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="67" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="68" />
+  <Blank UId="69" />
+  <LineComment UId="70">
+    <Text UId="71"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="72" />
+  <Access Scope="GlobalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="POS3_0_Signal" UId="75">
+        <BooleanAttribute Name="HasQuotes" UId="76">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="77" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="78" />
+      <Token Text="." UId="79" />
+      <Component Name="Stopp_Rampe" UId="80">
+        <Token Text="[" UId="81" />
+        <Access Scope="LiteralConstant" UId="82">
+          <Constant UId="83">
+            <ConstantValue UId="85">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="86" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="87" />
+  <Token Text=":=" UId="88" />
+  <Blank UId="89" />
+  <Access Scope="GlobalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="POS3_0_Signal" UId="92">
+        <BooleanAttribute Name="HasQuotes" UId="93">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="94" />
+      <Component Name="-1001T1 Oriental_Beschleunigung" UId="95" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="96" />
+  <Blank UId="97" />
+  <LineComment UId="98">
+    <Text UId="99"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="100" />
+  <Access Scope="GlobalVariable" UId="101">
+    <Symbol UId="102">
+      <Component Name="POS3_0_Signal" UId="103">
+        <BooleanAttribute Name="HasQuotes" UId="104">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="105" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="106" />
+      <Token Text="." UId="107" />
+      <Component Name="Arbeitsstrom" UId="108">
+        <Token Text="[" UId="109" />
+        <Access Scope="LiteralConstant" UId="110">
+          <Constant UId="111">
+            <ConstantValue UId="113">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="114" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="115" />
+  <Token Text=":=" UId="116" />
+  <Blank UId="117" />
+  <Access Scope="LiteralConstant" UId="118">
+    <Constant UId="119">
+      <ConstantValue UId="121">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="122" />
+  <Blank Num="2" UId="123" />
+  <LineComment UId="124">
+    <Text UId="125"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="126" />
+  <Access Scope="GlobalVariable" UId="127">
+    <Symbol UId="128">
+      <Component Name="POS3_0_Signal" UId="129">
+        <BooleanAttribute Name="HasQuotes" UId="130">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="131" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="132" />
+      <Token Text="." UId="133" />
+      <Component Name="Positioniertoleranz" UId="134">
+        <Token Text="[" UId="135" />
+        <Access Scope="LiteralConstant" UId="136">
+          <Constant UId="137">
+            <ConstantValue UId="139">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="140" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="141" />
+  <Token Text=":=" UId="142" />
+  <Blank UId="143" />
+  <Access Scope="LiteralConstant" UId="144">
+    <Constant UId="145">
+      <ConstantValue UId="147">0.03</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="148" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="27" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="28" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="29" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Position 5 Achse </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="A_Softw_ES_max_mm" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank UId="29" />
+  <Token Text=":=" UId="30" />
+  <Blank UId="31" />
+  <Access Scope="LiteralConstant" UId="32">
+    <Constant UId="33">
+      <ConstantValue UId="35">210.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="36" />
+  <NewLine UId="37" />
+  <Access Scope="GlobalVariable" UId="38">
+    <Symbol UId="39">
+      <Component Name="POS3_0_Signal" UId="40">
+        <BooleanAttribute Name="HasQuotes" UId="41">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="42" />
+      <Component Name="-1001T1 Oriental_Positionen" UId="43" />
+      <Token Text="." UId="44" />
+      <Component Name="A_Softw_ES_min_mm" UId="45" />
+    </Symbol>
+  </Access>
+  <Blank UId="46" />
+  <Token Text=":=" UId="47" />
+  <Blank UId="48" />
+  <Access Scope="LiteralConstant" UId="49">
+    <Constant UId="50">
+      <ConstantValue UId="52">-0.5</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="53" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Grenzwerte</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="30" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="03_Betriebsart_DB" />
+        <Component Name="NOT-HALT OK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="03_Betriebsart_DB" />
+        <Component Name="Schutztüren OK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="POS3_0_Signal" />
+        <Component Name="-1001T1 Oriental_Steuerung" />
+        <Component Name="A_DCMD-RDY" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="FL_Clock_1Hz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="POS3_0_Signal" />
+        <Component Name="-1001T1 Oriental_Steuerung" />
+        <Component Name="E_ETO-CLR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="31" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="32" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="33" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse E_ETO-CLR  Quittieren nach "Sicherer Halt"</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo BlockType="FB">
+        <Instance Scope="LocalVariable">
+          <Component Name="-1001T1_OM_PRM_Access_Instance" />
+        </Instance>
+        <Parameter Name="Inputdata_RW_Drv2PLC" Section="Input" Type="&quot;AZ_PrmRW_Drv2PLC&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1001T1_Pos3_0__Prm_Status" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ReadParameterID" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Parameter_Data" />
+              <Component Name="RD_ParameterID" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WriteParameterID" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Parameter_Data" />
+              <Component Name="WR_ParameterID" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WriteData" Section="Input" Type="DWord">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Parameter_Data" />
+              <Component Name="WR_ParameterData" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WR-REQ" Section="Input" Type="Bool" />
+        <Parameter Name="Outputdata_RW_PLC2Drv" Section="Output" Type="&quot;AZ_PrmRW_PLC2Drv&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1001T1_Pos3_0__Prm_Set" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ReadParameterID_R" Section="Output" Type="Word" />
+        <Parameter Name="WriteParameterID_R" Section="Output" Type="Word" />
+        <Parameter Name="ReadData" Section="Output" Type="DWord">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Parameter_Data" />
+              <Component Name="RD_ParameterData" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WR-SET-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-IF-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-NV-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-EXE-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="RD-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-END" Section="Output" Type="Bool" />
+        <Parameter Name="SYS-BSY" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="50">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="38" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="39" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Oriental Achse Parameter schreiben und lesen (wird nicht benötigt)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3A" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> E_DDO_Type 16#0001 = absolut positionieren 16#0002 = relativ positionieren</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="GlobalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="POS3_0_Signal" UId="26">
+        <BooleanAttribute Name="HasQuotes" UId="27">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="28" />
+      <Component Name="-1001T1 Oriental_Steuerung" UId="29" />
+      <Token Text="." UId="30" />
+      <Component Name="E_DDO_Type" UId="31" />
+    </Symbol>
+  </Access>
+  <Blank UId="32" />
+  <Token Text=":=" UId="33" />
+  <Blank UId="34" />
+  <Access Scope="LiteralConstant" UId="35">
+    <Constant UId="36">
+      <ConstantValue UId="38">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="39" />
+  <NewLine UId="40" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3B" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="3D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Oriental DDO_Type für E_Trig_Manuell</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3F" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo BlockType="FB">
+        <Instance Scope="LocalVariable">
+          <Component Name="-1001T1_Oriental" />
+        </Instance>
+        <Parameter Name="Inputdata_FixedIO_Drv2PLC" Section="Input" Type="&quot;AZ_FixedIO_Drv2PLC&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1001T1_Pos3_0__Fixed_Out" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="MonitorData" Section="Input" Type="&quot;AZ_FixedMonitor&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1001T1_Pos3_0__St_Monitor" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Type" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Type" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Pos" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Pos" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Vel" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Vel" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Acc" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Acc" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Dec" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Dec" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Crnt" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Crnt" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Trans" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Trans" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Schrittweite_Pos" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_Schrittweite_pos" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Schrittweite_Neg" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_Schrittweite_neg" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Schrittweite" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_Schrittweite" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_R_Softw_ES_min_steps" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Positionen" />
+              <Component Name="A_Softw_ES_min_mm" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_R_Softw_ES_max_steps" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Positionen" />
+              <Component Name="A_Softw_ES_max_mm" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Drehachse" Section="Input" Type="Bool">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Bool</ConstantType>
+              <ConstantValue>FALSE</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Getriebefaktor" Section="Input" Type="Real">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Real</ConstantType>
+              <ConstantValue>100.0</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Maximalgeschwindigkeit_Hz" Section="Input" Type="Real">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Real</ConstantType>
+              <ConstantValue>25000.0</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Maximal_Start_Stopp_Rampe_kHz/s" Section="Input" Type="Real">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Real</ConstantType>
+              <ConstantValue>250000.0</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_SIMULATION_AKTIV" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="03_Betriebsart_DB" />
+              <Component Name="Simulation_aktiv" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_RemoteIO" Section="Input" Type="&quot;AZ_RemoteIO_Drv2Plc&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1001T1_Pos3_0__Remote_Out" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Outputdata_DDO" Section="Output" Type="&quot;AZ_DDO_PLC2Drv&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1001T1_Pos3_0__DDO" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Outputdata_FixedIO_PLC2Drv" Section="Output" Type="&quot;AZ_FixedIO_PLC2Drv&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1001T1_Pos3_0__Fixed_In" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_TRIG_R" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_TRIG_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_TRIG-MODE_R" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_TRIG-MODE_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_SET-ERR" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_SET-ERR" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_EXE-ERR" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_EXE-ERR" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_DCMD-FULL" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_DCMD-FULL" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_STOP_R" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_STOP_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_ETO-MON" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_ETO-MON" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_TLC" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_TLC" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_SEQ-BSY" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_SEQ-BSY" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_MOVE" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_MOVE" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_IN-POS" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_IN-POS" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_START_R" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_START_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_HOME-END" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_HOME-END" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_READY" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_READY" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_DCMD-RDY" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_DCMD-RDY" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_ALM-A" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_ALM-A" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_PresentAlarm" Section="Output" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_PresentAlarm" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_FBposition" Section="Output" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_FBposition" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_FBspeed" Section="Output" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_FBspeed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_CmdPosition" Section="Output" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_CmdPosition" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_TorqueMonitor" Section="Output" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_TorqueMonitor" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_CST_OpeCurrent" Section="Output" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_CST_OpeCurrent" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_Information" Section="Output" Type="DWord">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_Information" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_StatusWord" Section="Output" Type="DWord">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="A_StatusWord" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_RemoteIO" Section="Output" Type="&quot;AZ_RemoteIO_Plc2Drv&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1001T1_Pos3_0__Remote_IN" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_A_UDT_Positionen" Section="InOut" Type="&quot;Oriental_Variablen_Positionen&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Positionen" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Not_Aus_OK" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="03_Betriebsart_DB" />
+              <Component Name="NOT-HALT OK" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Tueren_OK" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="03_Betriebsart_DB" />
+              <Component Name="Schutztüren OK" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_TRIG-MODE" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_TRIG-MODE" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_ETO-CLR" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_ETO-CLR" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_FW-JOG" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_FW-JOG" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_RV-JOG" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_RV-JOG" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_START" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_START" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_ZHOME" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_ZHOME" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_STOP" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_STOP" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_FREE" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_FREE" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_ALM-RST" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="03_Betriebsart_DB" />
+              <Component Name="ACK_Taste" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_TRIG_MANUELL" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_Steuerung" />
+              <Component Name="E_Trig_Manuell" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Home" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1001T1 Oriental_E_P-Preset" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="40" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="42" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="43" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 Positionierachse Oriental Achse Ansteuerung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="44" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="POS3_0_Signal" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="27" />
+      <Component Name="-1001T1 Oriental_E_P-Preset" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank UId="29" />
+  <Token Text="THEN" UId="30" />
+  <NewLine UId="31" />
+  <Blank Num="4" UId="32" />
+  <Access Scope="GlobalVariable" UId="33">
+    <Symbol UId="34">
+      <Component Name="POS3_0_Signal" UId="35">
+        <BooleanAttribute Name="HasQuotes" UId="36">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="37" />
+      <Component Name="-1001T1 Oriental_E_P-Preset" UId="38" />
+    </Symbol>
+  </Access>
+  <Blank UId="39" />
+  <Token Text=":=" UId="40" />
+  <Blank UId="41" />
+  <Access Scope="LiteralConstant" UId="42">
+    <Constant UId="43">
+      <ConstantValue UId="45">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="46" />
+  <NewLine UId="47" />
+  <Token Text="END_IF" UId="48" />
+  <Token Text=";" UId="49" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="45" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="47" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1001T1 Pos 3.0 "P-Preset" Reset</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="49" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="4B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="4C" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="4D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="4E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank UId="27" />
+  <Token Text=":=" UId="28" />
+  <Blank UId="29" />
+  <Access Scope="LiteralConstant" UId="30">
+    <Constant UId="31">
+      <ConstantValue UId="33">40.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="34" />
+  <NewLine UId="35" />
+  <Access Scope="GlobalVariable" UId="36">
+    <Symbol UId="37">
+      <Component Name="POS3_0_Signal" UId="38">
+        <BooleanAttribute Name="HasQuotes" UId="39">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="40" />
+      <Component Name="-1002T1_Oriental_Speed" UId="41" />
+    </Symbol>
+  </Access>
+  <Blank UId="42" />
+  <Token Text=":=" UId="43" />
+  <Blank UId="44" />
+  <Access Scope="LiteralConstant" UId="45">
+    <Constant UId="46">
+      <ConstantValue UId="48">100.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="49" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="50" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="51" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="52" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Vorgaben Geschwindigkeit und Beschleunigung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="53" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Achse stopp</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Token Text="IF" UId="24" />
+  <Blank UId="25" />
+  <Access Scope="GlobalVariable" UId="26">
+    <Symbol UId="27">
+      <Component Name="03_Betriebsart_DB" UId="28" />
+      <Token Text="." UId="29" />
+      <Component Name="Schutztüren OK" UId="30" />
+    </Symbol>
+  </Access>
+  <Blank UId="31" />
+  <Token Text="THEN" UId="32" />
+  <NewLine UId="33" />
+  <Blank Num="4" UId="34" />
+  <Access Scope="GlobalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="POS3_0_Signal" UId="37">
+        <BooleanAttribute Name="HasQuotes" UId="38">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="39" />
+      <Component Name="-1002T1 Oriental_Steuerung" UId="40" />
+      <Token Text="." UId="41" />
+      <Component Name="E_STOP" UId="42" />
+    </Symbol>
+  </Access>
+  <Blank UId="43" />
+  <Token Text=":=" UId="44" />
+  <Blank UId="45" />
+  <Access Scope="LiteralConstant" UId="46">
+    <Constant UId="47">
+      <ConstantValue UId="49">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="50" />
+  <NewLine UId="51" />
+  <Token Text="ELSE" UId="52" />
+  <NewLine UId="53" />
+  <Blank Num="4" UId="54" />
+  <Access Scope="GlobalVariable" UId="55">
+    <Symbol UId="56">
+      <Component Name="POS3_0_Signal" UId="57">
+        <BooleanAttribute Name="HasQuotes" UId="58">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="59" />
+      <Component Name="-1002T1 Oriental_Steuerung" UId="60" />
+      <Token Text="." UId="61" />
+      <Component Name="E_STOP" UId="62" />
+    </Symbol>
+  </Access>
+  <Blank UId="63" />
+  <Token Text=":=" UId="64" />
+  <Blank UId="65" />
+  <Access Scope="LiteralConstant" UId="66">
+    <Constant UId="67">
+      <ConstantValue UId="69">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="70" />
+  <NewLine UId="71" />
+  <Token Text="END_IF" UId="72" />
+  <Token Text=";" UId="73" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="54" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="55" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="56" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="57" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Achse stopp </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="58" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Soll_Position" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="LiteralConstant" UId="61">
+    <Constant UId="62">
+      <ConstantValue UId="64">0.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="65" />
+  <NewLine UId="66" />
+  <Access Scope="GlobalVariable" UId="67">
+    <Symbol UId="68">
+      <Component Name="POS3_0_Signal" UId="69">
+        <BooleanAttribute Name="HasQuotes" UId="70">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="71" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="72" />
+      <Token Text="." UId="73" />
+      <Component Name="Geschwindigkeit" UId="74">
+        <Token Text="[" UId="75" />
+        <Access Scope="LiteralConstant" UId="76">
+          <Constant UId="77">
+            <ConstantValue UId="79">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="80" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="81" />
+  <Token Text=":=" UId="82" />
+  <Blank UId="83" />
+  <Access Scope="LiteralConstant" UId="84">
+    <Constant UId="85">
+      <ConstantValue UId="87">10.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="88" />
+  <NewLine UId="89" />
+  <Access Scope="GlobalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="POS3_0_Signal" UId="92">
+        <BooleanAttribute Name="HasQuotes" UId="93">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="94" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="95" />
+      <Token Text="." UId="96" />
+      <Component Name="Start_Rampe" UId="97">
+        <Token Text="[" UId="98" />
+        <Access Scope="LiteralConstant" UId="99">
+          <Constant UId="100">
+            <ConstantValue UId="102">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="103" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="104" />
+  <Token Text=":=" UId="105" />
+  <Blank UId="106" />
+  <Access Scope="GlobalVariable" UId="107">
+    <Symbol UId="108">
+      <Component Name="POS3_0_Signal" UId="109">
+        <BooleanAttribute Name="HasQuotes" UId="110">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="111" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="112" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="113" />
+  <Blank UId="114" />
+  <LineComment UId="115">
+    <Text UId="116"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="117" />
+  <Access Scope="GlobalVariable" UId="118">
+    <Symbol UId="119">
+      <Component Name="POS3_0_Signal" UId="120">
+        <BooleanAttribute Name="HasQuotes" UId="121">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="122" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="123" />
+      <Token Text="." UId="124" />
+      <Component Name="Stopp_Rampe" UId="125">
+        <Token Text="[" UId="126" />
+        <Access Scope="LiteralConstant" UId="127">
+          <Constant UId="128">
+            <ConstantValue UId="130">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="131" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="132" />
+  <Token Text=":=" UId="133" />
+  <Blank UId="134" />
+  <Access Scope="GlobalVariable" UId="135">
+    <Symbol UId="136">
+      <Component Name="POS3_0_Signal" UId="137">
+        <BooleanAttribute Name="HasQuotes" UId="138">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="139" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="140" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="141" />
+  <Blank UId="142" />
+  <LineComment UId="143">
+    <Text UId="144"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="145" />
+  <Access Scope="GlobalVariable" UId="146">
+    <Symbol UId="147">
+      <Component Name="POS3_0_Signal" UId="148">
+        <BooleanAttribute Name="HasQuotes" UId="149">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="150" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="151" />
+      <Token Text="." UId="152" />
+      <Component Name="Arbeitsstrom" UId="153">
+        <Token Text="[" UId="154" />
+        <Access Scope="LiteralConstant" UId="155">
+          <Constant UId="156">
+            <ConstantValue UId="158">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="159" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="160" />
+  <Token Text=":=" UId="161" />
+  <Blank UId="162" />
+  <Access Scope="LiteralConstant" UId="163">
+    <Constant UId="164">
+      <ConstantValue UId="166">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="167" />
+  <Blank Num="2" UId="168" />
+  <LineComment UId="169">
+    <Text UId="170"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="171" />
+  <Access Scope="GlobalVariable" UId="172">
+    <Symbol UId="173">
+      <Component Name="POS3_0_Signal" UId="174">
+        <BooleanAttribute Name="HasQuotes" UId="175">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="176" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="177" />
+      <Token Text="." UId="178" />
+      <Component Name="Positioniertoleranz" UId="179">
+        <Token Text="[" UId="180" />
+        <Access Scope="LiteralConstant" UId="181">
+          <Constant UId="182">
+            <ConstantValue UId="184">0</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="185" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="186" />
+  <Token Text=":=" UId="187" />
+  <Blank UId="188" />
+  <Access Scope="LiteralConstant" UId="189">
+    <Constant UId="190">
+      <ConstantValue UId="192">0.001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="193" />
+  <NewLine UId="194" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="59" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="5B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="5C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Position 0 [Grundstellung]</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="5D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Soll_Position" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="LiteralConstant" UId="61">
+    <Constant UId="62">
+      <ConstantValue UId="64">0.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="65" />
+  <NewLine UId="66" />
+  <Access Scope="GlobalVariable" UId="67">
+    <Symbol UId="68">
+      <Component Name="POS3_0_Signal" UId="69">
+        <BooleanAttribute Name="HasQuotes" UId="70">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="71" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="72" />
+      <Token Text="." UId="73" />
+      <Component Name="Geschwindigkeit" UId="74">
+        <Token Text="[" UId="75" />
+        <Access Scope="LiteralConstant" UId="76">
+          <Constant UId="77">
+            <ConstantValue UId="79">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="80" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="81" />
+  <Token Text=":=" UId="82" />
+  <Blank UId="83" />
+  <Access Scope="LiteralConstant" UId="84">
+    <Constant UId="85">
+      <ConstantValue UId="87">10.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="88" />
+  <NewLine UId="89" />
+  <Access Scope="GlobalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="POS3_0_Signal" UId="92">
+        <BooleanAttribute Name="HasQuotes" UId="93">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="94" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="95" />
+      <Token Text="." UId="96" />
+      <Component Name="Start_Rampe" UId="97">
+        <Token Text="[" UId="98" />
+        <Access Scope="LiteralConstant" UId="99">
+          <Constant UId="100">
+            <ConstantValue UId="102">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="103" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="104" />
+  <Token Text=":=" UId="105" />
+  <Blank UId="106" />
+  <Access Scope="GlobalVariable" UId="107">
+    <Symbol UId="108">
+      <Component Name="POS3_0_Signal" UId="109">
+        <BooleanAttribute Name="HasQuotes" UId="110">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="111" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="112" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="113" />
+  <Blank UId="114" />
+  <LineComment UId="115">
+    <Text UId="116"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="117" />
+  <Access Scope="GlobalVariable" UId="118">
+    <Symbol UId="119">
+      <Component Name="POS3_0_Signal" UId="120">
+        <BooleanAttribute Name="HasQuotes" UId="121">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="122" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="123" />
+      <Token Text="." UId="124" />
+      <Component Name="Stopp_Rampe" UId="125">
+        <Token Text="[" UId="126" />
+        <Access Scope="LiteralConstant" UId="127">
+          <Constant UId="128">
+            <ConstantValue UId="130">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="131" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="132" />
+  <Token Text=":=" UId="133" />
+  <Blank UId="134" />
+  <Access Scope="GlobalVariable" UId="135">
+    <Symbol UId="136">
+      <Component Name="POS3_0_Signal" UId="137">
+        <BooleanAttribute Name="HasQuotes" UId="138">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="139" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="140" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="141" />
+  <Blank UId="142" />
+  <LineComment UId="143">
+    <Text UId="144"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="145" />
+  <Access Scope="GlobalVariable" UId="146">
+    <Symbol UId="147">
+      <Component Name="POS3_0_Signal" UId="148">
+        <BooleanAttribute Name="HasQuotes" UId="149">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="150" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="151" />
+      <Token Text="." UId="152" />
+      <Component Name="Arbeitsstrom" UId="153">
+        <Token Text="[" UId="154" />
+        <Access Scope="LiteralConstant" UId="155">
+          <Constant UId="156">
+            <ConstantValue UId="158">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="159" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="160" />
+  <Token Text=":=" UId="161" />
+  <Blank UId="162" />
+  <Access Scope="LiteralConstant" UId="163">
+    <Constant UId="164">
+      <ConstantValue UId="166">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="167" />
+  <Blank Num="3" UId="168" />
+  <LineComment UId="169">
+    <Text UId="170"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="171" />
+  <Access Scope="GlobalVariable" UId="172">
+    <Symbol UId="173">
+      <Component Name="POS3_0_Signal" UId="174">
+        <BooleanAttribute Name="HasQuotes" UId="175">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="176" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="177" />
+      <Token Text="." UId="178" />
+      <Component Name="Positioniertoleranz" UId="179">
+        <Token Text="[" UId="180" />
+        <Access Scope="LiteralConstant" UId="181">
+          <Constant UId="182">
+            <ConstantValue UId="184">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="185" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="186" />
+  <Token Text=":=" UId="187" />
+  <Blank UId="188" />
+  <Access Scope="LiteralConstant" UId="189">
+    <Constant UId="190">
+      <ConstantValue UId="192">0.001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="193" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="60" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="61" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Position 1 [0.0 ° Absolut positionieren]</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="62" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0002</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Start_Rampe" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="GlobalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="POS3_0_Signal" UId="63">
+        <BooleanAttribute Name="HasQuotes" UId="64">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="66" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="67" />
+  <Blank UId="68" />
+  <LineComment UId="69">
+    <Text UId="70"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="71" />
+  <Access Scope="GlobalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="POS3_0_Signal" UId="74">
+        <BooleanAttribute Name="HasQuotes" UId="75">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="76" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="77" />
+      <Token Text="." UId="78" />
+      <Component Name="Stopp_Rampe" UId="79">
+        <Token Text="[" UId="80" />
+        <Access Scope="LiteralConstant" UId="81">
+          <Constant UId="82">
+            <ConstantValue UId="84">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="85" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="86" />
+  <Token Text=":=" UId="87" />
+  <Blank UId="88" />
+  <Access Scope="GlobalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="POS3_0_Signal" UId="91">
+        <BooleanAttribute Name="HasQuotes" UId="92">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="93" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="94" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="95" />
+  <Blank UId="96" />
+  <LineComment UId="97">
+    <Text UId="98"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="99" />
+  <Access Scope="GlobalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="POS3_0_Signal" UId="102">
+        <BooleanAttribute Name="HasQuotes" UId="103">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="104" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="105" />
+      <Token Text="." UId="106" />
+      <Component Name="Arbeitsstrom" UId="107">
+        <Token Text="[" UId="108" />
+        <Access Scope="LiteralConstant" UId="109">
+          <Constant UId="110">
+            <ConstantValue UId="112">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="113" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="114" />
+  <Token Text=":=" UId="115" />
+  <Blank UId="116" />
+  <Access Scope="Call" UId="117">
+    <Instruction Name="REAL_TO_DINT" UId="118">
+      <Blank UId="119" />
+      <Token Text="(" UId="120" />
+      <NamelessParameter UId="121">
+        <Access Scope="GlobalVariable" UId="122">
+          <Symbol UId="123">
+            <Component Name="Verwaltung_Teiledaten" UId="124">
+              <BooleanAttribute Name="HasQuotes" UId="125">true</BooleanAttribute>
+            </Component>
+            <Token Text="." UId="126" />
+            <Component Name="Drehantrieb Motorstrombegrenzung" UId="127" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="129" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="130" />
+  <Blank Num="2" UId="131" />
+  <LineComment UId="132">
+    <Text UId="133"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="134" />
+  <Access Scope="GlobalVariable" UId="135">
+    <Symbol UId="136">
+      <Component Name="POS3_0_Signal" UId="137">
+        <BooleanAttribute Name="HasQuotes" UId="138">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="139" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="140" />
+      <Token Text="." UId="141" />
+      <Component Name="Positioniertoleranz" UId="142">
+        <Token Text="[" UId="143" />
+        <Access Scope="LiteralConstant" UId="144">
+          <Constant UId="145">
+            <ConstantValue UId="147">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="148" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="149" />
+  <Token Text=":=" UId="150" />
+  <Blank UId="151" />
+  <Access Scope="LiteralConstant" UId="152">
+    <Constant UId="153">
+      <ConstantValue UId="155">0.001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="156" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="63" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="64" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="65" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="66" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Position 2 [AS1 aus Verwaltung] </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="67" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0002</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Start_Rampe" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="GlobalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="POS3_0_Signal" UId="63">
+        <BooleanAttribute Name="HasQuotes" UId="64">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="66" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="67" />
+  <Blank UId="68" />
+  <LineComment UId="69">
+    <Text UId="70"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="71" />
+  <Access Scope="GlobalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="POS3_0_Signal" UId="74">
+        <BooleanAttribute Name="HasQuotes" UId="75">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="76" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="77" />
+      <Token Text="." UId="78" />
+      <Component Name="Stopp_Rampe" UId="79">
+        <Token Text="[" UId="80" />
+        <Access Scope="LiteralConstant" UId="81">
+          <Constant UId="82">
+            <ConstantValue UId="84">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="85" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="86" />
+  <Token Text=":=" UId="87" />
+  <Blank UId="88" />
+  <Access Scope="GlobalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="POS3_0_Signal" UId="91">
+        <BooleanAttribute Name="HasQuotes" UId="92">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="93" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="94" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="95" />
+  <Blank UId="96" />
+  <LineComment UId="97">
+    <Text UId="98"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="99" />
+  <Access Scope="GlobalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="POS3_0_Signal" UId="102">
+        <BooleanAttribute Name="HasQuotes" UId="103">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="104" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="105" />
+      <Token Text="." UId="106" />
+      <Component Name="Arbeitsstrom" UId="107">
+        <Token Text="[" UId="108" />
+        <Access Scope="LiteralConstant" UId="109">
+          <Constant UId="110">
+            <ConstantValue UId="112">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="113" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="114" />
+  <Token Text=":=" UId="115" />
+  <Blank UId="116" />
+  <Access Scope="Call" UId="117">
+    <Instruction Name="REAL_TO_DINT" UId="118">
+      <Blank UId="119" />
+      <Token Text="(" UId="120" />
+      <NamelessParameter UId="121">
+        <Access Scope="GlobalVariable" UId="122">
+          <Symbol UId="123">
+            <Component Name="Verwaltung_Teiledaten" UId="124">
+              <BooleanAttribute Name="HasQuotes" UId="125">true</BooleanAttribute>
+            </Component>
+            <Token Text="." UId="126" />
+            <Component Name="Drehantrieb Motorstrombegrenzung" UId="127" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="129" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="130" />
+  <Blank Num="2" UId="131" />
+  <LineComment UId="132">
+    <Text UId="133"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="134" />
+  <Access Scope="GlobalVariable" UId="135">
+    <Symbol UId="136">
+      <Component Name="POS3_0_Signal" UId="137">
+        <BooleanAttribute Name="HasQuotes" UId="138">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="139" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="140" />
+      <Token Text="." UId="141" />
+      <Component Name="Positioniertoleranz" UId="142">
+        <Token Text="[" UId="143" />
+        <Access Scope="LiteralConstant" UId="144">
+          <Constant UId="145">
+            <ConstantValue UId="147">3</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="148" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="149" />
+  <Token Text=":=" UId="150" />
+  <Blank UId="151" />
+  <Access Scope="LiteralConstant" UId="152">
+    <Constant UId="153">
+      <ConstantValue UId="155">0.001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="156" />
+  <NewLine UId="157" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="68" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="69" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="6B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Position 3 [GS aus Verwaltung] </Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="6C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Start_Rampe" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="GlobalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="POS3_0_Signal" UId="63">
+        <BooleanAttribute Name="HasQuotes" UId="64">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="66" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="67" />
+  <Blank UId="68" />
+  <LineComment UId="69">
+    <Text UId="70"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="71" />
+  <Access Scope="GlobalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="POS3_0_Signal" UId="74">
+        <BooleanAttribute Name="HasQuotes" UId="75">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="76" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="77" />
+      <Token Text="." UId="78" />
+      <Component Name="Stopp_Rampe" UId="79">
+        <Token Text="[" UId="80" />
+        <Access Scope="LiteralConstant" UId="81">
+          <Constant UId="82">
+            <ConstantValue UId="84">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="85" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="86" />
+  <Token Text=":=" UId="87" />
+  <Blank UId="88" />
+  <Access Scope="GlobalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="POS3_0_Signal" UId="91">
+        <BooleanAttribute Name="HasQuotes" UId="92">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="93" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="94" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="95" />
+  <Blank UId="96" />
+  <LineComment UId="97">
+    <Text UId="98"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="99" />
+  <Access Scope="GlobalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="POS3_0_Signal" UId="102">
+        <BooleanAttribute Name="HasQuotes" UId="103">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="104" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="105" />
+      <Token Text="." UId="106" />
+      <Component Name="Arbeitsstrom" UId="107">
+        <Token Text="[" UId="108" />
+        <Access Scope="LiteralConstant" UId="109">
+          <Constant UId="110">
+            <ConstantValue UId="112">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="113" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="114" />
+  <Token Text=":=" UId="115" />
+  <Blank UId="116" />
+  <Access Scope="LiteralConstant" UId="117">
+    <Constant UId="118">
+      <ConstantValue UId="120">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="121" />
+  <Blank Num="2" UId="122" />
+  <LineComment UId="123">
+    <Text UId="124"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="125" />
+  <Access Scope="GlobalVariable" UId="126">
+    <Symbol UId="127">
+      <Component Name="POS3_0_Signal" UId="128">
+        <BooleanAttribute Name="HasQuotes" UId="129">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="130" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="131" />
+      <Token Text="." UId="132" />
+      <Component Name="Positioniertoleranz" UId="133">
+        <Token Text="[" UId="134" />
+        <Access Scope="LiteralConstant" UId="135">
+          <Constant UId="136">
+            <ConstantValue UId="138">4</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="139" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="140" />
+  <Token Text=":=" UId="141" />
+  <Blank UId="142" />
+  <Access Scope="LiteralConstant" UId="143">
+    <Constant UId="144">
+      <ConstantValue UId="146">0.01</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="147" />
+  <NewLine Num="2" UId="148" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="6D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="70" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Position 4</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="71" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="Operation_type" UId="28">
+        <Token Text="[" UId="29" />
+        <Access Scope="LiteralConstant" UId="30">
+          <Constant UId="31">
+            <ConstantValue UId="33">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="34" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="35" />
+  <Token Text=":=" UId="36" />
+  <Blank UId="37" />
+  <Access Scope="LiteralConstant" UId="38">
+    <Constant UId="39">
+      <ConstantValue UId="41">16#0001</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <Access Scope="GlobalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="POS3_0_Signal" UId="46">
+        <BooleanAttribute Name="HasQuotes" UId="47">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="48" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="49" />
+      <Token Text="." UId="50" />
+      <Component Name="Start_Rampe" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LiteralConstant" UId="53">
+          <Constant UId="54">
+            <ConstantValue UId="56">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="57" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank UId="60" />
+  <Access Scope="GlobalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="POS3_0_Signal" UId="63">
+        <BooleanAttribute Name="HasQuotes" UId="64">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="65" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="66" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="67" />
+  <Blank UId="68" />
+  <LineComment UId="69">
+    <Text UId="70"> Start-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="71" />
+  <Access Scope="GlobalVariable" UId="72">
+    <Symbol UId="73">
+      <Component Name="POS3_0_Signal" UId="74">
+        <BooleanAttribute Name="HasQuotes" UId="75">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="76" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="77" />
+      <Token Text="." UId="78" />
+      <Component Name="Stopp_Rampe" UId="79">
+        <Token Text="[" UId="80" />
+        <Access Scope="LiteralConstant" UId="81">
+          <Constant UId="82">
+            <ConstantValue UId="84">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="85" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="86" />
+  <Token Text=":=" UId="87" />
+  <Blank UId="88" />
+  <Access Scope="GlobalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="POS3_0_Signal" UId="91">
+        <BooleanAttribute Name="HasQuotes" UId="92">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="93" />
+      <Component Name="-1002T1_Oriental_Beschleunigung" UId="94" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="95" />
+  <Blank UId="96" />
+  <LineComment UId="97">
+    <Text UId="98"> Stopp-Rampe %</Text>
+  </LineComment>
+  <NewLine UId="99" />
+  <Access Scope="GlobalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="POS3_0_Signal" UId="102">
+        <BooleanAttribute Name="HasQuotes" UId="103">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="104" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="105" />
+      <Token Text="." UId="106" />
+      <Component Name="Arbeitsstrom" UId="107">
+        <Token Text="[" UId="108" />
+        <Access Scope="LiteralConstant" UId="109">
+          <Constant UId="110">
+            <ConstantValue UId="112">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="113" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="114" />
+  <Token Text=":=" UId="115" />
+  <Blank UId="116" />
+  <Access Scope="LiteralConstant" UId="117">
+    <Constant UId="118">
+      <ConstantValue UId="120">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="121" />
+  <Blank Num="2" UId="122" />
+  <LineComment UId="123">
+    <Text UId="124"> Arbeitsstrom in %</Text>
+  </LineComment>
+  <NewLine UId="125" />
+  <Access Scope="GlobalVariable" UId="126">
+    <Symbol UId="127">
+      <Component Name="POS3_0_Signal" UId="128">
+        <BooleanAttribute Name="HasQuotes" UId="129">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="130" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="131" />
+      <Token Text="." UId="132" />
+      <Component Name="Positioniertoleranz" UId="133">
+        <Token Text="[" UId="134" />
+        <Access Scope="LiteralConstant" UId="135">
+          <Constant UId="136">
+            <ConstantValue UId="138">5</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="139" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank UId="140" />
+  <Token Text=":=" UId="141" />
+  <Blank UId="142" />
+  <Access Scope="LiteralConstant" UId="143">
+    <Constant UId="144">
+      <ConstantValue UId="146">0.01</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="147" />
+  <NewLine UId="148" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="72" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="73" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="74" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="75" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Position 5</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="76" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Access Scope="GlobalVariable" UId="21">
+    <Symbol UId="22">
+      <Component Name="POS3_0_Signal" UId="23">
+        <BooleanAttribute Name="HasQuotes" UId="24">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="25" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="26" />
+      <Token Text="." UId="27" />
+      <Component Name="A_Softw_ES_max_mm" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank UId="29" />
+  <Token Text=":=" UId="30" />
+  <Blank UId="31" />
+  <Access Scope="LiteralConstant" UId="32">
+    <Constant UId="33">
+      <ConstantValue UId="35">10000.5</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="36" />
+  <NewLine UId="37" />
+  <Access Scope="GlobalVariable" UId="38">
+    <Symbol UId="39">
+      <Component Name="POS3_0_Signal" UId="40">
+        <BooleanAttribute Name="HasQuotes" UId="41">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="42" />
+      <Component Name="-1002T1 Oriental_Positionen" UId="43" />
+      <Token Text="." UId="44" />
+      <Component Name="A_Softw_ES_min_mm" UId="45" />
+    </Symbol>
+  </Access>
+  <Blank UId="46" />
+  <Token Text=":=" UId="47" />
+  <Blank UId="48" />
+  <Access Scope="LiteralConstant" UId="49">
+    <Constant UId="50">
+      <ConstantValue UId="52">-10000.5</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="53" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="77" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="78" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="79" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Grenzwerte</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="7B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="03_Betriebsart_DB" />
+        <Component Name="NOT-HALT OK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="26">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="03_Betriebsart_DB" />
+        <Component Name="Schutztüren OK" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="AN" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="POS3_0_Signal" />
+        <Component Name="-1002T1 Oriental_Steuerung" />
+        <Component Name="A_DCMD-RDY" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="A" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="FL_Clock_1Hz" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="32">
+    <StlToken Text="Assign" />
+    <Access Scope="GlobalVariable">
+      <Symbol>
+        <Component Name="POS3_0_Signal" />
+        <Component Name="-1002T1 Oriental_Steuerung" />
+        <Component Name="E_ETO-CLR" />
+      </Symbol>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="34">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="7C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="7D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="7E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse E_ETO-CLR  Quittieren nach "Sicherer Halt"</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="80" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo BlockType="FB">
+        <Instance Scope="LocalVariable">
+          <Component Name="-1002T2_OM_PRM_Access_Instance" />
+        </Instance>
+        <Parameter Name="Inputdata_RW_Drv2PLC" Section="Input" Type="&quot;AZ_PrmRW_Drv2PLC&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1002T1_Pos3_0_Drehachse__Prm_Status" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ReadParameterID" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Parameter_Data_Drehachse" />
+              <Component Name="RD_ParameterID" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WriteParameterID" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Parameter_Data_Drehachse" />
+              <Component Name="WR_ParameterID" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WriteData" Section="Input" Type="DWord">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Parameter_Data_Drehachse" />
+              <Component Name="WR_ParameterData" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WR-REQ" Section="Input" Type="Bool" />
+        <Parameter Name="Outputdata_RW_PLC2Drv" Section="Output" Type="&quot;AZ_PrmRW_PLC2Drv&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1002T1_Pos3_0_Drehachse__Prm_Set" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="ReadParameterID_R" Section="Output" Type="Word" />
+        <Parameter Name="WriteParameterID_R" Section="Output" Type="Word" />
+        <Parameter Name="ReadData" Section="Output" Type="DWord">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Parameter_Data_Drehachse" />
+              <Component Name="RD_ParameterData" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="WR-SET-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-IF-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-NV-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-EXE-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="RD-ERR" Section="Output" Type="Bool" />
+        <Parameter Name="WR-END" Section="Output" Type="Bool" />
+        <Parameter Name="SYS-BSY" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="50">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="51">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="81" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="82" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="83" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="84" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Oriental Achse Parameter schreiben und lesen (wird nicht benötigt)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="85" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> E_DDO_Type 16#0001 = absolut positionieren 16#0002 = relativ positionieren</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="GlobalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="POS3_0_Signal" UId="26">
+        <BooleanAttribute Name="HasQuotes" UId="27">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="28" />
+      <Component Name="-1002T1 Oriental_Steuerung" UId="29" />
+      <Token Text="." UId="30" />
+      <Component Name="E_DDO_Type" UId="31" />
+    </Symbol>
+  </Access>
+  <Blank UId="32" />
+  <Token Text=":=" UId="33" />
+  <Blank UId="34" />
+  <Access Scope="LiteralConstant" UId="35">
+    <Constant UId="36">
+      <ConstantValue UId="38">16#0002</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="39" />
+  <NewLine UId="40" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="86" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="87" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="88" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="89" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse DDO_Type für E_Trig_Manuell</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8A" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo BlockType="FB">
+        <Instance Scope="LocalVariable">
+          <Component Name="-1002T2_Oriental_Drehachse" />
+        </Instance>
+        <Parameter Name="Inputdata_FixedIO_Drv2PLC" Section="Input" Type="&quot;AZ_FixedIO_Drv2PLC&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1002T1_Pos3_0_Drehachse__Fixed_Out" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="MonitorData" Section="Input" Type="&quot;AZ_FixedMonitor&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1002T1_Pos3_0_Drehachse__St_Monitor" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Type" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Type" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Pos" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Pos" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Vel" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Vel" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Acc" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Acc" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Dec" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Dec" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Crnt" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Crnt" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_DDO_Trans" Section="Input" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_DDO_Trans" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Schrittweite_Pos" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_Schrittweite_pos" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Schrittweite_Neg" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_Schrittweite_neg" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Schrittweite" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_Schrittweite" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_R_Softw_ES_min_steps" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Positionen" />
+              <Component Name="A_Softw_ES_min_mm" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_R_Softw_ES_max_steps" Section="Input" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Positionen" />
+              <Component Name="A_Softw_ES_max_mm" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Drehachse" Section="Input" Type="Bool">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Bool</ConstantType>
+              <ConstantValue>TRUE</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Getriebefaktor" Section="Input" Type="Real">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Real</ConstantType>
+              <ConstantValue>18.0</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Maximalgeschwindigkeit_Hz" Section="Input" Type="Real">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Real</ConstantType>
+              <ConstantValue>30000.0</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Maximal_Start_Stopp_Rampe_kHz/s" Section="Input" Type="Real">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>Real</ConstantType>
+              <ConstantValue>990000.0</ConstantValue>
+            </Constant>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_SIMULATION_AKTIV" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="03_Betriebsart_DB" />
+              <Component Name="Simulation_aktiv" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_RemoteIO" Section="Input" Type="&quot;AZ_RemoteIO_Drv2Plc&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1002T1_Pos3_0_Drehachse__Remote_Out" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Outputdata_DDO" Section="Output" Type="&quot;AZ_DDO_PLC2Drv&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1002T1_Pos3_0_Drehachse__DDO" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Outputdata_FixedIO_PLC2Drv" Section="Output" Type="&quot;AZ_FixedIO_PLC2Drv&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1002T1_Pos3_0_Drehachse__Fixed_In" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_TRIG_R" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_TRIG_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_TRIG-MODE_R" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_TRIG-MODE_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_SET-ERR" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_SET-ERR" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_EXE-ERR" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_EXE-ERR" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_DCMD-FULL" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_DCMD-FULL" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_STOP_R" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_STOP_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_ETO-MON" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_ETO-MON" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_TLC" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_TLC" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_SEQ-BSY" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_SEQ-BSY" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_MOVE" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_MOVE" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_IN-POS" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_IN-POS" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_START_R" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_START_R" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_HOME-END" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_HOME-END" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_READY" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_READY" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_DCMD-RDY" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_DCMD-RDY" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_ALM-A" Section="Output" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_ALM-A" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_PresentAlarm" Section="Output" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_PresentAlarm" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_FBposition" Section="Output" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_FBposition" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_FBspeed" Section="Output" Type="Real">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_FBspeed" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_CmdPosition" Section="Output" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_CmdPosition" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_TorqueMonitor" Section="Output" Type="Int">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_TorqueMonitor" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_CST_OpeCurrent" Section="Output" Type="Word">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_CST_OpeCurrent" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_Information" Section="Output" Type="DWord">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_Information" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_StatusWord" Section="Output" Type="DWord">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="A_StatusWord" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="A_RemoteIO" Section="Output" Type="&quot;AZ_RemoteIO_Plc2Drv&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="AZ_1002T1_Pos3_0_Drehachse__Remote_IN" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_A_UDT_Positionen" Section="InOut" Type="&quot;Oriental_Variablen_Positionen&quot;">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Positionen" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Not_Aus_OK" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="03_Betriebsart_DB" />
+              <Component Name="NOT-HALT OK" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Tueren_OK" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="03_Betriebsart_DB" />
+              <Component Name="Schutztüren OK" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_TRIG-MODE" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_TRIG-MODE" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_ETO-CLR" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_ETO-CLR" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_FW-JOG" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_FW-JOG" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_RV-JOG" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_RV-JOG" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_START" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_START" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_ZHOME" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_ZHOME" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_STOP" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_STOP" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_FREE" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_FREE" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_ALM-RST" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="03_Betriebsart_DB" />
+              <Component Name="ACK_Taste" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_TRIG_MANUELL" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_Steuerung" />
+              <Component Name="E_Trig_Manuell" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="E_Home" Section="InOut" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="POS3_0_Signal" />
+              <Component Name="-1002T1 Oriental_E_P-Preset" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="8B" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="8C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="8E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Oriental Achse Ansteuerung</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8F" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="POS3_0_Signal" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="27" />
+      <Component Name="-1002T1 Oriental_E_P-Preset" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank UId="29" />
+  <Token Text="THEN" UId="30" />
+  <NewLine UId="31" />
+  <Blank Num="4" UId="32" />
+  <Access Scope="GlobalVariable" UId="33">
+    <Symbol UId="34">
+      <Component Name="POS3_0_Signal" UId="35">
+        <BooleanAttribute Name="HasQuotes" UId="36">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="37" />
+      <Component Name="-1002T1 Oriental_E_P-Preset" UId="38" />
+    </Symbol>
+  </Access>
+  <Blank UId="39" />
+  <Token Text=":=" UId="40" />
+  <Blank UId="41" />
+  <Access Scope="LiteralConstant" UId="42">
+    <Constant UId="43">
+      <ConstantValue UId="45">False</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="46" />
+  <NewLine UId="47" />
+  <Blank Num="4" UId="48" />
+  <Access Scope="GlobalVariable" UId="49">
+    <Symbol UId="50">
+      <Component Name="POS3_0_Signal" UId="51">
+        <BooleanAttribute Name="HasQuotes" UId="52">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="53" />
+      <Component Name="-1002T1 Oriental_Umdrehungszähler" UId="54" />
+    </Symbol>
+  </Access>
+  <Blank UId="55" />
+  <Token Text=":=" UId="56" />
+  <Blank UId="57" />
+  <Access Scope="LiteralConstant" UId="58">
+    <Constant UId="59">
+      <ConstantValue UId="61">0.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="62" />
+  <NewLine UId="63" />
+  <Token Text="END_IF" UId="64" />
+  <Token Text=";" UId="65" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="90" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="91" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="92" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="93" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse "P-Preset" Reset</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="94" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <LineComment UId="21">
+    <Text UId="22"> Positionsdifferenz berechnen</Text>
+  </LineComment>
+  <NewLine UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="Delta" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank UId="27" />
+  <Token Text=":=" UId="28" />
+  <Blank UId="29" />
+  <Access Scope="GlobalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="POS3_0_Signal" UId="32">
+        <BooleanAttribute Name="HasQuotes" UId="33">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="34" />
+      <Component Name="-1002T1 Oriental_Steuerung" UId="35" />
+      <Token Text="." UId="36" />
+      <Component Name="A_FBposition" UId="37" />
+    </Symbol>
+  </Access>
+  <Blank UId="38" />
+  <Token Text="-" UId="39" />
+  <Blank UId="40" />
+  <Access Scope="LocalVariable" UId="41">
+    <Symbol UId="42">
+      <Component Name="Pos_Alt" UId="43" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="44" />
+  <NewLine Num="2" UId="45" />
+  <LineComment UId="46">
+    <Text UId="47">Überlauf erkennen </Text>
+  </LineComment>
+  <NewLine UId="48" />
+  <Token Text="IF" UId="49" />
+  <Blank UId="50" />
+  <Access Scope="LocalVariable" UId="51">
+    <Symbol UId="52">
+      <Component Name="Delta" UId="53" />
+    </Symbol>
+  </Access>
+  <Blank UId="54" />
+  <Token Text="&lt;" UId="55" />
+  <Blank UId="56" />
+  <Access Scope="LiteralConstant" UId="57">
+    <Constant UId="58">
+      <ConstantValue UId="60">-180.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="61" />
+  <Token Text="THEN" UId="62" />
+  <NewLine UId="63" />
+  <Blank Num="4" UId="64" />
+  <LineComment UId="65">
+    <Text UId="66"> Vorwärts über 360° gelaufen (z.B. 359 -&gt; 1)</Text>
+  </LineComment>
+  <NewLine UId="67" />
+  <Blank Num="4" UId="68" />
+  <Access Scope="GlobalVariable" UId="69">
+    <Symbol UId="70">
+      <Component Name="POS3_0_Signal" UId="71">
+        <BooleanAttribute Name="HasQuotes" UId="72">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="73" />
+      <Component Name="-1002T1 Oriental_Umdrehungszähler" UId="74" />
+    </Symbol>
+  </Access>
+  <Blank UId="75" />
+  <Token Text=":=" UId="76" />
+  <NewLine UId="77" />
+  <Blank Num="4" UId="78" />
+  <Access Scope="GlobalVariable" UId="79">
+    <Symbol UId="80">
+      <Component Name="POS3_0_Signal" UId="81">
+        <BooleanAttribute Name="HasQuotes" UId="82">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="83" />
+      <Component Name="-1002T1 Oriental_Umdrehungszähler" UId="84" />
+    </Symbol>
+  </Access>
+  <Blank UId="85" />
+  <Token Text="+" UId="86" />
+  <Blank UId="87" />
+  <Access Scope="LiteralConstant" UId="88">
+    <Constant UId="89">
+      <ConstantValue UId="91">1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="92" />
+  <NewLine UId="93" />
+  <Blank Num="4" UId="94" />
+  <NewLine UId="95" />
+  <Token Text="ELSIF" UId="96" />
+  <Blank UId="97" />
+  <Access Scope="LocalVariable" UId="98">
+    <Symbol UId="99">
+      <Component Name="Delta" UId="100" />
+    </Symbol>
+  </Access>
+  <Blank UId="101" />
+  <Token Text="&gt;" UId="102" />
+  <Blank UId="103" />
+  <Access Scope="LiteralConstant" UId="104">
+    <Constant UId="105">
+      <ConstantValue UId="107">180.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="108" />
+  <Token Text="THEN" UId="109" />
+  <NewLine UId="110" />
+  <Blank Num="4" UId="111" />
+  <LineComment UId="112">
+    <Text UId="113"> Rückwärts über 0° gelaufen (z.B. 1 -&gt; 359)    </Text>
+  </LineComment>
+  <NewLine UId="114" />
+  <Blank Num="4" UId="115" />
+  <Access Scope="GlobalVariable" UId="116">
+    <Symbol UId="117">
+      <Component Name="POS3_0_Signal" UId="118">
+        <BooleanAttribute Name="HasQuotes" UId="119">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="120" />
+      <Component Name="-1002T1 Oriental_Umdrehungszähler" UId="121" />
+    </Symbol>
+  </Access>
+  <Blank UId="122" />
+  <Token Text=":=" UId="123" />
+  <NewLine UId="124" />
+  <Blank Num="4" UId="125" />
+  <Access Scope="GlobalVariable" UId="126">
+    <Symbol UId="127">
+      <Component Name="POS3_0_Signal" UId="128">
+        <BooleanAttribute Name="HasQuotes" UId="129">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="130" />
+      <Component Name="-1002T1 Oriental_Umdrehungszähler" UId="131" />
+    </Symbol>
+  </Access>
+  <Blank UId="132" />
+  <Token Text="-" UId="133" />
+  <Blank UId="134" />
+  <Access Scope="LiteralConstant" UId="135">
+    <Constant UId="136">
+      <ConstantValue UId="138">1.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="139" />
+  <NewLine UId="140" />
+  <Token Text="END_IF" UId="141" />
+  <Token Text=";" UId="142" />
+  <NewLine Num="2" UId="143" />
+  <LineComment UId="144">
+    <Text UId="145"> Aktuellen Wert für nächsten Zyklus speichern</Text>
+  </LineComment>
+  <NewLine UId="146" />
+  <Access Scope="LocalVariable" UId="147">
+    <Symbol UId="148">
+      <Component Name="Pos_Alt" UId="149" />
+    </Symbol>
+  </Access>
+  <Blank UId="150" />
+  <Token Text=":=" UId="151" />
+  <Blank UId="152" />
+  <Access Scope="GlobalVariable" UId="153">
+    <Symbol UId="154">
+      <Component Name="POS3_0_Signal" UId="155">
+        <BooleanAttribute Name="HasQuotes" UId="156">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="157" />
+      <Component Name="-1002T1 Oriental_Steuerung" UId="158" />
+      <Token Text="." UId="159" />
+      <Component Name="A_FBposition" UId="160" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="161" />
+  <NewLine Num="3" UId="162" />
+  <Access Scope="GlobalVariable" UId="163">
+    <Symbol UId="164">
+      <Component Name="POS3_0_Signal" UId="165">
+        <BooleanAttribute Name="HasQuotes" UId="166">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="167" />
+      <Component Name="-1002T1 Oriental_Absolute_Position" UId="168" />
+    </Symbol>
+  </Access>
+  <Blank UId="169" />
+  <Token Text=":=" UId="170" />
+  <Blank Num="4" UId="171" />
+  <Access Scope="GlobalVariable" UId="172">
+    <Symbol UId="173">
+      <Component Name="POS3_0_Signal" UId="174">
+        <BooleanAttribute Name="HasQuotes" UId="175">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="176" />
+      <Component Name="-1002T1 Oriental_Umdrehungszähler" UId="177" />
+    </Symbol>
+  </Access>
+  <Blank UId="178" />
+  <Token Text="*" UId="179" />
+  <Blank UId="180" />
+  <Access Scope="LiteralConstant" UId="181">
+    <Constant UId="182">
+      <ConstantValue UId="184">360.0</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank UId="185" />
+  <Token Text="+" UId="186" />
+  <NewLine UId="187" />
+  <Access Scope="GlobalVariable" UId="188">
+    <Symbol UId="189">
+      <Component Name="POS3_0_Signal" UId="190">
+        <BooleanAttribute Name="HasQuotes" UId="191">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="192" />
+      <Component Name="-1002T1 Oriental_Steuerung" UId="193" />
+      <Token Text="." UId="194" />
+      <Component Name="A_FBposition" UId="195" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="196" />
+  <NewLine UId="197" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="95" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="96" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="97" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="98" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse  Berechnung der Umdrehungen ab dem Nullpunkt</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="99" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="POS3_0_Signal" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="27" />
+      <Component Name="-1002T1 Oriental_Steuerung" UId="28" />
+      <Token Text="." UId="29" />
+      <Component Name="A_TorqueMonitor" UId="30" />
+    </Symbol>
+  </Access>
+  <Blank UId="31" />
+  <Token Text="&gt;=" UId="32" />
+  <NewLine UId="33" />
+  <Blank Num="3" UId="34" />
+  <Access Scope="GlobalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="POS3_0_Signal" UId="37">
+        <BooleanAttribute Name="HasQuotes" UId="38">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="39" />
+      <Component Name="-1002T1 Oriental_Steuerung" UId="40" />
+      <Token Text="." UId="41" />
+      <Component Name="A_CST_OpeCurrent" UId="42" />
+    </Symbol>
+  </Access>
+  <Blank Num="3" UId="43" />
+  <Token Text="THEN" UId="44" />
+  <NewLine UId="45" />
+  <Blank Num="4" UId="46" />
+  <Access Scope="GlobalVariable" UId="47">
+    <Symbol UId="48">
+      <Component Name="POS3_0_Signal" UId="49">
+        <BooleanAttribute Name="HasQuotes" UId="50">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="51" />
+      <Component Name="Drehachse_Kraft_überschritten" UId="52" />
+    </Symbol>
+  </Access>
+  <Blank UId="53" />
+  <Token Text=":=" UId="54" />
+  <Blank UId="55" />
+  <Access Scope="LiteralConstant" UId="56">
+    <Constant UId="57">
+      <ConstantValue UId="59">true</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="60" />
+  <NewLine UId="61" />
+  <Token Text="ELSE" UId="62" />
+  <NewLine UId="63" />
+  <Blank Num="4" UId="64" />
+  <Access Scope="GlobalVariable" UId="65">
+    <Symbol UId="66">
+      <Component Name="POS3_0_Signal" UId="67">
+        <BooleanAttribute Name="HasQuotes" UId="68">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="69" />
+      <Component Name="Drehachse_Kraft_überschritten" UId="70" />
+    </Symbol>
+  </Access>
+  <Blank UId="71" />
+  <Token Text=":=" UId="72" />
+  <Blank UId="73" />
+  <Access Scope="LiteralConstant" UId="74">
+    <Constant UId="75">
+      <ConstantValue UId="77">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="78" />
+  <NewLine UId="79" />
+  <Token Text="END_IF" UId="80" />
+  <Token Text=";" UId="81" />
+  <NewLine Num="3" UId="82" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="9B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="9C" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>-1002T1 Pos 3.0 Drehachse Kraft überschritten</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="9E" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="9F" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

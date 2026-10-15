@@ -1,0 +1,534 @@
+﻿FUNCTION_BLOCK "POS3_0_Melden_Visu"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      "Taktzeitermittlung_mit_WT-Wechsel" : "Taktzeitermittlung_Start_Stop_V1_0";
+      Taktzeitermittlung : "Taktzeitermittlung_Start_Stop_V1_0";
+      R_TRIG_Init_Achse_1 {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      R_TRIG_Init_Achse_1_Positionen {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      R_TRIG_Init_Achse_2 {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      R_TRIG_Init_Achse_2_Positionen {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      Zyklen_für_Durchschnittszeit { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      Summe { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Real;
+   END_VAR
+
+   VAR_TEMP 
+      Manuell_Zylinder_1 : Int;   // manuelle Ansteuerung Pneumatik
+      Manuell_Zylinder_2 : Int;
+      Manuell_Zylinder_3 : Int;
+      Manuell_Zylinder_4 : Int;
+      Manuell_Einzellschritt_1 : Int;
+      Manuell_Einzellschritt_2 : Int;
+      Manuell_Einzellschritt_3 : Int;
+      Manuell_Einzellschritt_4 : Int;
+      Manuell_Achse_1 : Int;   // manuelle Ansteuerung Achse 1 Seite1
+      Manuell_Positionen_1_Achse_1 : Int;   // manuelle Ansteuerung Achse 1 Seite 2
+      Manuell_Positionen_2_Achse_1 : Int;
+      Manuell_Positionen_3_Achse_1 : Int;
+      Manuell_Achse_2 : Int;
+      Manuell_Positionen_1_Achse_2 : Int;
+      Manuell_Positionen_2_Achse_2 : Int;
+      Manuell_Positionen_3_Achse_2 : Int;
+      Manuell_Achse_3 : Int;
+      Manuell_Positionen_1_Achse_3 : Int;
+      Manuell_Positionen_2_Achse_3 : Int;
+      Manuell_Positionen_3_Achse_3 : Int;
+      Manuell_Achse_4 : Int;
+      Manuell_Positionen_1_Achse_4 : Int;
+      Manuell_Positionen_2_Achse_4 : Int;
+      Manuell_Positionen_3_Achse_4 : Int;
+      i : Int;
+      j : Int;
+      "Manuell_P-Preset_1_Achse_1" : Int;   // manuelle Ansteuerung Achse 1 Seite 2
+      "Manuell_P-Preset_1_Achse_2" : Int;   // manuelle Ansteuerung Achse 1 Seite 2
+   END_VAR
+
+
+BEGIN
+	REGION Taktzeit  
+	    
+	    #Taktzeitermittlung(E_Starttrigger:="POS3_0_Signal".Station.SK_Aktiv,
+	                    A_letzteZykluszeit=>"HMI_Statistik"."Letzte Zykluszeit_POS_3_0",
+	                    A_letze10Zyklen=>"POS3_0_Signal".Taktzeit);
+	
+	"HMI_Statistik"."Letzte Zykluszeit_POS_3_0_in_s" := TIME_TO_DINT("HMI_Statistik"."Letzte Zykluszeit_POS_3_0") / 1000.0;
+	
+	#i := 0;
+	FOR #i := 0 TO 10 DO
+	    "HMI_Statistik".Zykluszeit_POS_3_0_in_s[#i] := TIME_TO_DINT("POS3_0_Signal".Taktzeit[#i]) / 1000.0;
+	END_FOR;
+	
+	// Durchschnitt der aktuellen Istzyklen aber maximal 10 Zykluszeiten
+	#Summe := 0.0;
+	
+	IF "POS3_0_Signal".Istzyklen < 10 THEN
+	    #Zyklen_für_Durchschnittszeit := "POS3_0_Signal".Istzyklen;
+	ELSE
+	    #Zyklen_für_Durchschnittszeit := 10;
+	END_IF;
+	
+	FOR #i := 1 TO #Zyklen_für_Durchschnittszeit DO
+	    #Summe := #Summe + "HMI_Statistik".Zykluszeit_POS_3_0_in_s[#i];
+	END_FOR;
+	
+	IF "POS3_0_Signal".Istzyklen <= 0 THEN
+	    "HMI_Statistik"."Durchschnitt Zykluszeit_POS_3_0" := 0.0;
+	ELSE
+	    "HMI_Statistik"."Durchschnitt Zykluszeit_POS_3_0" := #Summe / #Zyklen_für_Durchschnittszeit;
+	END_IF;
+	
+	// Restlaufzeit
+	"POS3_0_Signal".Restzyklen := "POS3_0_Signal".Sollzyklen - "POS3_0_Signal".Istzyklen;
+	
+	"HMI_Statistik".Restlaufzeit_POS_3_0 := "POS3_0_Signal".Restzyklen * "HMI_Statistik"."Durchschnitt Zykluszeit_POS_3_0";
+	
+	
+	END_REGION
+	
+	REGION Visu
+	    
+	    //Bildnummern
+	    #Manuell_Zylinder_1 := 3300;
+	    #Manuell_Zylinder_2 := 3301;
+	    // #Manuell_Zylinder_3 := ;
+	    // #Manuell_Zylinder_4:=  ;
+	    // #Manuell_Einzellschritt_1:=  ;
+	    // #Manuell_Einzellschritt_2:=  ;
+	    // #Manuell_Einzellschritt_3:=  ;
+	    // #Manuell_Einzellschritt_4:=  ;
+	    #Manuell_Achse_1 := 3400;
+	    #Manuell_Positionen_1_Achse_1 :=3401;
+	    #"Manuell_P-Preset_1_Achse_1" := 3404;
+	    // #Manuell_Positionen_2_Achse_1:= ;
+	    // #Manuell_Positionen_3_Achse_1:= ;
+	     #Manuell_Achse_2 := 3402;
+	     #Manuell_Positionen_1_Achse_2 := 3403;
+	     #"Manuell_P-Preset_1_Achse_2" := 3405;
+	    // #Manuell_Positionen_2_Achse_2:=  ;
+	    // #Manuell_Positionen_3_Achse_2:=  ;
+	    // #Manuell_Achse_3:=  ;
+	    // #Manuell_Positionen_1_Achse_3:=  ;
+	    // #Manuell_Positionen_2_Achse_3:=  ;
+	    // #Manuell_Positionen_3_Achse_3:=  ;
+	    // #Manuell_Achse_4:=  ;
+	    // #Manuell_Positionen_1_Achse_4:=  ;
+	    // #Manuell_Positionen_2_Achse_4:=  ;
+	    // #Manuell_Positionen_3_Achse_4:=  ;
+	    // 
+	    
+	    
+	    REGION Wartezeit Ist gesteckt
+	        "POS3_0_Signal"."Wartezeit Ist gesteckt" := TIME_TO_DINT("POS3_0_SK_Ablauf_DB"."Wartezeit - Messmethode_AUS".T) / 1000.0;
+	      
+	    END_REGION
+	    
+	END_REGION
+	
+	
+	
+	REGION Allgemein
+	    //Allgemein 
+	    
+	    "HMI_BETR_ART_POS".POS3_0.Status_Sicher := FALSE;
+	    "HMI_BETR_ART_POS".POS3_0.Status_Anwahl := "POS3_0_Signal".Schrittkette.TAP_ON;
+	    "HMI_BETR_ART_POS".POS3_0.SNr := "POS3_0_Signal".Schrittkette.S_NO;
+	    
+	    // Status Richten
+	    IF "POS3_0_Signal".Station.SK_Richten_gestartet THEN
+	        "HMI_BETR_ART_POS".POS3_0.Status_Richten := 1;
+	    ELSIF "Global_Signal"."M_Grundstellung_POS3.0" THEN
+	        "HMI_BETR_ART_POS".POS3_0.Status_Richten := 2;
+	    ELSE
+	        "HMI_BETR_ART_POS".POS3_0.Status_Richten := 0;
+	    END_IF;
+	   
+	    
+	    // Status Schrittkette
+	    IF "POS3_0_Signal".Station.SK_Aktiv AND NOT "POS3_0_Signal".Station.SK_Fertig THEN
+	        "HMI_BETR_ART_POS".POS3_0.Status_Schrittkette := 1;    //  1 = Schrittkette läuft
+	    ELSIF "POS3_0_Signal".Station.SK_Fertig THEN
+	        "HMI_BETR_ART_POS".POS3_0.Status_Schrittkette := 2;    //  2 = Schrittkette fertig
+	    ELSIF "POS3_0_Signal".Schrittkette.ERR_FLT  THEN
+	        "HMI_BETR_ART_POS".POS3_0.Status_Schrittkette := 3;    //  3 = Taktzeit max Störung
+	    ELSE
+	        "HMI_BETR_ART_POS".POS3_0.Status_Schrittkette := 0;    //  0 = Schrittkette AUS    
+	    END_IF;
+	   
+	END_REGION
+	
+	REGION Manuell
+	    // Manuellaufruf der Station über Bildanwahl
+	     REGION Zylinder_1
+	         IF ("HMI_SYS"."Aktueller Bildschirm" = #Manuell_Zylinder_1) THEN
+	            
+	             "HMI_COM".Manuell_Zylinder1."0_Aus_1_Ventil_2_Antrieb_3_Signal" := 3;
+	             IF "DE_POS3_0_Endlage_Überlastzylinder" THEN
+	                 "HMI_COM".Manuell_Zylinder1.Status := 0;
+	             ELSE
+	                 "HMI_COM".Manuell_Zylinder1.Status := 1;
+	             END_IF;
+	            
+	            
+	             "HMI_COM".Manuell_Zylinder2."0_Aus_1_Ventil_2_Antrieb_3_Signal" := 3;
+	             IF FALSE THEN
+	                 "HMI_COM".Manuell_Zylinder2.Status := 1;
+	             ELSE
+	                 "HMI_COM".Manuell_Zylinder2.Status := 0;
+	             END_IF;
+	            
+	                
+	             "HMI_COM".Manuell_Zylinder3."0_Aus_1_Ventil_2_Antrieb_3_Signal" := 3;
+	             IF false THEN
+	                 "HMI_COM".Manuell_Zylinder3.Status := 1;
+	             ELSE
+	                 "HMI_COM".Manuell_Zylinder3.Status := 0;
+	             END_IF;
+	            
+	             
+	              "HMI_COM".Manuell_Zylinder4."0_Aus_1_Ventil_2_Antrieb_3_Signal" := 3;
+	              IF FALSE THEN
+	                  "HMI_COM".Manuell_Zylinder4.Status := 1;
+	              ELSE
+	                  "HMI_COM".Manuell_Zylinder4.Status := 0;
+	              END_IF;
+	             
+	             
+	            
+	            
+	        //     // //Manuelle Ansteuerung Zylinder
+	        //      // := "HMI_COM".Manuell_Zylinder1.GS;
+	        //      // := "HMI_COM".Manuell_Zylinder1.AS1;
+	        
+	        //      // := "HMI_COM".Manuell_Zylinder2.GS;
+	        //      // := "HMI_COM".Manuell_Zylinder2.AS1;
+	            
+	        //      // := "HMI_COM".Manuell_Zylinder3.GS;
+	        //      // := "HMI_COM".Manuell_Zylinder3.AS1;
+	            
+	        //      // := "HMI_COM".Manuell_Zylinder4.GS;
+	        //      // := "HMI_COM".Manuell_Zylinder4.AS1;
+	            
+	        //     "HMI_COM".Manuell_Zylinder1.GS := false;
+	        //     "HMI_COM".Manuell_Zylinder1.AS1 := false;
+	        //     "HMI_COM".Manuell_Zylinder2.GS := false;
+	        //     "HMI_COM".Manuell_Zylinder2.AS1 := false;
+	        //     "HMI_COM".Manuell_Zylinder3.GS := false;
+	        //     "HMI_COM".Manuell_Zylinder3.AS1 := false;
+	        //     "HMI_COM".Manuell_Zylinder4.GS := false;
+	        //     "HMI_COM".Manuell_Zylinder4.AS1 := false;
+	            
+	            
+	        //     //Rückmeldung Ansteuerung aktiv
+	        //     "HMI_COM".Manuell_Zylinder1.DA_GS := FALSE;
+	        //     "HMI_COM".Manuell_Zylinder1.DA_AS1 := FALSE;
+	        //     "HMI_COM".Manuell_Zylinder1.DA_AS2 := FALSE;
+	            
+	        //     "HMI_COM".Manuell_Zylinder2.DA_GS := FALSE;
+	        //     "HMI_COM".Manuell_Zylinder2.DA_AS1 := FALSE;
+	        //     "HMI_COM".Manuell_Zylinder2.DA_AS2 := FALSE;
+	            
+	        //     "HMI_COM".Manuell_Zylinder3.DA_GS := FALSE;
+	        //     "HMI_COM".Manuell_Zylinder3.DA_AS1 := FALSE;
+	        //     "HMI_COM".Manuell_Zylinder3.DA_AS2 := FALSE;
+	            
+	        //     "HMI_COM".Manuell_Zylinder4.DA_GS := FALSE;
+	        //     "HMI_COM".Manuell_Zylinder4.DA_AS1 := FALSE;
+	        //     "HMI_COM".Manuell_Zylinder4.DA_AS2 := FALSE;
+	            
+	         END_IF;
+	     END_REGION ;
+	  
+	 
+	 
+	    
+	    REGION Antrieb 1 Positionierachse
+	        // Initialisieren der Steuerwerte 
+	        #R_TRIG_Init_Achse_1(CLK := "HMI_SYS"."Aktueller Bildschirm" = #Manuell_Achse_1);
+	        IF #R_TRIG_Init_Achse_1.Q THEN
+	            "HMI_COM".HMI_Achse_Steuerung.E_Sollwert_Manuell := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_DDO_Pos;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Verfahrweg := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_Schrittweite;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Geschwindigkeit_manuell_in_Prozent := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_DDO_Vel;
+	        END_IF;
+	        
+	        
+	        IF ("HMI_SYS"."Aktueller Bildschirm" = #Manuell_Achse_1) THEN
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_ZHOME := "HMI_COM".HMI_Achse_Steuerung.E_Start_Referenzieren;
+	            "HMI_COM".HMI_Achse_Steuerung.A_StatusWord := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_StatusWord;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Drehachse := false;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Achstyp := 3;
+	            
+	            "HMI_COM".HMI_Achse_Steuerung.A_Istwert := REAL_TO_LREAL("POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_FBposition);
+	            "HMI_COM".HMI_Achse_Steuerung.A_Softw_ES_min := "POS3_0_Signal"."-1001T1 Oriental_Positionen".A_Softw_ES_min_mm;
+	            "HMI_COM".HMI_Achse_Steuerung.A_Softw_ES_max := "POS3_0_Signal"."-1001T1 Oriental_Positionen".A_Softw_ES_max_mm;
+	            
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_DDO_Pos := LREAL_TO_REAL("HMI_COM".HMI_Achse_Steuerung.E_Sollwert_Manuell);
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_Schrittweite := LREAL_TO_REAL("HMI_COM".HMI_Achse_Steuerung.E_Verfahrweg);
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_DDO_Vel := LREAL_TO_REAL("HMI_COM".HMI_Achse_Steuerung.E_Geschwindigkeit_manuell_in_Prozent);
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_DDO_Acc := 100.0;
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_DDO_Dec := 100.0;
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_DDO_Crnt := 100;
+	            
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_Schrittweite_pos := "HMI_COM".HMI_Achse_Steuerung.E_Tipp_pos;
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_Schrittweite_neg := "HMI_COM".HMI_Achse_Steuerung.E_Tipp_neg;
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung".E_Trig_Manuell := "HMI_COM".HMI_Achse_Steuerung.E_Start_manuell;
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung"."E_FW-JOG" := "HMI_COM".HMI_Achse_Steuerung.E_jog_pos;
+	            "POS3_0_Signal"."-1001T1 Oriental_Steuerung"."E_RV-JOG" := "HMI_COM".HMI_Achse_Steuerung.E_jog_neg;
+	        END_IF;
+	            
+	            // Initialisieren der Steuerwerte 
+	            #R_TRIG_Init_Achse_1_Positionen(CLK := "HMI_SYS"."Aktueller Bildschirm" = #Manuell_Positionen_1_Achse_1);
+	        IF #R_TRIG_Init_Achse_1_Positionen.Q THEN
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[0] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[0];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[0] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[0];
+	                 
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[1] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[1];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[1] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[1];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[2] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[2];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[2] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[2];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[3] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[3];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[3] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[3];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[4] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[4];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[4] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[4];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[5] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[5];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[5] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[5];
+	                
+	        END_IF;
+	            
+	            
+	        IF ("HMI_SYS"."Aktueller Bildschirm" = #Manuell_Positionen_1_Achse_1) THEN
+	                
+	            
+	            "HMI_COM".HMI_Achse_Steuerung.A_StatusWord := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_StatusWord;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Drehachse := false;
+	            "HMI_COM".HMI_Achse_Steuerung.A_Istwert := REAL_TO_LREAL("POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_FBposition);
+	            "HMI_COM".HMI_Achse_Steuerung.A_Softw_ES_min := "POS3_0_Signal"."-1001T1 Oriental_Positionen".A_Softw_ES_min_mm;
+	            "HMI_COM".HMI_Achse_Steuerung.A_Softw_ES_max := "POS3_0_Signal"."-1001T1 Oriental_Positionen".A_Softw_ES_max_mm;
+	            
+	            
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[0] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[0];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[1] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[1];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[2] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[2];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[3] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[3];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[4] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[4];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[5] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[5];
+	            
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[0] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".POS_OK_Position[0];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[1] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".POS_OK_Position[1];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[2] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".POS_OK_Position[2];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[3] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".POS_OK_Position[3];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[4] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".POS_OK_Position[4];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[5] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".POS_OK_Position[5];
+	            
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[0] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[0];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[1] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[1];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[2] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[2];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[3] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[3];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[4] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[4];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[5] := "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[5];
+	            
+	            "POS3_0_Signal"."-1001T1 Oriental_Positionen".Start_POS_Position[0] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[0];
+	            "POS3_0_Signal"."-1001T1 Oriental_Positionen".Start_POS_Position[1] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[1];
+	            "POS3_0_Signal"."-1001T1 Oriental_Positionen".Start_POS_Position[2] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[2];
+	            "POS3_0_Signal"."-1001T1 Oriental_Positionen".Start_POS_Position[3] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[3];
+	            "POS3_0_Signal"."-1001T1 Oriental_Positionen".Start_POS_Position[4] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[4];
+	            "POS3_0_Signal"."-1001T1 Oriental_Positionen".Start_POS_Position[5] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[5];
+	            
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[0] THEN
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[0] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[0];
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[0]:= "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[0];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[1] THEN
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[1] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[1];
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[1] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[1];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[2] THEN
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[2] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[2];
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[2] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[2];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[3] THEN
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[3] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[3];
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[3] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[3];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[4] THEN
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[4] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[4];
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[4] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[4];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[5] THEN
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Soll_Position[5] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[5];
+	                "POS3_0_Signal"."-1001T1 Oriental_Positionen".Geschwindigkeit[5] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[5];
+	            END_IF;
+	            
+	            
+	            
+	        END_IF;
+	        
+	        
+	        IF ("HMI_SYS"."Aktueller Bildschirm" = #"Manuell_P-Preset_1_Achse_1") THEN
+	            "HMI_COM".HMI_Achse_Steuerung.A_StatusWord := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_StatusWord;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Drehachse := false;
+	            "HMI_COM".HMI_Achse_Steuerung.A_Istwert := REAL_TO_LREAL("POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_FBposition);
+	        END_IF;
+	        
+	    END_REGION
+	    
+	    
+	    
+	    REGION Antrieb 2 Drehachse
+	        // Initialisieren der Steuerwerte 
+	        #R_TRIG_Init_Achse_2(CLK := "HMI_SYS"."Aktueller Bildschirm" = #Manuell_Achse_2);
+	        IF #R_TRIG_Init_Achse_2.Q THEN
+	            "HMI_COM".HMI_Achse_Steuerung.E_Sollwert_Manuell := "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_DDO_Pos;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Verfahrweg := "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_Schrittweite;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Geschwindigkeit_manuell_in_Prozent := "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_DDO_Vel;
+	        END_IF;
+	        
+	        
+	        IF ("HMI_SYS"."Aktueller Bildschirm" = #Manuell_Achse_2) THEN
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_ZHOME := "HMI_COM".HMI_Achse_Steuerung.E_Start_Referenzieren;
+	            "HMI_COM".HMI_Achse_Steuerung.A_StatusWord := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_StatusWord;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Drehachse := true;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Achstyp := 3;
+	            
+	            "HMI_COM".HMI_Achse_Steuerung.A_Istwert := REAL_TO_LREAL("POS3_0_Signal"."-1002T1 Oriental_Steuerung".A_FBposition);
+	            "HMI_COM".HMI_Achse_Steuerung.A_Softw_ES_min := "POS3_0_Signal"."-1002T1 Oriental_Positionen".A_Softw_ES_min_mm;
+	            "HMI_COM".HMI_Achse_Steuerung.A_Softw_ES_max := "POS3_0_Signal"."-1002T1 Oriental_Positionen".A_Softw_ES_max_mm;
+	            
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_DDO_Pos := LREAL_TO_REAL("HMI_COM".HMI_Achse_Steuerung.E_Sollwert_Manuell);
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_Schrittweite := LREAL_TO_REAL("HMI_COM".HMI_Achse_Steuerung.E_Verfahrweg);
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_DDO_Vel := LREAL_TO_REAL("HMI_COM".HMI_Achse_Steuerung.E_Geschwindigkeit_manuell_in_Prozent);
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_DDO_Acc := 100.0;
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_DDO_Dec := 100.0;
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_DDO_Crnt := 100;
+	            
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_Schrittweite_pos := "HMI_COM".HMI_Achse_Steuerung.E_Tipp_pos;
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_Schrittweite_neg := "HMI_COM".HMI_Achse_Steuerung.E_Tipp_neg;
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung".E_Trig_Manuell := "HMI_COM".HMI_Achse_Steuerung.E_Start_manuell;
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung"."E_FW-JOG" := "HMI_COM".HMI_Achse_Steuerung.E_jog_pos;
+	            "POS3_0_Signal"."-1002T1 Oriental_Steuerung"."E_RV-JOG" := "HMI_COM".HMI_Achse_Steuerung.E_jog_neg;
+	        //    "HMI_COM".HMI_Achse_Steuerung.E_Start_manuell := false;
+	        END_IF;
+	       
+	            // Initialisieren der Steuerwerte 
+	            #R_TRIG_Init_Achse_2_Positionen(CLK := "HMI_SYS"."Aktueller Bildschirm" = #Manuell_Positionen_1_Achse_2);
+	        IF #R_TRIG_Init_Achse_2_Positionen.Q THEN
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[0] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[0];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[0] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[0];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[1] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[1];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[1] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[1];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[2] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[2];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[2] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[2];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[3] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[3];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[3] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[3];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[4] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[4];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[4] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[4];
+	                
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[5] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[5];
+	                "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[5] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[5];
+	        END_IF;
+	            
+	            
+	        IF ("HMI_SYS"."Aktueller Bildschirm" = #Manuell_Positionen_1_Achse_2) THEN
+	            
+	            "HMI_COM".HMI_Achse_Steuerung.A_StatusWord := "POS3_0_Signal"."-1002T1 Oriental_Steuerung".A_StatusWord;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Drehachse := false;
+	            "HMI_COM".HMI_Achse_Steuerung.A_Istwert := REAL_TO_LREAL("POS3_0_Signal"."-1002T1 Oriental_Steuerung".A_FBposition);
+	            "HMI_COM".HMI_Achse_Steuerung.A_Softw_ES_min := "POS3_0_Signal"."-1002T1 Oriental_Positionen".A_Softw_ES_min_mm;
+	            "HMI_COM".HMI_Achse_Steuerung.A_Softw_ES_max := "POS3_0_Signal"."-1002T1 Oriental_Positionen".A_Softw_ES_max_mm;
+	            
+	            
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[0] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[0];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[1] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[1];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[2] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[2];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[3] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[3];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[4] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[4];
+	            "HMI_COM".HMI_Achse_Position.Soll_Wert_in_mm_Position[5] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[5];
+	            
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[0] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".POS_OK_Position[0];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[1] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".POS_OK_Position[1];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[2] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".POS_OK_Position[2];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[3] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".POS_OK_Position[3];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[4] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".POS_OK_Position[4];
+	            "HMI_COM".HMI_Achse_Position.POS_OK_Position[5] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".POS_OK_Position[5];
+	            
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[0] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[0];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[1] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[1];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[2] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[2];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[3] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[3];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[4] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[4];
+	            "HMI_COM".HMI_Achse_Position.Soll_Speed_in_Prozent_Position[5] := "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[5];
+	            
+	            "POS3_0_Signal"."-1002T1 Oriental_Positionen".Start_POS_Position[0] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[0];
+	            "POS3_0_Signal"."-1002T1 Oriental_Positionen".Start_POS_Position[1] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[1];
+	            "POS3_0_Signal"."-1002T1 Oriental_Positionen".Start_POS_Position[2] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[2];
+	            "POS3_0_Signal"."-1002T1 Oriental_Positionen".Start_POS_Position[3] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[3];
+	            "POS3_0_Signal"."-1002T1 Oriental_Positionen".Start_POS_Position[4] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[4];
+	            "POS3_0_Signal"."-1002T1 Oriental_Positionen".Start_POS_Position[5] := "HMI_COM".HMI_Achse_Position.Start_POS_Position[5];
+	        
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[0] THEN
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[0] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[0];
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[0] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[0];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[1] THEN
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[1] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[1];
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[1] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[1];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[2] THEN
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[2] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[2];
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[2] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[2];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[3] THEN
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[3] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[3];
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[3] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[3];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[4] THEN
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[4] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[4];
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[4] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[4];
+	            END_IF;
+	            
+	            IF "HMI_COM".HMI_Achse_POS_Überschreiben.Trig_Position_Überschreiben[5] THEN
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Soll_Position[5] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Position_Überschreiben[5];
+	                "POS3_0_Signal"."-1002T1 Oriental_Positionen".Geschwindigkeit[5] := "HMI_COM".HMI_Achse_POS_Überschreiben.Wert_Speed_Überschreiben[5];
+	            END_IF;
+	            
+	        END_IF;
+	        
+	        IF ("HMI_SYS"."Aktueller Bildschirm" = #"Manuell_P-Preset_1_Achse_2") THEN
+	            "HMI_COM".HMI_Achse_Steuerung.A_StatusWord := "POS3_0_Signal"."-1002T1 Oriental_Steuerung".A_StatusWord;
+	            "HMI_COM".HMI_Achse_Steuerung.E_Drehachse := true;
+	            "HMI_COM".HMI_Achse_Steuerung.A_Istwert := REAL_TO_LREAL("POS3_0_Signal"."-1002T1 Oriental_Steuerung".A_FBposition);
+	        END_IF;
+	        
+	        
+	    END_REGION
+	    
+	    
+	    
+	    
+	END_REGION
+	
+	
+	
+	
+	
+	
+END_FUNCTION_BLOCK
+

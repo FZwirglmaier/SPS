@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Position_Ein_Aus" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Position Ein Aus</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Freigabe_Position" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Freigabe Position</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Fertigmeldung_Position" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Fertigmeldung Position</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Station_in_Grundstellung" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Station in Grundstellung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="INIT_Ablauf_Station" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Graph7 Schrittkette wird bei VKE=1 zurückgesetzt</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Schrittkette_aktiv" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit wird im Initialschritt oder bei Richten 0 und im Ersten Schritt VKE=1</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Richten_nach_Not_Aus" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bit wird gesetzt wenn Not-Aus aktiv und Rückgesetzt über Richtenablauf</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Frei" Datatype="Bool" />
+    <Member Name="Messung_GUT_POS" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Messung GUT-ausgewertet auf Position</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Messung_SCHLECHT_1_POS" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Messung Schlecht-ausgewertet auf Position</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Messung_SCHLECHT_2_POS" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Messung Schlecht-ausgewertet auf Position</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Schrittnummer" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Schrittnummer der Ablaufkeitte im Graph7</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Schrittkettenmerker" Datatype="Array[0..15] of Bool" />
+    <Member Name="Bool1" Datatype="Array[0..7] of Bool" />
+    <Member Name="Byte1" Datatype="Array[0..7] of Byte" />
+    <Member Name="Anzahl_Messungen_IST" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wiederholungshäufigkeit IST der Messung</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Anzahl_Messungen_SOLL" Datatype="Int">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wiederholungshäufigkeit SOLL der Messungen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="INT2" Datatype="Array[0..7] of Int" />
+    <Member Name="Realwert1" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Realwert 1</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Realwert2" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Realwert 2</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Realwert3" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Realwert 3</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Realwert4" Datatype="Real">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Realwert 4</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Ablauf Positionen</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

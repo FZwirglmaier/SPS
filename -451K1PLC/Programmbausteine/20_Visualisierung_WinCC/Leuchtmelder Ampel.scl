@@ -1,0 +1,64 @@
+﻿FUNCTION_BLOCK "Leuchtmelder Ampel"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      Ampelbaustein_MG_Instance : "Ampelbaustein_MG";
+      OUT_Ampel_rot { S7_SetPoint := 'True'} : Bool;
+      OUT_Ampel_gelb { S7_SetPoint := 'True'} : Bool;
+      OUT_Ampel_gruen { S7_SetPoint := 'True'} : Bool;
+      OUT_Akkustik { S7_SetPoint := 'True'} : Bool;
+   END_VAR
+
+   VAR_TEMP 
+      TEMP_IO_Kiste_Voll : Bool;
+   END_VAR
+
+
+BEGIN
+	// Anlagenbeleuchtung 
+	"DA_Anlagenbeleuchtung" :=  "HMI_COM".Anlagenbeleuchtung_EIN ;
+	
+	
+	// Ampel
+	// 
+	
+	
+	    #TEMP_IO_Kiste_Voll := FALSE;
+	
+	
+	    #Ampelbaustein_MG_Instance(Sammelstoerung:="HMI_Signale".Sammelstoerung,
+	                               BA_0:="03_Betriebsart_DB".BA_0,
+	                               BA_A:="03_Betriebsart_DB".BA_Automatik,
+	                               BA_M:="03_Betriebsart_DB".BA_Manuell,
+	                               BA_R:="03_Betriebsart_DB".BA_Richten,
+	                               BA_V:="03_Betriebsart_DB".BA_Verwaltung,
+	                               Ablauf_ist_aktiv:="HMI_Signale".Freigabe_Zyklus,
+	                               Blinker:="Clock_1Hz",
+	                               Ampel_rot=> #OUT_Ampel_rot,
+	                               Ampel_gelb=> #OUT_Ampel_gelb,
+	                               Ampel_gruen=> #OUT_Ampel_gruen,
+	                               Akkustik=> #OUT_Akkustik);
+	//        Trigger 1   Trigger 2
+	// AUS    LO          LO
+	// ROT    HI          LO
+	// GELB   HI          HI
+	// GRÜN   LO          HI
+	// 
+	    IF #OUT_Ampel_rot AND
+	        "03_Betriebsart_DB".BA_0 = false THEN
+	        "DA_Anlagenzustand_Trigger_1" := true;
+	        "DA_Anlagenzustand_Trigger_2" := false;
+	    ELSIF #OUT_Ampel_gelb AND
+	        "03_Betriebsart_DB".BA_0 = false THEN
+	        "DA_Anlagenzustand_Trigger_1" := true;
+	        "DA_Anlagenzustand_Trigger_2" := true;
+	    ELSIF #OUT_Ampel_gruen AND
+	        "03_Betriebsart_DB".BA_0 = false THEN
+	        "DA_Anlagenzustand_Trigger_1" := false;
+	        "DA_Anlagenzustand_Trigger_2" := true;
+	    ELSE
+	        "DA_Anlagenzustand_Trigger_1" := false;
+	        "DA_Anlagenzustand_Trigger_2" := false;
+	    END_IF;
+END_FUNCTION_BLOCK
+

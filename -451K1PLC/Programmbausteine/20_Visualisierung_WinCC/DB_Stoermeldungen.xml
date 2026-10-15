@@ -1,0 +1,1160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor>SD</HeaderAuthor>
+      <HeaderFamily>KOMM</HeaderFamily>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Allgemeine" Datatype="&quot;Störmeldung&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="Störmeldung" Datatype="Array[0..31] of Bool">
+            <Subelement Path="0">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM1 Systemdruck nicht vorhanden ! Prüfen und Weiter mit ACK</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM2 Anlagendruck nicht aufgebaut -939S1</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM3 Algemein Richten Gesamtanlage erforderlich</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM4 Richten Gesamtanlage nach Teil neu geladen</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM5</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM6</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM7</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM8</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM9</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM10</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM11</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM12</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM13</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM14</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM15</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="16">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM16</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="17">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM17</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="18">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM18</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="19">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM19</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="20">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM20</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="21">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM21</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="22">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM22</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="23">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM23</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="24">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM24</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="25">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM25</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="26">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM26</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="27">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM27</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="28">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM28</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="29">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM29</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="30">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM30</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="31">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM31</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Allgemeine_1" Datatype="&quot;Störmeldung&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="Störmeldung" Datatype="Array[0..31] of Bool">
+            <Subelement Path="0">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM32 Schutztüre 1 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM33 Schutztüre 2 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM34 Schutztüre 3 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM35 Schutztüre 4 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM36 Schutztüre 5 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM37 Schutztüre 6 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM38 Schutztüre 7 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM39 Schutztüre 8 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM40 Schutztüre 9 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM41 Schutztüre 10 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM42 Schutztüre 11 nicht verriegelt</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM43 Steuerspannung 24V nicht in Ordnung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM44 Not-Aus Taster Bedienpanel</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM45 Not-Aus Taster extern</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM46 Kontrolle Box 1 voll -&gt; leeren -&gt; Start</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM47 Kontrolle Box 2 voll -&gt; leeren -&gt; Start</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="16">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM48 Kontrolle Box 3 voll -&gt; leeren -&gt; Start</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="17">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM49 NIO Box 1 voll -&gt; leeren -&gt; Start</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="18">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM50 NIO Box 2 voll -&gt; leeren -&gt; Start</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="19">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM51 IO Box voll -&gt; leeren -&gt; Start</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="20">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM52 Teiledaten wurden nicht richtig übertragen</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="21">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM53 IO Box in Einhausung voll -&gt; leeren -&gt; Start</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="22">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM54</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="23">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM55 Anlagendruck bei Not-Halt nicht abgebaut -939S2</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="24">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM56 Überspannungsschutz nicht OK</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="25">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM57</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="26">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM58</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="27">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM59</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="28">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM60</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="29">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM61</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="30">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM62</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="31">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM63</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="SM_Wartungszähler" Datatype="&quot;Störmeldung&quot;" Remanence="Retain">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="Störmeldung" Datatype="Array[0..31] of Bool">
+            <Subelement Path="0">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM576 Wartungszähler 1</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM577 Wartungszähler 2</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM578 Wartungszähler 3</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM579 Wartungszähler 4</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM580 Wartungszähler 5</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM581 Wartungszähler 6</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM582 Wartungszähler 7</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM583</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM584</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM585</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM586</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM587</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM588</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM589</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM590</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM591</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="16">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM592</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="17">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM593</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="18">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM594</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="19">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM595</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="20">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM596</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="21">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM597</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="22">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM598</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="23">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM599</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="24">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM600</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="25">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM601</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="26">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM602</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="27">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM603</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="28">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM604</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="29">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM605</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="30">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM606</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="31">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM607</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="Störmeldungen_PN" Datatype="&quot;Störmeldung_PN&quot;" Remanence="Retain">
+      <Sections>
+        <Section Name="None">
+          <Member Name="Störmeldung_PN" Datatype="Array[0..127] of Bool">
+            <Subelement Path="0">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM608 Sammelstörung Profinet</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="1">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM609 Ausfall/Störung +HS1-101A1 Pluto Gateway Profinet</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="2">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM610 Ausfall/Störung +HS1-41T1 Pos 3.0 Drehteller</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="3">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM611 Ausfall/Störung +HS1-43T1 Pos 3.1 Rutsche Anschlag Oriental E-Antrieb</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="4">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM612 Ausfall/Störung +HS1-44T1 Pos 3.1 Spannvorrichtung LinMot</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="5">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM613 Ausfall/Störung +HS1-46T1 Pos 3.3 Ausdrehen Oriental E-Antrieb</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="6">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM614 Ausfall/Störung +HS1-50T1 Pos 3.7 Ausdrehen Oriental E-Antrieb</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="7">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM615 Ausfall/Störung +HS1-55T1 Pos 3.11 Spannvorrichtung LinMot</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="8">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM616 Ausfall/Störung +Feld-941ZX1-943ZX1 Multipolverteiler 1-3</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="9">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM617 Ausfall/Störung +Feld-961VB1 Ventilblock 1</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="10">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM618 Ausfall/Störung -1131A1 POS 3.1 Epson Roboter</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="11">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM619 Ausfall/Störung -2131A1 POS 3.11 Epson Roboter</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="12">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM620 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="13">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM621 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="14">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM622 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="15">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM623 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="16">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM624 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="17">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM625 Ausfall/Störung </MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="18">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM626 Ausfall/Störung </MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="19">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM627 Ausfall/Störung </MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="20">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM628 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="21">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM629 Ausfall/Störung </MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="22">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM630 Ausfall/Störung </MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="23">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM631 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="24">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM632 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="25">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM633 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="26">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM634 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="27">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM635 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="28">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM636 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="29">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM637 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="30">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM638 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="31">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM639 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="32">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM640 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="33">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM641 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="34">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM642 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="35">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM643 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="36">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM644 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="37">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM645 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="38">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM646 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="39">
+              <Comment>
+                <MultiLanguageText Lang="de-DE">SM647 Ausfall/Störung</MultiLanguageText>
+              </Comment>
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="40">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="41">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="42">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="43">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="44">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="45">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="46">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="47">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="48">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="49">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="50">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="51">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="52">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="53">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="54">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="55">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="56">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="57">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="58">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="59">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="60">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="61">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="62">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="63">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="64">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="65">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="66">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="67">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="68">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="69">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="70">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="71">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="72">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="73">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="74">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="75">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="76">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="77">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="78">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="79">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="80">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="81">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="82">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="83">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="84">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="85">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="86">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="87">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="88">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="89">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="90">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="91">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="92">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="93">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="94">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="95">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="96">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="97">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="98">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="99">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="100">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="101">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="102">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="103">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="104">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="105">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="106">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="107">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="108">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="109">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="110">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="111">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="112">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="113">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="114">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="115">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="116">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="117">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="118">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="119">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="120">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="121">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="122">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="123">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="124">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="125">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="126">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+            <Subelement Path="127">
+              <StartValue>FALSE</StartValue>
+            </Subelement>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>DB_Stoermeldungen</Name>
+      <Namespace />
+      <Number>512</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text>Schnittstelle OP_AG 1</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

@@ -1,0 +1,68 @@
+﻿FUNCTION_BLOCK "Taktzeitermittlung_Start_Stop_V1_0"
+TITLE = Taktzeitermittlung Start Stop
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : FA
+VERSION : 1.0
+//Ausgabe der Zeit zwischen 1 und 0 Signal am Starttrigger 27.03.2024 FA
+   VAR_INPUT 
+      E_Starttrigger : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      A_letzteZykluszeit : Time;
+   END_VAR
+   VAR_OUTPUT DB_SPECIFIC
+      A_letze10Zyklen : Array[0..10] of Time := [T#1MS, T#765MS, T#759MS, T#762MS, T#758MS, T#763MS, T#768MS, T#763MS, T#766MS, T#757MS, T#766MS];
+   END_VAR
+
+   VAR 
+      Flanke_Start {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      Flanke_Stop {InstructionName := 'F_TRIG'; LibVersion := '1.0'} : F_TRIG;
+      Startzeit { S7_SetPoint := 'True'} : LDT;
+      Stopzeit : LDT;
+      Read_Time : Int;
+      Taktzeit : Time;
+      Zykluszeit_temp : Time;
+      "10_Zyklen" : Array[0..10] of Time;
+   END_VAR
+
+   VAR_TEMP 
+      i : Int;
+   END_VAR
+
+
+BEGIN
+	(*
+	Zeit zwischen Positiver und negativer Flanke am Triggereingang wird ermittelt und am Ausgang letzte Zykluszeit ausgegeben
+	zusätzlichwerden die letzten 10 Zykluszeiten am Ausgangangsarray ausgegeben *)
+	
+	#Flanke_Start(CLK := #E_Starttrigger);
+	    #Flanke_Stop(CLK := #E_Starttrigger);
+	    
+	    IF #Flanke_Start.Q THEN
+	     
+	        #Read_Time := RD_SYS_T(#Startzeit);
+	    
+	       
+	    END_IF;
+	    
+	    
+	    IF #Flanke_Stop.Q THEN
+	        #Read_Time := RD_SYS_T(#Stopzeit);
+	        
+	        #Taktzeit := LTIME_TO_TIME(LDT_TO_LTIME(T_SUB(IN1 := #Stopzeit, IN2 :=#Startzeit)));
+	        #"10_Zyklen"[0] := #Taktzeit;
+	        FOR #i := 10 TO 1 BY - 1 DO
+	            #"10_Zyklen"[#i] := #"10_Zyklen"[#i - 1]
+	            ;
+	        END_FOR;
+	        
+	        #A_letzteZykluszeit := #"10_Zyklen"[1];
+	        #A_letze10Zyklen := #"10_Zyklen";
+	        
+	        #Zykluszeit_temp := t#0s;
+	        #Stopzeit := #Startzeit;
+	    END_IF;
+	    
+END_FUNCTION_BLOCK
+

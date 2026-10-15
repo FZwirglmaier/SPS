@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="RemoteIO_IN" Datatype="Word" />
+    <Member Name="OperNumSel" Datatype="Word" />
+    <Member Name="FixedIO_IN" Datatype="&quot;AZ_FixedIO_PLC2Drv&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="DDO_Type" Datatype="Word" />
+    <Member Name="DDO_Pos" Datatype="DInt" />
+    <Member Name="DDO_Vel" Datatype="DInt" />
+    <Member Name="DDO_Acc" Datatype="UDInt" />
+    <Member Name="DDO_Dec" Datatype="UDInt" />
+    <Member Name="DDO_Crnt" Datatype="UInt" />
+    <Member Name="DDO_Trans" Datatype="Word" />
+    <Member Name="Reserve" Datatype="Word" />
+    <Member Name="ReadPrmID" Datatype="Word" />
+    <Member Name="WriteReq" Datatype="Word" />
+    <Member Name="WritePrmID" Datatype="Word" />
+    <Member Name="WriteData" Datatype="DInt" />
+  </Section>
+</Sections></Interface>
+      <Name>AZ_Struct_PLC2Drv</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

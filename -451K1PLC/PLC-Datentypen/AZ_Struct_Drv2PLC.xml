@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="RemoteIO_OUT" Datatype="Word" />
+    <Member Name="OperNumSel_R" Datatype="Word" />
+    <Member Name="FixedIO_OUT" Datatype="&quot;AZ_FixedIO_Drv2PLC&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="PresentAlm" Datatype="Word" />
+    <Member Name="DetectPos" Datatype="DInt" />
+    <Member Name="DetectVel" Datatype="DInt" />
+    <Member Name="CmdPos" Datatype="DInt" />
+    <Member Name="Torque" Datatype="Int" />
+    <Member Name="OpeCrnt" Datatype="UInt" />
+    <Member Name="Information" Datatype="DWord" />
+    <Member Name="Reserve" Datatype="Word" />
+    <Member Name="ReadPrmID_R" Datatype="Word" />
+    <Member Name="RW_Status" Datatype="Word" />
+    <Member Name="WritePrmID_R" Datatype="Word" />
+    <Member Name="ReadData" Datatype="DInt" />
+    <Member Name="Monitor0" Datatype="DInt" />
+    <Member Name="Monitor1" Datatype="DInt" />
+    <Member Name="Monitor2" Datatype="DInt" />
+    <Member Name="Monitor3" Datatype="DInt" />
+  </Section>
+</Sections></Interface>
+      <Name>AZ_Struct_Drv2PLC</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

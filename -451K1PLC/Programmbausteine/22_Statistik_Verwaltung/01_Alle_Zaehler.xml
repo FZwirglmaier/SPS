@@ -1,0 +1,1392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.FB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Zaehlsignal_Gesamt" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_LabView" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_1 Palette 1" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_2 Palette 2" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_3 Palette 3" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_4 Palette 4" Datatype="Bool" />
+    <Member Name="Zaehlsignal_IO_5 Palette 5" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_1_Palette NIO" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_2" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_3" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_4" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_5" Datatype="Bool" />
+    <Member Name="Zaehlsignal_NIO_6" Datatype="Bool" />
+  </Section>
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>01_Alle_Zaehler</Name>
+      <Namespace />
+      <Number>48</Number>
+      <ProgrammingLanguage>FBD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="3" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler Alle Teile" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler Alle Teile" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler Alle Teile" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_Gesamt" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="5" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="6" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Zählerstand Teile Gesamt</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="8" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler IO Teile" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler IO Teile" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler IO Teile" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_IO" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="39">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="9" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Zählerstand IO gesamt</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="D" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler NIO Teile" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler NIO Teile" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="Zaehler NIO Teile" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_NIO" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="E" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="10" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Zählerstand NIO gesamt</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 1" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 1" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 1" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_IO_1 Palette 1" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="15" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="16" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>IO Zähler 1</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="17" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 2" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 2" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 2" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_IO_2 Palette 2" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="37">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="35">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="18" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="19" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1A" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>IO Zähler 2</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="1C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 3" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 3" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 3" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_IO_3 Palette 3" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="20" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>IO Zähler 3</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="21" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 4" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 4" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 4" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_IO_4 Palette 4" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="22" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>IO Zähler 4</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="26" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 5" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 5" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="IO 5" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_IO_5 Palette 5" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="27" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="28" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="29" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>IO Zähler 5</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="29">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 1" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 1" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 1" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_NIO_1_Palette NIO" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="45">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>NIO Zähler 1</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="30" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="27">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="28">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 2" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 2" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 2" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_NIO_2" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="43">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="31" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="32" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="33" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>NIO Zähler 2</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="29">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="30">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 3" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 3" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 3" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_NIO_3" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="45">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="38" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="39" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>NIO Zähler 3</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3A" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="24">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="25">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 4" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 4" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 4" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_NIO_4" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="40">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="41">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3B" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="3D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>NIO Zähler 4</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3F" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StatementList xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StatementList/v5">
+  <StlStatement UId="26">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+  <StlStatement UId="27">
+    <StlToken Text="CALL" />
+    <Access Scope="Call">
+      <CallInfo Name="Zählerfunktion &gt;1000" BlockType="FC">
+        <Parameter Name="Schichtzaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler_Reset" Section="Input" Type="Bool">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_COM" />
+              <Component Name="Reset_Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Schichtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 5" />
+              <Component Name="Schichtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Auftragszaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 5" />
+              <Component Name="Auftragszaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Gesamtzaehler" Section="InOut" Type="DInt">
+          <Access Scope="GlobalVariable">
+            <Symbol>
+              <Component Name="HMI_Statistik" />
+              <Component Name="NIO 5" />
+              <Component Name="Gesamtzaehler" />
+            </Symbol>
+          </Access>
+        </Parameter>
+        <Parameter Name="Zaehlsignal" Section="InOut" Type="Bool">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="Zaehlsignal_NIO_5" />
+            </Symbol>
+          </Access>
+        </Parameter>
+      </CallInfo>
+    </Access>
+  </StlStatement>
+  <StlStatement UId="42">
+    <StlToken Text="EMPTY_LINE" />
+  </StlStatement>
+</StatementList></NetworkSource>
+          <ProgrammingLanguage>STL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="40" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="42" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="43" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>NIO Zähler 5</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="44" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v4">
+  <Token Text="IF" UId="21" />
+  <Blank UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="HMI_COM" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="27" />
+      <Component Name="Reset_Schichtzaehler" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank UId="29" />
+  <Token Text="THEN" UId="30" />
+  <NewLine UId="31" />
+  <Blank Num="4" UId="32" />
+  <Access Scope="GlobalVariable" UId="33">
+    <Symbol UId="34">
+      <Component Name="HMI_COM" UId="35">
+        <BooleanAttribute Name="HasQuotes" UId="36">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="37" />
+      <Component Name="Reset_Schichtzaehler" UId="38" />
+    </Symbol>
+  </Access>
+  <Blank UId="39" />
+  <Token Text=":=" UId="40" />
+  <Blank UId="41" />
+  <Access Scope="LiteralConstant" UId="42">
+    <Constant UId="43">
+      <ConstantValue UId="45">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="46" />
+  <NewLine UId="47" />
+  <Token Text="END_IF" UId="48" />
+  <Token Text=";" UId="49" />
+  <NewLine Num="2" UId="50" />
+  <Token Text="IF" UId="51" />
+  <Blank UId="52" />
+  <Access Scope="GlobalVariable" UId="53">
+    <Symbol UId="54">
+      <Component Name="HMI_COM" UId="55">
+        <BooleanAttribute Name="HasQuotes" UId="56">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="57" />
+      <Component Name="Reset_Auftragszaehler" UId="58" />
+    </Symbol>
+  </Access>
+  <Blank UId="59" />
+  <Token Text="THEN" UId="60" />
+  <NewLine UId="61" />
+  <Blank Num="4" UId="62" />
+  <Access Scope="GlobalVariable" UId="63">
+    <Symbol UId="64">
+      <Component Name="HMI_COM" UId="65">
+        <BooleanAttribute Name="HasQuotes" UId="66">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="67" />
+      <Component Name="Reset_Auftragszaehler" UId="68" />
+    </Symbol>
+  </Access>
+  <Blank UId="69" />
+  <Token Text=":=" UId="70" />
+  <Blank UId="71" />
+  <Access Scope="LiteralConstant" UId="72">
+    <Constant UId="73">
+      <ConstantValue UId="75">false</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="76" />
+  <NewLine UId="77" />
+  <Token Text="END_IF" UId="78" />
+  <Token Text=";" UId="79" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="45" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="47" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>de-DE</Culture>
+                  <Text>Reset Taster</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="49" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4A" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FB>
+</Document>

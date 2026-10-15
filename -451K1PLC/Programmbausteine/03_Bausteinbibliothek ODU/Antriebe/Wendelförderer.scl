@@ -1,0 +1,222 @@
+﻿FUNCTION_BLOCK "Wendelförderer"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      LS_Teil_vorhanden : Bool;
+      LS_Puffer_voll : Bool;
+      Pufferzeit : Time;
+      Vorlaufzeit_abblasen : Time;
+      Nachlaufzeit_abblasen : Time;
+      LFZ_Bunker_SM : Time;
+      Topf_leer : Bool;
+      ACK : Bool;
+      LS_Hell_Dunkel_aktiv : Bool;
+      LFZ_Puffer_SM : Time;
+      VZ_Teil_vorhanden : Time;
+      Nachlaufzeit_Bunker : Time;
+      Automatik : Bool;
+      Manuell : Bool;
+      LFZ_Teile_SM : Time;
+   END_VAR
+
+   VAR_OUTPUT 
+      WF_Start : Bool;
+      Linearfoerderer_Start : Bool;
+      SM_LS_Teileerkennung : Bool;
+      SM_Bunker : Bool;
+      Bunker_Start : Bool;
+      SM_LS_Puffer : Bool;
+   END_VAR
+
+   VAR_IN_OUT 
+      WF_abblasen : Bool;
+   END_VAR
+
+   VAR 
+      TON_WF_HT {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TON_WF_Freigabe {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      WF_Freigabe : Bool;
+      TON_WF_Stop {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TON_WF_abblasen_Vorlauf {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      Nachlauf_Start : Bool;
+      TON_WF_abblasen_Nachlauf {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TON_Bunker_Aus {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TON_Topf_leer {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TON_SM_Puffer {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TON_LS_Teil_vorhanden {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      LS_Teil_vorhanden_mit_VZ : Bool;
+      TON_SM_Teile {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      TON_SM_Bunker {InstructionName := 'TON_TIME'; LibVersion := '1.0'} : TON_TIME;
+      Bunker_fertig : Bool;
+      HM_LS_Dunkel : Bool;
+      F_TRIG_Hell_Dunkel_aktiv {InstructionName := 'F_TRIG'; LibVersion := '1.0'} : F_TRIG;
+      SM_LS_Hell_Dunkel : Bool;
+      HM_Topf_leer : Bool;
+      HM_leer_nach_Zeit : Bool;
+      F_TRIG_1 {InstructionName := 'F_TRIG'; LibVersion := '1.0'} : F_TRIG;
+      F_TRIG_2 {InstructionName := 'F_TRIG'; LibVersion := '1.0'} : F_TRIG;
+   END_VAR
+
+
+BEGIN
+	    (*---------------------------WF Freigabe------------------------*)
+	#TON_WF_HT(IN := NOT #LS_Teil_vorhanden,
+	           PT := t#5s);
+	
+	
+	#TON_WF_Freigabe(IN := NOT #LS_Puffer_voll OR #TON_WF_HT.Q, PT := T#10ms);
+	
+	IF (#Automatik OR #Manuell) AND #TON_WF_Freigabe.Q THEN
+	    #WF_Freigabe := 1;
+	END_IF;
+	
+	#TON_WF_Stop(IN := #LS_Puffer_voll, PT := #Pufferzeit);
+	
+	IF #TON_WF_Stop.Q OR NOT (#Automatik OR #Manuell) THEN
+	    #WF_Freigabe := 0;
+	END_IF;
+	
+	
+	(*---------------------------Teile abblasen---------------------*)
+	
+	(*Vorlaufzeit*)
+	#TON_WF_abblasen_Vorlauf(IN:= #WF_abblasen, PT:=#Vorlaufzeit_abblasen);
+	
+	(*Nachlaufzeit*)
+	
+	#F_TRIG_2(CLK:= #WF_Start);
+	
+	IF #F_TRIG_2.Q THEN
+	    #Nachlauf_Start := 1;
+	END_IF;
+	
+	IF #TON_WF_abblasen_Nachlauf.Q THEN
+	    #Nachlauf_Start := 0;
+	END_IF;
+	
+	#TON_WF_abblasen_Nachlauf(IN:= #Nachlauf_Start, PT:=#Nachlaufzeit_abblasen);
+	
+	(*Abblasen*)
+	IF #WF_Freigabe THEN
+	    #WF_abblasen := 1;
+	END_IF;
+	
+	
+	#F_TRIG_1(CLK:= #Nachlauf_Start);
+	
+	IF #F_TRIG_1.Q THEN
+	    #WF_abblasen := 0;
+	END_IF;
+	
+	
+	(*---------------------------WF Ein-----------------------------*)
+	
+	IF  #WF_Freigabe AND NOT #SM_LS_Teileerkennung THEN
+	    #WF_Start := 1;
+	ELSE
+	    #WF_Start := 0;
+	END_IF;
+	
+	
+	(*---------------------------Linearförderer---------------------*)
+	
+	IF (#Manuell OR #Automatik) THEN
+	    #Linearfoerderer_Start := 1;
+	ELSE
+	    #Linearfoerderer_Start := 0;
+	END_IF;
+	
+	(*-----------------------Bunker---------------------------------*)
+	IF #Topf_leer AND #WF_Start AND NOT #HM_leer_nach_Zeit AND NOT #SM_Bunker THEN
+	    #HM_Topf_leer := 1;
+	ELSE
+	    #HM_Topf_leer := 0;
+	END_IF;
+	
+	#TON_Topf_leer(IN:=#HM_Topf_leer, PT:=t#5s);
+	
+	IF #TON_Topf_leer.Q THEN
+	    #HM_leer_nach_Zeit := 1;
+	END_IF;
+	
+	IF #TON_Bunker_Aus.Q THEN
+	    #HM_leer_nach_Zeit := 0;
+	    #Bunker_fertig := 1;
+	END_IF;
+	
+	#TON_Bunker_Aus(IN := #HM_leer_nach_Zeit, PT := #Nachlaufzeit_Bunker);
+	
+	IF (#Automatik OR #Manuell) AND #HM_leer_nach_Zeit THEN
+	    #Bunker_Start := 1;
+	ELSE
+	    #Bunker_Start := 0;
+	END_IF;
+	
+	(*-----------------------Störungen------------------------------*)
+	
+	
+	(*Laufzeitüberwachung LS Teileerkennung*)
+	#TON_SM_Teile(IN := (#WF_Start OR #LS_Puffer_voll) AND NOT #LS_Teil_vorhanden AND NOT #SM_LS_Teileerkennung, PT := #LFZ_Teile_SM);
+	
+	IF #TON_SM_Teile.Q THEN
+	    #SM_LS_Teileerkennung := TRUE;
+	END_IF;
+	
+	IF #SM_LS_Teileerkennung AND #ACK THEN
+	    #SM_LS_Teileerkennung := FALSE;
+	END_IF;
+	
+	(*Laufzeitüberwachung Bunker*)
+	#TON_SM_Bunker(IN := (#Bunker_fertig AND #WF_Start AND #Topf_leer), PT := #LFZ_Bunker_SM);
+	
+	IF #Bunker_fertig AND #WF_Start AND NOT #Topf_leer THEN
+	    #Bunker_fertig := FALSE;
+	END_IF;
+	
+	IF #TON_SM_Bunker.Q THEN
+	    #SM_Bunker := TRUE;
+	END_IF;
+	
+	IF #SM_Bunker AND #ACK THEN
+	    #SM_Bunker := FALSE;
+	    #Bunker_fertig := TRUE;
+	END_IF;
+	
+	(*Laufzeitüberwachung LS PUFFER*)
+	#TON_SM_Puffer(IN := #WF_Start AND NOT #Topf_leer AND NOT #ACK, PT := #LFZ_Puffer_SM);
+	
+	IF #TON_SM_Puffer.Q THEN
+	    #SM_LS_Puffer := TRUE;
+	END_IF;
+	
+	IF #SM_LS_Puffer AND #ACK THEN
+	    #SM_LS_Puffer := FALSE;
+	END_IF;
+	
+	(*VZ_LS_Teilvorhanden*)
+	
+	#TON_LS_Teil_vorhanden(IN:= #LS_Teil_vorhanden AND NOT #SM_LS_Hell_Dunkel, PT:= #VZ_Teil_vorhanden);
+	
+	IF #TON_LS_Teil_vorhanden.Q THEN
+	    #LS_Teil_vorhanden_mit_VZ := TRUE;
+	ELSE
+	    #LS_Teil_vorhanden_mit_VZ := FALSE;
+	END_IF;
+	
+	(*SM_Lichtschranke nicht Hell_Dunkel geworden*)
+	(*Wird ausgelöst wenn die Aktivierung null wird und die Lichtschranke nicht null war*)
+	IF (#LS_Hell_Dunkel_aktiv AND NOT #LS_Teil_vorhanden) THEN
+	    #HM_LS_Dunkel := TRUE;
+	END_IF;
+	
+	#F_TRIG_Hell_Dunkel_aktiv(CLK:= #LS_Hell_Dunkel_aktiv);
+	
+	IF (#F_TRIG_Hell_Dunkel_aktiv.Q AND NOT #HM_LS_Dunkel) THEN
+	    #SM_LS_Hell_Dunkel := TRUE;
+	END_IF;
+	
+	IF (NOT #LS_Hell_Dunkel_aktiv AND #SM_LS_Hell_Dunkel AND #ACK) THEN
+	    #SM_LS_Hell_Dunkel := FALSE;
+	END_IF;
+END_FUNCTION_BLOCK
+

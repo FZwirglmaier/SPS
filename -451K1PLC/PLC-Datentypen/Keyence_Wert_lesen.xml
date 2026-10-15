@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Read" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Datensatzübertragung durchführen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="ID" Datatype="HW_IO">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Hardware-Kennung der Hardware-Baugruppe </MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Index" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Datensatznummer</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="MLen" Datatype="UInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Maximale Länge der zu lesenden Datensatzinformation in Byte.</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Valid" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Neuer Datensatz wurde empfangen und ist gültig.</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Busy" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">BUSY = 1: Der Lesevorgang ist noch nicht beendet.</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Error" Datatype="Bool">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">ERROR = 1: Beim Lesevorgang trat ein Fehler auf.</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Status" Datatype="DWord">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Bausteinstatus bzw. Fehlerinformation.</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Len" Datatype="UInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Länge der gelesenen Datensatzinformation</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Record" Datatype="DInt">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zielbereich für den gelesenen Datensatz.</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>Keyence_Wert_lesen</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

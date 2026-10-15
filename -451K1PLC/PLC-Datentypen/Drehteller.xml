@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Wartungsintervall" Datatype="DInt" />
+    <Member Name="Fertigmeldung_Drehteller" Datatype="Bool" />
+    <Member Name="Aktorzyklen" Datatype="DInt" />
+    <Member Name="Auto_Frg_Drehen_Vorwärts" Datatype="Bool" />
+    <Member Name="Auto_Frg_Drehen_Rückwärts" Datatype="Bool" />
+    <Member Name="Manu_Frg_Drehen_Vorwärts" Datatype="Bool" />
+    <Member Name="Manu_Frg_Drehen_Rückwärts" Datatype="Bool" />
+    <Member Name="Richt_Frg_Drehen_Vorwärts" Datatype="Bool" />
+    <Member Name="Richt_Frg_Drehen_Rückwärts" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>Drehteller</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

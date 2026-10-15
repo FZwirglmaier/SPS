@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <AssignedProDiagFB>ProDiag_Allgemein</AssignedProDiagFB>
+      <InstanceOfName>DataFromSafey</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Q_NOT-HALT Taster1" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="Q_NOT-HALT Extern 1" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="Q_NOT-HALT Extern 2" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Schütz mit DE_NOT-HALT_Schuetz_Rueckf" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Schütz mit IS_Rueck_Entlueftung" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Schütz mit IS_Druckbereich_entlueftet" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Türe 1 RST mit DE_NOT-HALT_Tuere_1_Rueck_RST" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Türe 1 mit DE_NOT-HALT_Tuere_1_Rueckf" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Türe 1 mit DE_Antriebe_Rueckf" Datatype="Bool">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Türe 2 RST mit DE_NOT-HALT_Tuere_2_Rueck_RST" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Türe 2 mit DE_NOT-HALT_Tuere_2_Rueckf" Datatype="Bool">
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="FDBACK_NOT-HALT Schalter OK mit DE_NOT-HALT_Schalter_OK_Rueckf" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>DataFromSafey_DB</Name>
+      <Namespace />
+      <Number>70</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

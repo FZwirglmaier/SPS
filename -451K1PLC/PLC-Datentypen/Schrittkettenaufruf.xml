@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="OFF_SQ" Datatype="Bool" />
+    <Member Name="INIT_SQ" Datatype="Bool" />
+    <Member Name="ACK_EF" Datatype="Bool" />
+    <Member Name="HALT_SQ" Datatype="Bool" />
+    <Member Name="HALT_TM" Datatype="Bool" />
+    <Member Name="ZERO_OP" Datatype="Bool" />
+    <Member Name="EN_IL" Datatype="Bool" />
+    <Member Name="EN_SV" Datatype="Bool" />
+    <Member Name="S_PREV" Datatype="Bool" />
+    <Member Name="S_NEXT" Datatype="Bool" />
+    <Member Name="SW_AUTO" Datatype="Bool" />
+    <Member Name="SW_TAP" Datatype="Bool" />
+    <Member Name="SW_MAN" Datatype="Bool" />
+    <Member Name="S_SEL" Datatype="Int" />
+    <Member Name="S_ON" Datatype="Bool" />
+    <Member Name="S_OFF" Datatype="Bool" />
+    <Member Name="T_PUSH" Datatype="Bool" />
+    <Member Name="S_NO" Datatype="Int" />
+    <Member Name="S_MORE" Datatype="Bool" />
+    <Member Name="S_ACTIVE" Datatype="Bool" />
+    <Member Name="ERR_FLT" Datatype="Bool" />
+    <Member Name="SQ_HALTED" Datatype="Bool" />
+    <Member Name="TM_HALTED" Datatype="Bool" />
+    <Member Name="OP_ZEROED" Datatype="Bool" />
+    <Member Name="IL_ENABELD" Datatype="Bool" />
+    <Member Name="SV_ENABELD" Datatype="Bool" />
+    <Member Name="AUTO_ON" Datatype="Bool" />
+    <Member Name="TAP_ON" Datatype="Bool" />
+    <Member Name="MAN_ON" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>Schrittkettenaufruf</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

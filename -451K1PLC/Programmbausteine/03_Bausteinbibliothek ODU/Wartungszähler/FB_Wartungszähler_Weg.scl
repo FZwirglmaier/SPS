@@ -1,0 +1,51 @@
+﻿FUNCTION_BLOCK "FB_Wartungszähler_Weg"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT RETAIN
+      Weg_soll : DInt;
+      Zyklus_Impuls : Bool;
+      Weg_pro_Impuls : DInt;
+      Zähler_reset : Bool;
+   END_VAR
+
+   VAR_OUTPUT RETAIN
+      Weg_seit_Wartung : DInt;
+      Weg_bis_Wartung : DInt;
+      Gesamtweg : DInt;
+      SM_Wartung_fällig : Bool;
+   END_VAR
+
+   VAR 
+      R_TRIG_Zyklus_Impuls {InstructionName := 'R_TRIG'; LibVersion := '1.0'; S7_SetPoint := 'False'} : R_TRIG;
+   END_VAR
+
+
+BEGIN
+	
+	// Wartungszähler zurücksetzen
+	IF #Zähler_reset THEN
+	    #Weg_seit_Wartung := 0;
+	END_IF;
+	
+	// Positive Flanke des Zyklusimpulses auswerten
+	#R_TRIG_Zyklus_Impuls(CLK := #Zyklus_Impuls);
+	
+	
+	IF #R_TRIG_Zyklus_Impuls.Q THEN
+	    #Gesamtweg := #Gesamtweg + #Weg_pro_Impuls;
+	    #Weg_seit_Wartung := #Weg_seit_Wartung + #Weg_pro_Impuls;
+	END_IF;
+	
+	
+	// Restzyklen berechnen
+	// IF #Weg_seit_Wartung < #Weg_soll THEN
+	     #Weg_bis_Wartung := #Weg_soll - #Weg_seit_Wartung;
+	// ELSE
+	//     #Weg_bis_Wartung := 0;
+	// END_IF;
+	
+	// Wartungsmeldung setzen
+	#SM_Wartung_fällig := (#Weg_seit_Wartung >= #Weg_soll);
+	
+END_FUNCTION_BLOCK
+

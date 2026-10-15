@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Statistik_BA" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderung kommt von HMI</MultiLanguageText>
+      </Comment>
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Automatik_BA" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderung kommt von HMI</MultiLanguageText>
+      </Comment>
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Manuell_BA" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderung kommt von HMI</MultiLanguageText>
+      </Comment>
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Verwalten_BA" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderung kommt von HMI</MultiLanguageText>
+      </Comment>
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Richten_BA" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Anforderung kommt von HMI</MultiLanguageText>
+      </Comment>
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Dauer_Manuell_Betrieb" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Dauerbetrieb = 1 / Manuellbetrieb = 0</MultiLanguageText>
+      </Comment>
+      <StartValue>TRUE</StartValue>
+    </Member>
+    <Member Name="Stop_nach_Zyklus" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Ablauf_aktiv" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Leerfahren_angewaehlt" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Leerfahren_Laeuft" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Leerfahren_ende" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Freigabe_Zyklus" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Zyklus Freigegeben</MultiLanguageText>
+      </Comment>
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="FPStarttaste" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Stop_Von_Stoermeldung" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="Sammelstoerung" Datatype="Bool" Remanence="Retain">
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="SK_aktiv" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">min 1 Schrittkettenablauf ist aktiv</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>HMI_Signale</Name>
+      <Namespace />
+      <Number>500</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

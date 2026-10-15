@@ -1,0 +1,104 @@
+﻿FUNCTION_BLOCK "02_Wartungszaehler"
+TITLE = Wartungszähler
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : Falter
+FAMILY : HMI
+VERSION : 1.0
+//Zählerbaustein für Anlgenwartung 25.01.2024
+   VAR 
+      Wartungszähler_Positionierachse_Zyklen { S7_SetPoint := 'False'} : "FB_Wartungszähler_Zyklen";
+      Wartungszähler_Drehachse_Zyklen { S7_SetPoint := 'False'} : "FB_Wartungszähler_Zyklen";
+      Wartungszähler_Positionierachse_Weg { S7_SetPoint := 'False'} : "FB_Wartungszähler_Weg";
+      Wartungszähler_Drehachse_Weg { S7_SetPoint := 'False'} : "FB_Wartungszähler_Weg";
+   END_VAR
+   VAR RETAIN
+      Positionierachse_Weg { S7_SetPoint := 'True'} : DInt;
+      Drehachse_Weg { S7_SetPoint := 'True'} : DInt;
+   END_VAR
+
+
+BEGIN
+	
+	
+	REGION Positionierachse Zyklen
+	     
+	     #Wartungszähler_Positionierachse_Zyklen(Zyklen_soll:="HMI_Wartungszähler".Wartungszähler_Positionierachse_Zyklen.Zyklen_soll,
+	                                             Zyklus_Impuls:= "POS3_0_Antriebe_DB"."-1001T1_Oriental".Outputdata_FixedIO_PLC2Drv.TRIG,
+	                                             Zähler_reset:="HMI_Wartungszähler".Wartungszähler_Positionierachse_Zyklen.Zähler_reset,
+	                                             Zyklen_seit_Wartung=>"HMI_Wartungszähler".Wartungszähler_Positionierachse_Zyklen.Zyklen_seit_Wartung,
+	                                             Zyklen_bis_Wartung=>"HMI_Wartungszähler".Wartungszähler_Positionierachse_Zyklen.Zyklen_bis_Wartung,
+	                                             Gesamtzyklen=>"HMI_Wartungszähler".Wartungszähler_Positionierachse_Zyklen.Gesamtzyklen,
+	                                             SM_Wartung_fällig=>"HMI_Wartungszähler".Wartungszähler_Positionierachse_Zyklen.SM_Wartung_fällig);
+	    
+	    IF "HMI_Wartungszähler".Wartungszähler_Positionierachse_Zyklen.Zähler_reset THEN
+	        "HMI_Wartungszähler".Wartungszähler_Positionierachse_Zyklen.Zähler_reset := false;
+	    END_IF;
+	   
+	END_REGION
+	
+	
+	REGION Drehachse Zyklen
+	    
+	    
+	    #Wartungszähler_Drehachse_Zyklen(Zyklen_soll := "HMI_Wartungszähler".Wartungszähler_Drehachse_Zyklen.Zyklen_soll,
+	                                     Zyklus_Impuls := "POS3_0_Antriebe_DB"."-1002T2_Oriental_Drehachse".Outputdata_FixedIO_PLC2Drv.TRIG,
+	                                     Zähler_reset := "HMI_Wartungszähler".Wartungszähler_Drehachse_Zyklen.Zähler_reset,
+	                                     Zyklen_seit_Wartung => "HMI_Wartungszähler".Wartungszähler_Drehachse_Zyklen.Zyklen_seit_Wartung,
+	                                     Zyklen_bis_Wartung => "HMI_Wartungszähler".Wartungszähler_Drehachse_Zyklen.Zyklen_bis_Wartung,
+	                                     Gesamtzyklen => "HMI_Wartungszähler".Wartungszähler_Drehachse_Zyklen.Gesamtzyklen,
+	                                     SM_Wartung_fällig => "HMI_Wartungszähler".Wartungszähler_Drehachse_Zyklen.SM_Wartung_fällig);
+	    
+	    IF "HMI_Wartungszähler".Wartungszähler_Drehachse_Zyklen.Zähler_reset THEN
+	        "HMI_Wartungszähler".Wartungszähler_Drehachse_Zyklen.Zähler_reset := false;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	REGION Positionierachse Weg
+	    IF "POS3_0_Antriebe_DB"."-1001T1_Oriental".Outputdata_FixedIO_PLC2Drv.TRIG THEN
+	        #Positionierachse_Weg := ABS(("POS3_0_Antriebe_DB"."-1001T1_Oriental".Outputdata_DDO.DDO_Pos - "POS3_0_Antriebe_DB"."-1001T1_Oriental".MonitorData.FBposition) / 100);
+	    END_IF;
+	    
+	   
+	    #Wartungszähler_Positionierachse_Weg(Weg_soll := "HMI_Wartungszähler".Wartungszähler_Positionierachse_Weg.Weg_soll,
+	                                         Zyklus_Impuls := "POS3_0_Antriebe_DB"."-1001T1_Oriental".Outputdata_FixedIO_PLC2Drv.TRIG,
+	                                         Weg_pro_Impuls := #Positionierachse_Weg,
+	                                         Zähler_reset := "HMI_Wartungszähler".Wartungszähler_Positionierachse_Weg.Zähler_reset,
+	                                         Weg_seit_Wartung => "HMI_Wartungszähler".Wartungszähler_Positionierachse_Weg.Weg_seit_Wartung,
+	                                         Weg_bis_Wartung => "HMI_Wartungszähler".Wartungszähler_Positionierachse_Weg.Weg_bis_Wartung,
+	                                         Gesamtweg => "HMI_Wartungszähler".Wartungszähler_Positionierachse_Weg.Gesamtweg,
+	                                         SM_Wartung_fällig => "HMI_Wartungszähler".Wartungszähler_Positionierachse_Weg.SM_Wartung_fällig);
+	    
+	    
+	    
+	    IF "HMI_Wartungszähler".Wartungszähler_Positionierachse_Weg.Zähler_reset THEN
+	        "HMI_Wartungszähler".Wartungszähler_Positionierachse_Weg.Zähler_reset := false;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+	REGION Drehachse Weg
+	    IF "POS3_0_Antriebe_DB"."-1002T2_Oriental_Drehachse".Outputdata_FixedIO_PLC2Drv.TRIG THEN
+	        #Drehachse_Weg := ABS(("POS3_0_Antriebe_DB"."-1002T2_Oriental_Drehachse".Outputdata_DDO.DDO_Pos - "POS3_0_Antriebe_DB"."-1002T2_Oriental_Drehachse".MonitorData.FBposition) / 100);
+	    END_IF;
+	    
+	    #Wartungszähler_Drehachse_Weg(Weg_soll := "HMI_Wartungszähler".Wartungszähler_Drehachse_Weg.Weg_soll,
+	                                  Zyklus_Impuls := "POS3_0_Antriebe_DB"."-1002T2_Oriental_Drehachse".Outputdata_FixedIO_PLC2Drv.TRIG,
+	                                  Weg_pro_Impuls := #Drehachse_Weg,
+	                                  Zähler_reset := "HMI_Wartungszähler".Wartungszähler_Drehachse_Weg.Zähler_reset,
+	                                  Weg_seit_Wartung => "HMI_Wartungszähler".Wartungszähler_Drehachse_Weg.Weg_seit_Wartung,
+	                                  Weg_bis_Wartung => "HMI_Wartungszähler".Wartungszähler_Drehachse_Weg.Weg_bis_Wartung,
+	                                  Gesamtweg => "HMI_Wartungszähler".Wartungszähler_Drehachse_Weg.Gesamtweg,
+	                                  SM_Wartung_fällig => "HMI_Wartungszähler".Wartungszähler_Drehachse_Weg.SM_Wartung_fällig);
+	    
+	    IF "HMI_Wartungszähler".Wartungszähler_Drehachse_Weg.Zähler_reset THEN
+	        "HMI_Wartungszähler".Wartungszähler_Drehachse_Weg.Zähler_reset := false;
+	    END_IF;
+	    
+	END_REGION
+	
+	
+END_FUNCTION_BLOCK
+

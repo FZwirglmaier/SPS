@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.InstanceDB ID="0">
+    <AttributeList>
+      <InstanceOfName>03_Betriebsart</InstanceOfName>
+      <InstanceOfType>FB</InstanceOfType>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input" />
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Static">
+    <Member Name="Projektnummer" Datatype="WString" />
+    <Member Name="Projektname" Datatype="WString" />
+    <Member Name="Validierung_Datum" Datatype="WString" />
+    <Member Name="Validierung_Name" Datatype="WString" />
+    <Member Name="Validierung_F_PROG_SIG" Datatype="DWord" />
+    <Member Name="Aktuell_F_PROG_SIG" Datatype="DWord" />
+    <Member Name="F_PROG_SIG_stimmt_überein" Datatype="Bool" />
+    <Member Name="Simulation_aktiv" Datatype="Bool" />
+    <Member Name="IN_Betriebsart_Manuell" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="BA_Automatik_HMFP" Datatype="Bool" />
+    <Member Name="BA_Automatik_FP" Datatype="Bool" />
+    <Member Name="IN_Betriebsart_Automatik" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="BA_Verwaltung_HMFP" Datatype="Bool" />
+    <Member Name="BA_Verwaltung_FP" Datatype="Bool" />
+    <Member Name="IN_Betriebsart_Verwaltung" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="IN_Betriebsart_Richten" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">false</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Systemdruck_OK" Datatype="Bool" />
+    <Member Name="Betriebsart" Datatype="Int" />
+    <Member Name="BA_Manuell_HMFP" Datatype="Bool" />
+    <Member Name="BA_Manuell_FP" Datatype="Bool" />
+    <Member Name="BA_Manuell" Datatype="Bool" />
+    <Member Name="BA_Automatik" Datatype="Bool" />
+    <Member Name="BA_Verwaltung" Datatype="Bool" />
+    <Member Name="BA_Richten_HMFP" Datatype="Bool" />
+    <Member Name="BA_Richten_FP" Datatype="Bool" />
+    <Member Name="BA_Richten" Datatype="Bool" />
+    <Member Name="BA_0" Datatype="Bool" />
+    <Member Name="BA_0_HMFP" Datatype="Bool" />
+    <Member Name="BA_0_FP" Datatype="Bool" />
+    <Member Name="BA_0_groesser_1_5" Datatype="Bool" />
+    <Member Name="TON_BA_0_groesser_1_5" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="TON_Rücksetzen_der_Betriebsart" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="TON_Türen_setzen_zum_öffnen" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="TOF_MRW Not-Halt Überwachung deaktivieren" Datatype="TOF_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="HM_MRW_Zeitverzögerung" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Türen_sind_verriegelt" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="NOT-HALT OK" Datatype="Bool" />
+    <Member Name="NOT-HALT_HMFN" Datatype="Bool" />
+    <Member Name="NOT-HALT_FN" Datatype="Bool" />
+    <Member Name="Start_Taste" Datatype="Bool" />
+    <Member Name="Start_Taste_HMFP" Datatype="Bool" />
+    <Member Name="Start_Taste_FP" Datatype="Bool" />
+    <Member Name="ACK_Taste" Datatype="Bool" />
+    <Member Name="ACK_Taste_HMFP" Datatype="Bool" />
+    <Member Name="ACK_Taste_FP" Datatype="Bool" />
+    <Member Name="Stopp_Taste" Datatype="Bool" />
+    <Member Name="Schutztüren OK" Datatype="Bool" />
+    <Member Name="Schutztüren_HMFN" Datatype="Bool" />
+    <Member Name="Schutztüren_FN" Datatype="Bool" />
+    <Member Name="Schutztüren_HMFP" Datatype="Bool" />
+    <Member Name="Schutztüren_FP" Datatype="Bool" />
+    <Member Name="Druckbereich entlüftet" Datatype="Bool" />
+    <Member Name="Antriebe_sicher" Datatype="Bool" />
+    <Member Name="Zuhaltung_Freigeben" Datatype="Bool" />
+    <Member Name="Roboter_Motor_Ein" Datatype="Bool" />
+    <Member Name="P_Trig_Betriebsart Manuell" Datatype="Bool" />
+    <Member Name="P_Trig_Betriebsart Automatik" Datatype="Bool" />
+    <Member Name="P_Trig_Betriebsart Verwaltung" Datatype="Bool" />
+    <Member Name="P_Trig_Betriebsart Richten" Datatype="Bool" />
+    <Member Name="TON_Hauptventil_aus" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="TON_Hauptventil_aus_status_Reset" Datatype="TON_TIME" Version="1.0">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Flanke_Hauptventil_aus" Datatype="Bool">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+    <Member Name="Hauptventil_Reset" Datatype="Bool" />
+    <Member Name="KP8_Bedienerkonsole" Datatype="&quot;KP8&quot;">
+      <AttributeList>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>03_Betriebsart_DB</Name>
+      <Namespace />
+      <Number>11</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.InstanceDB>
+</Document>

@@ -1,0 +1,35 @@
+﻿FUNCTION_BLOCK "DataToSafety"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR 
+      ACK_Taste : Bool;
+      BA_Manuell : Bool;
+      BA_Automatik : Bool;
+      BA_Verwaltung : Bool;
+      BA_Richten : Bool;
+      Ruekfuehrung_Bosch_Antriebe : Bool;
+   END_VAR
+
+
+BEGIN
+	#ACK_Taste := "03_Betriebsart_DB".ACK_Taste;
+	#BA_Manuell := "03_Betriebsart_DB".BA_Manuell;
+	#BA_Automatik := "03_Betriebsart_DB".BA_Automatik;
+	#BA_Richten := "03_Betriebsart_DB".BA_Richten;
+	
+	#BA_Verwaltung := "03_Betriebsart_DB".BA_Verwaltung;
+	
+	
+	
+	
+	
+	(*
+	Achtung Rückfürsignale nicht ändern. Rücksprache mit Teamleitung erforderlich !!
+	***************************************************************************************************)
+	 #Ruekfuehrung_Bosch_Antriebe := True;  // 18.06.2026 ZF Keine Rückführung aus SPS vorhanden
+	(*
+	****************************************************************************************************
+	*)
+	
+END_FUNCTION_BLOCK
+

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="ReadParameterID" Datatype="Word" />
+    <Member Name="WriteRequest" Datatype="Struct">
+      <Member Name="Reserved_32" Datatype="Byte" />
+      <Member Name="WR-REQ" Datatype="Bool" />
+      <Member Name="Reserved_33_bit1" Datatype="Bool" />
+      <Member Name="Reserved_33_bit2" Datatype="Bool" />
+      <Member Name="Reserved_33_bit3" Datatype="Bool" />
+      <Member Name="Reserved_33_bit4" Datatype="Bool" />
+      <Member Name="Reserved_33_bit5" Datatype="Bool" />
+      <Member Name="Reserved_33_bit6" Datatype="Bool" />
+      <Member Name="Reserved_33_bit7" Datatype="Bool" />
+    </Member>
+    <Member Name="WriteParameterID" Datatype="Word" />
+    <Member Name="WriteData" Datatype="DInt" />
+  </Section>
+</Sections></Interface>
+      <Name>AZ_PrmRW_PLC2Drv</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

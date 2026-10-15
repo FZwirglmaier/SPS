@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="BA_Manuell" Datatype="Bool" />
+    <Member Name="Manuell_Geschwindigkeit_in_P" Datatype="Int">
+      <StartValue>10</StartValue>
+    </Member>
+    <Member Name="Richten_Reset_FRG" Datatype="Bool" />
+    <Member Name="drive_enable" Datatype="Bool" />
+    <Member Name="start_homing" Datatype="Bool" />
+    <Member Name="jog_pos" Datatype="Bool" />
+    <Member Name="jog_neg" Datatype="Bool" />
+    <Member Name="fault_reset" Datatype="Bool" />
+    <Member Name="Tipp_pos" Datatype="Bool" />
+    <Member Name="Tipp_neg" Datatype="Bool" />
+    <Member Name="Start_pos_man" Datatype="Bool" />
+    <Member Name="Verfahrweg_Grad" Datatype="Real" />
+    <Member Name="soll_wert_man_Grad" Datatype="Real" />
+    <Member Name="Softw_ES_min_Grad" Datatype="Real" />
+    <Member Name="Softw_ES_max_Grad" Datatype="Real" />
+    <Member Name="Max_Speed_Grad_s" Datatype="Real" />
+    <Member Name="Max_Beschleunigung_Grad_s" Datatype="Real" />
+    <Member Name="drive_enable_ok" Datatype="Bool" />
+    <Member Name="home_valid" Datatype="Bool" />
+    <Member Name="pos_ok" Datatype="Bool" />
+    <Member Name="velo_zero" Datatype="Bool" />
+    <Member Name="fault" Datatype="Bool" />
+    <Member Name="Positionsfehler" Datatype="Bool" />
+    <Member Name="Fahrauftrag_Aktiv" Datatype="Bool" />
+    <Member Name="ist_wert_Grad" Datatype="Real" />
+  </Section>
+</Sections></Interface>
+      <Name>Afag_Variablen_Steuerung_Dreh</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Artikel_gewechselt" Datatype="Bool" Remanence="Retain" />
+    <Member Name="Datensatz" Datatype="String" Remanence="Retain" />
+    <Member Name="Rezeptnummer" Datatype="String" Remanence="Retain" />
+    <Member Name="Achse Position GS" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Achse Position GS [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Achse Position AS" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Achse Position GS [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Achse Geschwindigkeit GS-&gt;AS" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Achse Geschwindigkeit GS-&gt;AS [mm/min]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Achse Geschwindigkeit AS-&gt;GS" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Achse Geschwindigkeit AS-&gt;GS [mm/min]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Drehantrieb Position GS" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Drehantrieb Position GS [°]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Drehantrieb Position AS1" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Drehantrieb Position AS1 [°]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Drehantrieb Position AS2" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Drehantrieb Position AS1 [°]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Drehantrieb Geschwindigkeit GS-&gt;AS1" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Drehantrieb Geschwindigkeit GS-&gt;AS1 [°/s]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Drehantrieb Geschwindigkeit AS1-&gt;GS" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Drehantrieb Geschwindigkeit AS1-&gt;GS [°/s]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Wartezeit gesteckt" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wartezeit gesteckt [s]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Drehantrieb Motorstrombegrenzung" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Drehantrieb Motorstrombegrenzung [%]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Druck p1 Ausgleichszylinder" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck p1 Ausgleichszylinder [bar]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Druck p2 Überlastzylinder" Datatype="Int" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Druck p2 Überlastzylinder [bar]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Wegmessung_Ausgleichszylinder Position GS" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wegmessung Ausgleichszylinder Position GS [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Wegmessung_Ausgleichszylinder Position AS1" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wegmessung Ausgleichszylinder Position AS1 [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Wegmessung_Ausgleichszylinder maximale Abweichung GS" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wegmessung Ausgleichszylinder maximale Abweichung GS [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Wegmessung_Ausgleichszylinder maximale Abweichung AS1" Datatype="Real" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Wegmessung Ausgleichszylinder maximale Abweichung AS1 [mm]</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Taster Achse Position GS übernehmen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Taster Achse Position GS übernehmen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Taster Achse Position AS übernehmen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Taster Achse Position AS übernehmen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Taster Drehantrieb Position GS übernehmen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Taster Drehantrieb Position GS übernehmen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Taster Drehantrieb Position AS1 übernehmen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Taster Drehantrieb Position AS1 übernehmen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Taster Drehantrieb Position AS2 übernehmen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Taster Drehantrieb Position AS2 übernehmen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Taster Wegmessung Ausgleichszylinder Position GS übernehmen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Taster Wegmessung Ausgleichszylinder Position GS übernehmen</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="Taster Wegmessung Ausgleichszylinder Position AS1 übernehmen" Datatype="Bool" Remanence="Retain">
+      <Comment>
+        <MultiLanguageText Lang="de-DE">Taster Wegmessung Ausgleichszylinder Position AS1 übernehmen</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>Verwaltung_Teiledaten</Name>
+      <Namespace />
+      <Number>2</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

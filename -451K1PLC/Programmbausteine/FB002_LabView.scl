@@ -1,0 +1,47 @@
+﻿FUNCTION_BLOCK "FB002_LabView"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+
+BEGIN
+	
+	// Lebenszeichen 
+	IF "FL_Clock_1Hz"  THEN
+	    "DB020_Com LabView".A_Lebenszeichen := "DB020_Com LabView".A_Lebenszeichen + 1;
+	    IF "DB020_Com LabView".A_Lebenszeichen > 9999 THEN
+	        "DB020_Com LabView".A_Lebenszeichen := 1;
+	    END_IF;
+	END_IF;
+	
+	// Betriebsart
+	
+	"DB020_Com LabView".A_Betriebsart := "03_Betriebsart_DB".Betriebsart;
+	
+	
+	// Wenn Messung fertig, Signal "Messung läuft" zurücksetzen
+	IF "DB020_Com LabView"."E_Messgerät ist bereit und verbunden" THEN
+	    "DB020_Com LabView".E_4_4 := false;
+	END_IF;
+	 
+	
+	"DB020_Com LabView".A_Steckzyklen_Soll := "POS3_0_Signal".Sollzyklen;
+	"DB020_Com LabView".A_Steckzyklen_Ist := "POS3_0_Signal".Istzyklen;
+	
+	"DB020_Com LabView".A_Achse_Istposition := "POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_FBposition;
+	"DB020_Com LabView".A_Achse_Drehmoment :=  "POS3_0_Signal"."-1001T1 Oriental_Steuerung".A_TorqueMonitor;
+	
+	
+	"DB020_Com LabView".A_Drehachse_Istposition  := "POS3_0_Signal"."-1002T1 Oriental_Steuerung".A_FBposition;
+	"DB020_Com LabView".A_Drehachse_Drehmoment :=  "POS3_0_Signal"."-1002T1 Oriental_Steuerung".A_TorqueMonitor;
+	
+	"DB020_Com LabView".A_Wegmessung_Ausgleichszylinder_Istwert := "POS3_0_Signal"."-POS3.0_Wegmessung_Ausgleichszylinder_Istwert_Rohwert";
+	
+	"DB020_Com LabView".A_Kraftsensor_Istwert := "POS3_0_Signal"."-1012B1 Kraftsensor";
+	
+	
+	"DB020_Com LabView".A_Regelventil_Ausgleichszylinder_Istwert := "POS3_0_Signal"."-POS3_0_Regelventil_Ausgleichszylinder_Istwert";
+	
+	"DB020_Com LabView".A_Regelventil_Überlastzylinder_Istwert := "POS3_0_Signal"."-POS3_0_Regelventil_Überlastzylinder_Istwert";
+	
+	 
+END_FUNCTION_BLOCK
+

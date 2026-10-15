@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="SK_Freigabe_Richten" Datatype="Bool" />
+    <Member Name="SK_Richten_gestartet" Datatype="Bool" />
+    <Member Name="SK_Richten_fertig" Datatype="Bool" />
+    <Member Name="SK_Freigabe_Auto" Datatype="Bool" />
+    <Member Name="SK_Aktiv" Datatype="Bool" />
+    <Member Name="SK_Fertig" Datatype="Bool" />
+    <Member Name="SK_Freigabe_Manuell_Auto" Datatype="Bool" />
+    <Member Name="SK_Freigabe_Manuell_Richten" Datatype="Bool" />
+    <Member Name="Reset_Freigaben" Datatype="Bool" />
+    <Member Name="Station_1Ein_0Aus" Datatype="Bool" />
+    <Member Name="SK_Richten_erforderlich" Datatype="Bool" />
+    <Member Name="SK_Halt_von_Betriebsart" Datatype="Bool" />
+  </Section>
+</Sections></Interface>
+      <Name>Schrittkettensteuerung</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

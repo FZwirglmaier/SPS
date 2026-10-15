@@ -1,0 +1,50 @@
+﻿FUNCTION_BLOCK "FB_Wartungszähler_Zyklen"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Zyklen_soll : DInt;
+      Zyklus_Impuls : Bool;
+      Zähler_reset : Bool;
+   END_VAR
+
+   VAR_OUTPUT 
+      Zyklen_seit_Wartung : DInt;
+      Zyklen_bis_Wartung : DInt;
+      Gesamtzyklen : DInt;
+      SM_Wartung_fällig : Bool;
+   END_VAR
+
+   VAR 
+      R_TRIG_Zyklus_Impuls {InstructionName := 'R_TRIG'; LibVersion := '1.0'; S7_SetPoint := 'False'} : R_TRIG;
+   END_VAR
+
+
+BEGIN
+	
+	// Wartungszähler zurücksetzen
+	IF #Zähler_reset THEN
+	    #Zyklen_seit_Wartung := 0;
+	END_IF;
+	
+	// Positive Flanke des Zyklusimpulses auswerten
+	#R_TRIG_Zyklus_Impuls(CLK := #Zyklus_Impuls);
+	
+	
+	IF #R_TRIG_Zyklus_Impuls.Q THEN
+	    #Gesamtzyklen := #Gesamtzyklen + 1;
+	    #Zyklen_seit_Wartung := #Zyklen_seit_Wartung + 1;
+	END_IF;
+	
+	
+	// Restzyklen berechnen
+	IF #Zyklen_seit_Wartung < #Zyklen_soll THEN
+	    #Zyklen_bis_Wartung := #Zyklen_soll - #Zyklen_seit_Wartung;
+	ELSE
+	    #Zyklen_bis_Wartung := 0;
+	END_IF;
+	
+	// Wartungsmeldung setzen
+	#SM_Wartung_fällig := (#Zyklen_seit_Wartung >= #Zyklen_soll);
+	
+END_FUNCTION_BLOCK
+

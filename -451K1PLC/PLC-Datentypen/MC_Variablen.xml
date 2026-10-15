@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V20" />
+  <SW.Types.PlcStruct ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="None">
+    <Member Name="Antrieb_Ein" Datatype="Struct">
+      <Member Name="Enable" Datatype="Bool" />
+      <Member Name="StartMode" Datatype="DInt" />
+      <Member Name="StopMode" Datatype="Int" />
+      <Member Name="Status" Datatype="Bool" />
+      <Member Name="Busy" Datatype="Bool" />
+      <Member Name="Error" Datatype="Bool" />
+      <Member Name="ErrorID" Datatype="Word" />
+    </Member>
+    <Member Name="Antieb_Reset" Datatype="Struct">
+      <Member Name="Execute" Datatype="Bool" />
+      <Member Name="Restart" Datatype="Bool" />
+      <Member Name="Done" Datatype="Bool" />
+      <Member Name="Busy" Datatype="Bool" />
+      <Member Name="ComandAborted" Datatype="Bool" />
+      <Member Name="Error" Datatype="Bool" />
+      <Member Name="ErrorID" Datatype="Word" />
+    </Member>
+    <Member Name="Antrieb_Referenz" Datatype="Struct">
+      <Member Name="Execute" Datatype="Bool" />
+      <Member Name="Position" Datatype="LReal" />
+      <Member Name="Mode" Datatype="Int" />
+      <Member Name="ReferenceMarkPosition" Datatype="LReal" />
+      <Member Name="Done" Datatype="Bool" />
+      <Member Name="Busy" Datatype="Bool" />
+      <Member Name="ComandAborted" Datatype="Bool" />
+      <Member Name="Error" Datatype="Bool" />
+      <Member Name="ErrorID" Datatype="Word" />
+    </Member>
+    <Member Name="Antrieb_Move_Absolute" Datatype="Struct">
+      <Member Name="Execute" Datatype="Bool" />
+      <Member Name="Position" Datatype="LReal" />
+      <Member Name="Velocity" Datatype="LReal" />
+      <Member Name="Acceleration" Datatype="LReal" />
+      <Member Name="Deceleration" Datatype="LReal" />
+      <Member Name="Jerk" Datatype="LReal" />
+      <Member Name="Direction" Datatype="Int" />
+      <Member Name="Done" Datatype="Bool" />
+      <Member Name="Busy" Datatype="Bool" />
+      <Member Name="ComandAborted" Datatype="Bool" />
+      <Member Name="Error" Datatype="Bool" />
+      <Member Name="ErrorID" Datatype="Word" />
+    </Member>
+  </Section>
+</Sections></Interface>
+      <Name>MC_Variablen</Name>
+      <Namespace />
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>de-DE</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Types.PlcStruct>
+</Document>

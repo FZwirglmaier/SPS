@@ -1,0 +1,705 @@
+﻿FUNCTION_BLOCK "BB_Ansteuerung_Afag_Dreh_V03.16"
+TITLE = 'FB Positionierbetrieb'
+{ S7_Optimized_Access := 'TRUE' }
+AUTHOR : Essmann
+FAMILY : metronix
+NAME : position
+VERSION : 1.1
+//Der Baustein kann nicht rückübersetzt und unter STEP7 bearbeitet werden.  Der Baustein kann nur als Quelle im Ordner "Quellen" bearbeitet werden.    IO-Variablen  
+   VAR_INPUT 
+      E_UDT_Afag_ist_Werte : "Afag_ist_Werte";
+      E_BA_Manuell : Bool;
+      E_I_Manuell_Geschwindigkeit_Prozent : Int;
+      E_Richten_reset_FRG : Bool;
+      E_drive_enable : Bool := FALSE;
+      E_start_homing : Bool := FALSE;
+      E_change_immediatly : Bool := FALSE;
+      E_intermediate_stop : Bool := FALSE;
+      E_hold : Bool := FALSE;
+      E_jog_pos : Bool := FALSE;
+      E_jog_neg : Bool := FALSE;
+      E_fault_reset : Bool := FALSE;
+      E_Tipp_pos : Bool;
+      E_Tipp_neg : Bool;
+      E_Start_pos_man : Bool;
+      E_R_Verfahrweg_Grad : Real;
+      E_R_Afag_soll_wert_man_Grad : Real;
+      E_I_Max_Speed_Grad_s : Int;
+      E_I_Max_Beschleunigung_Grad_s : Int;
+   END_VAR
+
+   VAR_OUTPUT 
+      A_drive_enable_ok : Bool := FALSE;
+      A_home_valid : Bool := FALSE;
+      A_pos_ok : Bool := FALSE;
+      A_velo_zero : Bool := FALSE;
+      A_fault : Bool := FALSE;   // statische Variablen
+      A_Fahrauftrag_Aktiv : Bool;
+      A_Afag_ist_wert_Grad : Real;
+   END_VAR
+
+   VAR_IN_OUT 
+      E_A_UDT_Afag_Positionen : "Afag_Variablen_Positionen_Dreh";
+      A_UDT_Afag_soll_Werte : "Afag_soll_Werte";
+   END_VAR
+
+   VAR 
+      switching_on_inhibited : Bool := FALSE;
+      ready_for_switching_on : Bool := FALSE;
+      switched_on : Bool := FALSE;
+      operation : Bool := FALSE;
+      ars_statusword : Word;
+      ars_controlword : Word;
+      start_pos : Bool := FALSE;
+      start_pos_old : Bool := FALSE;   // ***********************************************************************************************************************Anweisungsteil
+      start_pos_man : Bool;
+      start_pos_man_old : Bool;
+      Fahrauftrag_OK : Bool;
+      AFAG_Ist_Wert_in_Grad : Real;
+      AFAG_soll_Wert_in_Grad : Real;
+      AFAG_soll_Speed_in_Prozent : Int;
+      AFAG_soll_Beschleunigung_in_Grad_s : Int;
+      abs_rel : Bool;
+      R_TRIG_Instance {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      R_TRIG_Q_Tipp_neg : Bool;
+      R_TRIG_Instance_1 {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      R_TRIG_Instance_2 {InstructionName := 'R_TRIG'; LibVersion := '1.0'} : R_TRIG;
+      TP_Time_Pos_0 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_1 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_2 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_3 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_4 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_5 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_6 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_7 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_8 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_9 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_10 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_11 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_12 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_13 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_14 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+      TP_Time_Pos_15 {InstructionName := 'TP_TIME'; LibVersion := '1.0'} : TP_TIME;
+   END_VAR
+
+
+BEGIN
+	
+	
+	//Ausgänge zuweisen
+	#A_UDT_Afag_soll_Werte.Telegrammkennung := 16#e0;
+	#A_Afag_ist_wert_Grad := #AFAG_Ist_Wert_in_Grad;
+	#AFAG_Ist_Wert_in_Grad := (DINT_TO_REAL(#E_UDT_Afag_ist_Werte.actual_position)); // / 1.000000e+003;
+	#A_UDT_Afag_soll_Werte.Zielposition := REAL_TO_DINT(#AFAG_soll_Wert_in_Grad); // * 1.000000e+003);
+	#A_UDT_Afag_soll_Werte.Fahrgeschwindigkeit := INT_TO_DINT(#AFAG_soll_Speed_in_Prozent * (#E_I_Max_Speed_Grad_s / 100));
+	#A_UDT_Afag_soll_Werte.Beschleunigung := INT_TO_DINT(#AFAG_soll_Beschleunigung_in_Grad_s);
+	#E_A_UDT_Afag_Positionen.A_Softw_ES_min_Grad := 0;
+	#E_A_UDT_Afag_Positionen.A_Softw_ES_max_Grad := 360000;
+	#E_A_UDT_Afag_Positionen.A_Max_Speed_Grad_s := #E_I_Max_Speed_Grad_s;
+	#E_A_UDT_Afag_Positionen.A_Max_Beschleunigung_Grad_s := #E_I_Max_Beschleunigung_Grad_s;
+	
+	
+	//************************************************************************************************
+	
+	//Lesen Statusword
+	//Einlesen des Istzustands der Statemachine
+	
+	//    #DB_nr_actual_value_word:= INT_TO_WORD(#DB_nr_actual_value);
+	//    #ars_statusword := PEEK_WORD (area := 16#84,
+	//                                  dbNumber :=#DB_nr_actual_value_word,
+	//                                  byteOffset := 2);
+	#ars_statusword := #E_UDT_Afag_ist_Werte.PROFIDRIVE_Statusword;
+	
+	//Lesen Controlword
+	//
+	//  #DB_nr_position_word:=  INT_TO_WORD(#DB_nr_position);
+	//  #ars_controlword := PEEK_WORD (area := 16#84,
+	//                                  dbNumber :=#DB_nr_position_word,
+	//                                  byteOffset := 2);
+	
+	// #ars_controlword := #A_UDT_Afag_soll_Werte.PROFIDRIVE_Controlword;
+	
+	//Steuern der Statemachine, S1 -> S2 -> S3 -> S4
+	
+	IF (#switching_on_inhibited                          //wenn state "switching_on_inhibited"
+	    AND #E_drive_enable)                             //und  Reglerfreigabe
+	THEN
+	    #ars_controlword := 16#0406;              //dann state "ready_for_switching_on" anfordern,
+	ELSIF (#switching_on_inhibited                     //
+	    AND (NOT (#E_drive_enable)))                      //wenn Reglerfreigabe aus,
+	THEN
+	    #ars_controlword := 16#0400;              //dann state "switching_on_inhibited" anfordern.
+	END_IF;
+	
+	IF (#ready_for_switching_on                          //wenn state "ready_for_switching_on"
+	    AND #E_drive_enable)                             //und Reglerfeigabe
+	THEN
+	    #ars_controlword := 16#0407;              //dann state "switched_on" anfordern,
+	ELSIF (#ready_for_switching_on                     //
+	    AND (NOT (#E_drive_enable)))                      //wenn Reglerfeigabe aus,
+	THEN
+	    #ars_controlword := 16#0400;              //dann state "switching_on_inhibited" anfordern.
+	END_IF;
+	
+	IF (#switched_on                                     //wenn state "switched_on"
+	    AND #E_drive_enable)                             //und Reglerfeigabe
+	THEN
+	    #ars_controlword := 16#040f;              //dann state "operation" anfordern,
+	ELSIF (#switched_on                                //
+	    AND (NOT (#E_drive_enable)))                      //wenn Reglerfeigabe aus,
+	THEN
+	    #ars_controlword := 16#0400;              //dann state "switching_on_inhibited" anfordern.
+	END_IF;
+	
+	IF (#operation                                       //wenn state "operation"
+	    AND (NOT (#E_drive_enable)))                      //und keine Reglerfeigabe
+	THEN
+	    #ars_controlword := 16#040e;              //dann state "switching_on_inhibited" anfordern.
+	END_IF;
+	
+	//************************************************************************************************
+	
+	//Kommandos über digitale Eingänge
+	// Bit 10 (control by plc) im Controlword muss immer gesetzt sein
+	
+	IF #E_start_homing
+	THEN
+	    #ars_controlword := (#ars_controlword OR 16#0C00);    //Setzen Bit 11 im STW1
+	ELSE
+	    #ars_controlword := (#ars_controlword & 16#f7ff);
+	END_IF;
+	
+	IF (#Fahrauftrag_OK = 1) THEN
+	    IF (#start_pos_old <> #start_pos) OR (#start_pos_man_old <> #start_pos_man)
+	    THEN
+	        IF #start_pos OR #start_pos_man
+	        THEN
+	            #ars_controlword := (#ars_controlword OR 16#0440);    //Setzen Bit 6 im STW1
+	        ELSE
+	            #ars_controlword := (#ars_controlword & 16#ffbf);
+	        END_IF;
+	    END_IF;
+	    
+	    #start_pos_old := #start_pos;
+	    #start_pos_man_old := #start_pos_man;
+	    
+	END_IF;
+	
+	
+	
+	
+	IF #abs_rel
+	THEN
+	    #ars_controlword := (#ars_controlword OR 16#1400);   //Setzen Bit 12 im STW1
+	ELSE
+	    #ars_controlword := (#ars_controlword & 16#efff);
+	END_IF;
+	
+	IF #E_change_immediatly
+	THEN
+	    #ars_controlword := (#ars_controlword OR 16#2400);   //Setzen Bit 13 im STW1
+	ELSE
+	    #ars_controlword := (#ars_controlword & 16#dfff);
+	END_IF;
+	
+	IF #E_intermediate_stop
+	THEN
+	    #ars_controlword := (#ars_controlword & 16#ffdf);   //Rücksetzen Bit 5 im STW1
+	ELSE
+	    #ars_controlword := (#ars_controlword OR 16#0420);
+	END_IF;
+	
+	IF #E_hold
+	THEN
+	    #ars_controlword := (#ars_controlword & 16#ffef);    //Rücksetzen Bit 4 im STW1
+	    #ars_controlword := (#ars_controlword & 16#feff);    //Rücksetzen jog_pos
+	    #ars_controlword := (#ars_controlword & 16#fdff);    //Rücksetzen jog_neg
+	ELSE
+	    #ars_controlword := (#ars_controlword OR 16#0410);
+	END_IF;
+	
+	IF (#E_jog_pos AND NOT #E_hold)
+	THEN
+	    #ars_controlword := (#ars_controlword OR 16#0500);    //Setzen Bit 8 im STW1
+	ELSE
+	    #ars_controlword := (#ars_controlword & 16#feff);
+	END_IF;
+	
+	IF (#E_jog_neg AND NOT #E_hold)
+	THEN
+	    #ars_controlword := (#ars_controlword OR 16#0600);    //Setzen Bit 9 im STW1
+	ELSE
+	    #ars_controlword := (#ars_controlword & 16#fdff);
+	END_IF;
+	
+	IF #E_fault_reset
+	THEN
+	    #ars_controlword := (#ars_controlword OR 16#0480);    //Setzen Bit 7 im STW1
+	ELSE
+	    #ars_controlword := (#ars_controlword & 16#ff7f);
+	END_IF;
+	
+	
+	//************************************************************************************************
+	
+	//Setzen digitaler Ausgänge
+	
+	IF #operation
+	THEN
+	    #A_drive_enable_ok := TRUE;
+	ELSE
+	    #A_drive_enable_ok := FALSE;
+	END_IF;
+	
+	IF ((#ars_statusword & 16#0800) = 16#0800)    //Bit 11 vom ZSW1
+	THEN
+	    #A_home_valid := TRUE;
+	ELSE
+	    #A_home_valid := FALSE;
+	END_IF;
+	
+	IF ((#ars_statusword & 16#0400) = 16#0400)    //Bit 10 vom ZSW1
+	THEN
+	    #A_pos_ok := TRUE;
+	ELSE
+	    #A_pos_ok := FALSE;
+	END_IF;
+	
+	IF ((#ars_statusword & 16#2000) = 16#2000)    //Bit 13 vom ZSW1
+	THEN
+	    #A_velo_zero := TRUE;
+	ELSE
+	    #A_velo_zero := FALSE;
+	END_IF;
+	
+	IF ((#ars_statusword & 16#0008) = 16#0008)    //Bit 3 vom ZSW1
+	THEN
+	    #A_fault := TRUE;
+	ELSE
+	    #A_fault := FALSE;
+	END_IF;
+	
+	//************************************************************************************************
+	
+	//Schreiben Controlword
+	
+	//  POKE (area := 16#84,
+	//        dbNumber := #DB_nr_position_word,
+	//        byteOffset := 2,
+	//        value := #ars_controlword );
+	
+	#A_UDT_Afag_soll_Werte.PROFIDRIVE_Controlword := #ars_controlword;
+	
+	
+	// Achse mit Position Starten
+	// Position[0]
+	
+	    IF #E_A_UDT_Afag_Positionen.Start_POS_Position[0] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[0];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[0];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[0];
+	END_IF;
+	
+	// Position[1]
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[1] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[1];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[1];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[1];
+	END_IF;
+	
+	
+	// Position 2
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[2] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[2];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[2];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[2];
+	END_IF;
+	
+	// Position 3
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[3] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[3];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[3];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[3];
+	END_IF;
+	
+	// Position 4
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[4] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[4];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[4];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[4];
+	END_IF;
+	
+	// Position 5
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[5] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[5];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[5];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[5];
+	END_IF;
+	
+	// Position 6
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[6] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[6];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[6];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[6];
+	END_IF;
+	
+	// Position 7
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[7] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[7];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[7];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[7];
+	END_IF;
+	
+	// Position 8
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[8] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[8];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[8];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[8];
+	END_IF;
+	
+	// Position 9
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[9] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[9];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[9];
+	    #start_pos := true;
+	   
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[9];
+	END_IF;
+	
+	// Position 10
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[10] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[10];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[10];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[10];
+	END_IF;
+	
+	// Position 11
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[11] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[11];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[11];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[11];
+	END_IF;
+	
+	// Position 12
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[12] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[12];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[12];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[12];
+	END_IF;
+	
+	// Position 13
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[13] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[13];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[13];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[13];
+	END_IF;
+	
+	// Position 14
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[14] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[14];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[14];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[14];
+	END_IF;
+	
+	// Position 15
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[15] THEN
+	    #AFAG_soll_Wert_in_Grad := #E_A_UDT_Afag_Positionen.Soll_Wert_in_Grad_Position[15];
+	    #AFAG_soll_Beschleunigung_in_Grad_s := #E_A_UDT_Afag_Positionen.Soll_Beschleunigung_in_Grad_s_Position[15];
+	    #start_pos := true;
+	    
+	    #AFAG_soll_Speed_in_Prozent := #E_A_UDT_Afag_Positionen.Soll_Speed_in_Prozent_Position[15];
+	END_IF;
+	
+	// Manuelle Geschwindigkeitsanpassung
+	IF #E_BA_Manuell = TRUE THEN
+	   #AFAG_soll_Speed_in_Prozent := #E_I_Manuell_Geschwindigkeit_Prozent;
+	   #AFAG_soll_Beschleunigung_in_Grad_s := 1000;
+	END_IF;
+	
+	IF( (#E_A_UDT_Afag_Positionen.Start_POS_Position[0] AND #E_A_UDT_Afag_Positionen.POS_OK_Position[0])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[1]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[1])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[2]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[2])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[3]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[3])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[4]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[4])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[5]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[5])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[6]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[6])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[7]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[7])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[8]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[8])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[9]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[9])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[10]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[10])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[11]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[11])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[12]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[12])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[13]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[13])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[14]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[14])OR
+	   (#E_A_UDT_Afag_Positionen.Start_POS_Position[15]AND #E_A_UDT_Afag_Positionen.POS_OK_Position[15])OR
+	    #E_Richten_reset_FRG)
+	THEN
+	    #start_pos := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[0] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[1] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[2] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[3] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[4] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[5] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[6] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[7] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[8] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[9] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[10] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[11] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[12] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[13] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[14] := 0;
+	    #E_A_UDT_Afag_Positionen.Start_POS_Position[15] := 0;
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[15] := 0;
+	END_IF;
+	
+	
+	// Achse Positionsrückmeldung
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[0] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[0] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[0] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[1] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[1] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[1] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[2] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[2] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[2] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[3] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[3] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[3] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[4] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[4] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[4] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[5] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[5] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[5] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[6] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[6] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[6] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[7] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[7] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[7] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[8] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[8] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[8] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[9] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[9] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[9] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[10] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[10] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[10] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[11] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[11] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[11] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[12] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[12] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[12] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[13] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[13] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[13] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[14] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[14] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[14] := 0;
+	END_IF;
+	
+	IF #E_A_UDT_Afag_Positionen.Start_POS_Position[15] AND #A_pos_ok
+	THEN
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[15] := 1;
+	ELSE
+	    #E_A_UDT_Afag_Positionen.POS_OK_Position[15] := 0;
+	END_IF;
+	
+	IF
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[0]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[1]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[2]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[3]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[4]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[5]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[6]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[7]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[8]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[9]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[10]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[11]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[12]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[13]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[14]) OR
+	    (#E_A_UDT_Afag_Positionen.Start_POS_Position[15]) OR
+	    (#start_pos)
+	THEN
+	    #A_Fahrauftrag_Aktiv := 1;
+	ELSE
+	    #A_Fahrauftrag_Aktiv := 0;
+	END_IF;
+	
+	
+	
+	
+	//Reset Start pos
+	IF ((#A_pos_ok = true) OR (#A_drive_enable_ok = FALSE) OR (#E_fault_reset = TRUE))
+	THEN
+	    #start_pos_man := false;
+	    #abs_rel := true;
+	END_IF;
+	
+	//Tipp pos
+	#R_TRIG_Instance(CLK:=#E_Tipp_pos);
+	IF (#R_TRIG_Instance.Q AND NOT #start_pos_man)
+	THEN
+	    #AFAG_soll_Wert_in_Grad := #E_R_Verfahrweg_Grad;
+	    #start_pos_man := TRUE;
+	END_IF;
+	
+	//Tipp neg
+	#R_TRIG_Instance_1(CLK:=#E_Tipp_neg);
+	IF (#R_TRIG_Instance_1.Q AND NOT #start_pos_man)
+	THEN
+	    #AFAG_soll_Wert_in_Grad := #E_R_Verfahrweg_Grad;
+	    #start_pos_man := TRUE;
+	END_IF;
+	
+	//absolut verfahren
+	#R_TRIG_Instance_2(CLK:=#E_Start_pos_man);
+	IF(#R_TRIG_Instance_2.Q AND NOT #start_pos_man)
+	THEN
+	    #AFAG_soll_Wert_in_Grad := #E_R_Afag_soll_wert_man_Grad;
+	    #start_pos_man := TRUE;
+	    #abs_rel := false;
+	END_IF;
+	
+	// keine Endlagenüberwachung bei Drehachse
+	// Überwachung Fahrauftrag
+	    #Fahrauftrag_OK := TRUE;
+	 
+	    
+	//Einlesen des Istzustands der Statemachine
+	   IF ((#ars_statusword & 16#0047) = 16#0040)
+	        THEN #switching_on_inhibited := TRUE;
+	        ELSE #switching_on_inhibited := FALSE;
+	    END_IF;
+	
+	    IF ((#ars_statusword & 16#0047) = 16#0001)
+	        THEN #ready_for_switching_on:= TRUE;
+	        ELSE #ready_for_switching_on:= FALSE;
+	    END_IF;
+	     
+	    IF ((#ars_statusword & 16#0047) = 16#0003)
+	        THEN #switched_on:= TRUE;
+	        ELSE #switched_on:= FALSE;
+	    END_IF;
+	
+	    IF ((#ars_statusword & 16#0047) = 16#0007)
+	        THEN #operation:= TRUE;
+	        ELSE #operation:= FALSE;
+	    END_IF;    
+	
+	
+	
+	    
+	    
+END_FUNCTION_BLOCK
+

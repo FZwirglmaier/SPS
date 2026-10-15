@@ -1,0 +1,335 @@
+﻿FUNCTION_BLOCK "Drehtelleransteuerung_SCL"
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT RETAIN
+      ES_in_Position : Bool;
+      ES_Motor_aus : Bool;
+      Motorschutz : Bool;
+      Automatik : Bool;
+      Manuell : Bool;
+      Ablauf_aktiv : Bool;
+      Richten : Bool;
+      SM_reset : Bool;
+      Reset_Frg : Bool;
+      Not_Aus_OK : Bool;
+      Tueren_OK : Bool;
+      Lichtvorhang_OK : Bool;
+      Sicherheitsbit_DT : Bool;
+      TP_Taste_tippen : Bool;
+      Start_taste_tippen : Bool;
+      links0_rechts1_drehen : Bool;
+      Time_Drehteller_Laufzeit : Time;
+      Time_Drehteller_nicht_in_Position : Time;
+      Time_Öffnungszeit_Bremse : Time;
+      Time_Startzeit : Time;
+      Wartungsintervall : DInt;
+   END_VAR
+
+   VAR_OUTPUT RETAIN
+      Schuetz_links : Bool;
+      Schuetz_rechts : Bool;
+      DT_Bremse : Bool;
+      Aktorzyklen : DInt;
+   END_VAR
+
+   VAR_IN_OUT RETAIN
+      Freigabe_DT : Bool;
+      Manuellfreigabe : Bool;
+      Richtenfreigabe : Bool;
+      Fertigmeldung_Drehteller : Bool;
+      Betriebsfertigmeldung : Bool;
+      SM_Drehteller_dreht_nicht : Bool;
+      SM_Drehteller_nicht_in_Position : Bool;
+      SM_Motorschutz : Bool;
+      SM_Sicherheitsbit : Bool;
+      SM_Wartung : Bool;
+   END_VAR
+   VAR_IN_OUT DB_SPECIFIC
+      Auto_Frg_Drehen_Vorwärts : Bool;
+      Auto_Frg_Drehen_Rückwärts : Bool;
+      Manu_Frg_Drehen_Vorwärts : Bool;
+      Manu_Frg_Drehen_Rückwärts : Bool;
+      Richt_Frg_Drehen_Vorwärts : Bool;
+      Richt_Frg_Drehen_Rückwärts : Bool;
+   END_VAR
+
+   VAR RETAIN
+      iStep : Int;
+      Schrittkette_start : Bool;
+      Befehlsfreigabe : Bool;
+      Modolo_Wartungszähler : DInt;
+      Timer_Drehteller_Laufzeit {InstructionName := 'TON_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TON_TIME;
+      Timer_Drehteller_nicht_in_Position {InstructionName := 'TON_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TON_TIME;
+   END_VAR
+   VAR 
+      F_TRIG_Zyklenzähler {InstructionName := 'F_TRIG'; LibVersion := '1.0'} : F_TRIG;
+      F_TRIG_Modolo_gleich_0 {InstructionName := 'F_TRIG'; LibVersion := '1.0'} : F_TRIG;
+   END_VAR
+   VAR DB_SPECIFIC
+      Timer_Öffnungszeit_Bremse {InstructionName := 'TON_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TON_TIME;
+      Timer_Startzeit {InstructionName := 'TON_TIME'; LibVersion := '1.0'; S7_SetPoint := 'False'} : TON_TIME;
+      Temp_Vorwärts { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+      Temp_Rückwärts { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+      Temp_Bremse { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+   END_VAR
+
+
+BEGIN
+	(*
+	    Drehtelleransteuerung
+	    =========================================
+	    created: 23.09.2021 Franz Zwirglmaier 
+	    
+	    
+	  
+	*)
+	
+	
+	
+	REGION Störungen
+	    // Störung Drehteller dreht nicht ********************************
+	    #Timer_Drehteller_Laufzeit(IN := #Schuetz_links OR #Schuetz_rechts,
+	                               PT := #Time_Drehteller_Laufzeit);
+	    
+	    IF #Timer_Drehteller_Laufzeit.Q THEN
+	        #SM_Drehteller_dreht_nicht := TRUE;
+	    ELSE
+	        IF #SM_reset THEN
+	            #SM_Drehteller_dreht_nicht := FALSE;
+	        END_IF;
+	    END_IF;
+	    //****************************************************************
+	    
+	    
+	    // Störmeldung Drehteller nicht in Position ***********************
+	    #Timer_Drehteller_nicht_in_Position(IN := #Schuetz_links = FALSE AND #Schuetz_rechts = FALSE AND #ES_in_Position = FALSE AND #iStep = 10 ,
+	                                        PT := #Time_Drehteller_nicht_in_Position);
+	    
+	    
+	    IF #Timer_Drehteller_nicht_in_Position.Q THEN
+	        #SM_Drehteller_nicht_in_Position := TRUE;
+	    ELSE
+	        IF #SM_reset THEN
+	            #SM_Drehteller_nicht_in_Position := FALSE;
+	        END_IF;
+	    END_IF;
+	    //****************************************************************
+	    
+	    
+	    // Störmeldung Motorschutz ***************************************
+	    IF #Motorschutz = false THEN
+	        #SM_Motorschutz := true;
+	    ELSE
+	        IF #SM_reset THEN
+	            #SM_Motorschutz := false;
+	        END_IF;
+	    END_IF;
+	    //****************************************************************
+	    
+	    // Störmeldung Sicherheitsbit ***************************************
+	    IF #Sicherheitsbit_DT= false AND
+	        #Befehlsfreigabe THEN
+	        #SM_Sicherheitsbit := true;
+	    ELSE
+	        IF #SM_reset THEN
+	            #SM_Sicherheitsbit := false;
+	        END_IF;
+	    END_IF;
+	    //****************************************************************
+	    
+	    
+	    
+	    
+	    
+	END_REGION
+	
+	
+	
+	
+	
+	
+	
+	REGION Wartungszähler
+	    // Aktorenzyklen zählen **************************************************
+	    #F_TRIG_Zyklenzähler(CLK := #Schuetz_links OR #Schuetz_rechts);
+	    IF #F_TRIG_Zyklenzähler.Q THEN
+	        #Aktorzyklen := #Aktorzyklen + 1;
+	    END_IF;
+	    
+	    
+	    // Wartungszähler ***************************************
+	    #Modolo_Wartungszähler := #Aktorzyklen MOD #Wartungsintervall;
+	    #F_TRIG_Modolo_gleich_0(CLK := #Modolo_Wartungszähler = 0);
+	    IF #F_TRIG_Modolo_gleich_0.Q THEN
+	        #SM_Wartung := true;
+	    ELSE
+	        IF #SM_reset THEN
+	            #SM_Wartung := false;
+	        END_IF;
+	    END_IF;
+	    //****************************************************************
+	END_REGION
+	
+	
+	REGION Befehlsfreigabe
+	    IF #Automatik AND #Ablauf_aktiv THEN
+	        IF #Auto_Frg_Drehen_Vorwärts THEN
+	            #Befehlsfreigabe := TRUE;
+	        END_IF;
+	    END_IF;
+	    
+	    IF #Manuell AND #Manuellfreigabe THEN
+	        IF #Manu_Frg_Drehen_Vorwärts THEN
+	            #Befehlsfreigabe := TRUE;
+	        END_IF;
+	    END_IF;
+	    
+	    IF #Richten AND #Richtenfreigabe THEN
+	        IF #Richt_Frg_Drehen_Vorwärts THEN
+	            #Befehlsfreigabe := TRUE;
+	        END_IF;
+	    END_IF;
+	    
+	    
+	    IF #Automatik = false AND
+	        #Manuell = false AND
+	        #Richten = false THEN
+	        #iStep := 0;
+	        #Befehlsfreigabe := FALSE;
+	    END_IF;
+	    
+	    
+	    IF #SM_Motorschutz OR
+	        #SM_Sicherheitsbit THEN
+	        #iStep := 0;
+	        #Befehlsfreigabe := FALSE;
+	    END_IF;
+	    
+	    
+	    
+	END_REGION
+	
+	
+	REGION Automatikablauf
+	    
+	    // Timer Öffnungszeit Bremse **************************************
+	    #Timer_Öffnungszeit_Bremse(IN := #Schrittkette_start,
+	                               PT := #Time_Öffnungszeit_Bremse);
+	    
+	    
+	    // Timer Startzeit **************************************
+	    #Timer_Startzeit(IN := #Schuetz_rechts OR #Schuetz_links,
+	                     PT := #Time_Startzeit);
+	    
+	    
+	    
+	    
+	    //************************ Automatikschrittkette ******************
+	    
+	    
+	    
+	    
+	    
+	    // *********Initialisieren*****************************************
+	    IF #SM_Motorschutz OR
+	        #SM_Sicherheitsbit OR
+	        #SM_Drehteller_nicht_in_Position OR
+	        #SM_Drehteller_dreht_nicht   THEN
+	        #iStep := 0;
+	        #Temp_Vorwärts := false;
+	        #Temp_Rückwärts := false;
+	        #Temp_Bremse := false;
+	        #Fertigmeldung_Drehteller := false;
+	        #Auto_Frg_Drehen_Vorwärts := 0;
+	        #Auto_Frg_Drehen_Rückwärts:= 0;
+	        
+	    END_IF;
+	    // *****************************************************************
+	    
+	    
+	    
+	    // Schrittkette starten
+	    IF #Befehlsfreigabe THEN
+	        #Schrittkette_start := true;
+	    ELSE
+	        #iStep := 0;
+	        //#Temp_Bremse := FALSE;
+	    END_IF;
+	    
+	    
+	    CASE #iStep OF
+	        0:
+	            // =========================================================
+	            // Schritt 1 : Start, Bremse öffnen
+	            // =========================================================
+	            IF #Schrittkette_start THEN
+	                #iStep := 5;
+	                
+	              
+	            END_IF;
+	            
+	        5:
+	            // =========================================================
+	            // Schritt 2 : Drehteller vorwärts oder Rückwärts
+	            // =========================================================
+	            IF #Timer_Öffnungszeit_Bremse.Q THEN
+	                #iStep := 10;
+	                #Schrittkette_start := false;
+	                #Befehlsfreigabe := false;
+	                #Fertigmeldung_Drehteller := false;
+	                
+	                IF #links0_rechts1_drehen THEN
+	                    #Temp_Vorwärts := TRUE;
+	                    #Temp_Bremse := TRUE;
+	                ELSE
+	                    #Temp_Rückwärts := TRUE;
+	                    #Temp_Bremse := TRUE;
+	                END_IF;
+	               
+	            END_IF;
+	            
+	        10:
+	            // =========================================================
+	            // Schritt 3 :  Position erreicht
+	            // =========================================================
+	            IF #Timer_Startzeit.Q AND
+	                #ES_in_Position THEN
+	                #iStep := 15;
+	                #Temp_Vorwärts := FALSE;
+	                #Temp_Rückwärts := FALSE;
+	                #Temp_Bremse := FALSE;
+	            END_IF;
+	            
+	        15:
+	            // =========================================================
+	            // Schritt 4 :  Fertig
+	            // =========================================================
+	            IF #ES_in_Position THEN
+	                #iStep := 0;
+	                
+	                #Befehlsfreigabe := false;
+	                #Auto_Frg_Drehen_Vorwärts := false;
+	                #Auto_Frg_Drehen_Rückwärts := false;
+	                #Manu_Frg_Drehen_Vorwärts := false;
+	                #Manu_Frg_Drehen_Rückwärts := false;
+	                #Richt_Frg_Drehen_Vorwärts := false;
+	                #Richt_Frg_Drehen_Rückwärts := false;
+	                #Temp_Bremse := false;
+	                #Fertigmeldung_Drehteller := true;
+	                
+	                
+	            END_IF;
+	            
+	    END_CASE;
+	    
+	END_REGION
+	
+	REGION Befehlsausgabe
+	    #Schuetz_rechts  :=  #Temp_Vorwärts;
+	    #Schuetz_links :=  #Temp_Rückwärts;
+	    #DT_Bremse:=  #Temp_Bremse;
+	END_REGION
+	    
+	
+END_FUNCTION_BLOCK
+
