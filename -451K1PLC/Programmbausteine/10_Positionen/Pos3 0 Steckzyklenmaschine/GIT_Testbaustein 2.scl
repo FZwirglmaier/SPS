@@ -28,5 +28,16 @@ BEGIN
 	    
 	END_REGION
 	
+	
+	REGION Testregion2
+	    // Statement section REGION
+	    // 
+	    IF #Bool1 THEN
+	        #Ouput_REAL1 := #Input_REAL1 - #Input_REAL2;
+	        
+	    END_IF;
+	    
+	    
+	END_REGION
 END_FUNCTION
 
