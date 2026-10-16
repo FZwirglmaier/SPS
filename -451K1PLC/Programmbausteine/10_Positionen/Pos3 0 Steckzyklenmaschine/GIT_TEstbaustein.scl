@@ -17,9 +17,7 @@ BEGIN
 	END_IF;
 	
 	
-	IF #IN_2 THEN
-	    #OUT_1 := false;
-	END_IF;
+	
 	
 END_FUNCTION
 
