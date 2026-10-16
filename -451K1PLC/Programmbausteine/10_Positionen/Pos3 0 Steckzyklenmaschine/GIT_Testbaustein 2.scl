@@ -21,7 +21,7 @@ BEGIN
 	    // Statement section REGION
 	    // 
 	    IF #Bool1 THEN
-	        #Ouput_REAL1 := #Input_REAL1 + #Input_REAL2;
+	        #Ouput_REAL2 := #Input_REAL1 + #Input_REAL2;
 	        
 	    END_IF;
 	    
