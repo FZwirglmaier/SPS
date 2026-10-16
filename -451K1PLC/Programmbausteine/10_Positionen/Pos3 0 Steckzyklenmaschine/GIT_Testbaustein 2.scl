@@ -1,0 +1,32 @@
+﻿FUNCTION "GIT_Testbaustein 2" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      Input_REAL1 : Real;
+      Input_REAL2 : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      Ouput_REAL1 : Real;
+      Ouput_REAL2 : Real;
+   END_VAR
+
+   VAR_TEMP 
+      Bool1 : Bool;
+   END_VAR
+
+
+BEGIN
+	REGION Testregion
+	    // Statement section REGION
+	    // 
+	    IF #Bool1 THEN
+	        #Ouput_REAL1 := #Input_REAL1 + #Input_REAL2;
+	        
+	    END_IF;
+	    
+	    
+	END_REGION
+	
+END_FUNCTION
+
